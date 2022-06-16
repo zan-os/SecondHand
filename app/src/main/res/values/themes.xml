@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -90,12 +90,12 @@
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">400</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
@@ -112,6 +112,24 @@
 
     <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
         <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.CircleButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="iconTint">@color/neutral_05</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+    
+    <style name="Widget.MaterialComponents.CardView.RoundedCardView">
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/neutral_03</item>
+        <item name="cardCornerRadius">16dp</item>
     </style>
 
 </resources>
