@@ -25,7 +25,7 @@
                 style="@style/TextAppearance.SecondHand.Heading.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/daftar_jual_saya"
+                android:text="@string/lengkapi_detail_produk"
                 android:textColor="@color/neutral_05" />
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -233,14 +233,15 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="@string/preview"
+            android:textAllCaps="false"
             android:textColor="@color/neutral_05"
             app:cornerRadius="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/profile_image_container"
             app:layout_constraintVertical_bias="1.0"
             app:strokeColor="@color/dark_blue_04" />
@@ -249,15 +250,21 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
             android:text="@string/terbitkan"
+            android:textAllCaps="false"
             app:cornerRadius="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/materialButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/materialButton"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@+id/materialButton"
             app:strokeColor="@color/dark_blue_04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

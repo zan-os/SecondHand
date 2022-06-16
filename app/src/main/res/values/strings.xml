@@ -53,4 +53,8 @@
     <string name="minuman">Minuman</string>
     <string name="hobi">Hobi</string>
     <string name="kosmetik">Kosmetik</string>
+    <string name="kendaraan">Kendaraan</string>
+    <string name="elektronik">Elektronik</string>
+    <string name="kesehatan">Kesehatan</string>
+    <string name="lengkapi_detail_produk">Lengkapi Detail Produk</string>
 </resources>
