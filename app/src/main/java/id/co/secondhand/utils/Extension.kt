@@ -7,6 +7,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import java.text.NumberFormat
+import java.util.*
 
 object Extension {
 
@@ -29,5 +31,11 @@ object Extension {
 
     fun String.validateEmail(): Boolean {
         return !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+
+    fun Int.currencyFormatter(): String {
+        val localeId = Locale("in", "ID")
+        val rupiahFormat = NumberFormat.getCurrencyInstance(localeId)
+        return rupiahFormat.format(this)
     }
 }
