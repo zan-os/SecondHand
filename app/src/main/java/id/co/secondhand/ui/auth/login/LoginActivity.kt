@@ -97,7 +97,6 @@ class LoginActivity : AppCompatActivity() {
         binding.toRegisterBtn.setOnClickListener {
             val direction = Intent(this, RegisterActivity::class.java)
             startActivity(direction)
-            finish()
         }
     }
 }
