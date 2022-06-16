@@ -58,4 +58,8 @@
     <string name="kesehatan">Kesehatan</string>
     <string name="lengkapi_detail_produk">Lengkapi Detail Produk</string>
     <string name="kota">Kota</string>
+    <string name="lengkapi_info_akun">Lengkapi Info Akun</string>
+    <string name="simpan">Simpan</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_handphone">No Handphone</string>
 </resources>
