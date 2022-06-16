@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/fragment_add_product.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/fragment_homepage.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/product_item_grid.xml" value="0.34322916666666664" />
       </map>
