@@ -25,7 +25,6 @@
                 style="@style/TextAppearance.SecondHand.Heading.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/lengkapi_detail_produk"
                 android:textColor="@color/neutral_05" />
 
