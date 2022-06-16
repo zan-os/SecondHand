@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                 !email.validateEmail() -> {
                     binding.emailEt.error = "Email tidak valid"
                 }
-                password.validatePassword() -> {
+                !password.validatePassword() -> {
                     binding.passwordEt.error = "min 6 karakter"
                 }
                 else -> {
