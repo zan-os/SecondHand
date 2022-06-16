@@ -15,6 +15,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentDetailProductBinding
 import id.co.secondhand.domain.model.buyer.DetailProduct
+import id.co.secondhand.utils.Extension.currencyFormatter
 
 @AndroidEntryPoint
 class DetailProductFragment : Fragment() {
@@ -88,7 +89,7 @@ class DetailProductFragment : Fragment() {
         binding.apply {
             if (detail != null) {
                 binding.productNameTv.text = detail.name
-                binding.productPriceTv.text = detail.basePrice.toString()
+                binding.productPriceTv.text = detail.basePrice?.currencyFormatter()
                 binding.productDescTv.text = detail.description ?: "Tidak ada deskripsi"
                 Glide.with(requireContext())
                     .load(detail.imageUrl)
