@@ -58,6 +58,15 @@ class RegisterActivity : AppCompatActivity() {
                             is Resource.Success -> {
                                 showLoading(false)
                                 Log.d("Market", result.data.toString())
+                                "Berhasil mendaftar! Silahkan login".showSnackbar(
+                                    binding.root,
+                                    this,
+                                    R.color.white,
+                                    R.color.alert_success
+                                )
+                                val direction = Intent(this, LoginActivity::class.java)
+                                startActivity(direction)
+                                finish()
                             }
                             is Resource.Error -> {
                                 showLoading(false)
@@ -87,6 +96,13 @@ class RegisterActivity : AppCompatActivity() {
                 context = this,
                 textColor = R.color.white,
                 backgroundColor = R.color.alert_danger
+            )
+        } else if (code == "500") {
+            "Internal Server Error :(".showSnackbar(
+                binding.root,
+                this,
+                R.color.white,
+                R.color.alert_danger
             )
         }
     }
