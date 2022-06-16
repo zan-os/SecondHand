@@ -87,7 +87,7 @@ class DetailProductFragment : Fragment() {
             if (detail != null) {
                 binding.productNameTv.text = detail.name
                 binding.productPriceTv.text = detail.basePrice.toString()
-                binding.descriptionTv.text = detail.description ?: "Tidak ada deskripsi"
+                binding.productDescTv.text = detail.description ?: "Tidak ada deskripsi"
                 Glide.with(requireContext())
                     .load(detail.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
