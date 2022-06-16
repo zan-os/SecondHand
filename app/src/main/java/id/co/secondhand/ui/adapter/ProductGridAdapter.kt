@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import id.co.secondhand.R
 import id.co.secondhand.databinding.ProductItemGridBinding
-import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.buyer.Product
 
-class ProductGridAdapter : ListAdapter<Product, ProductGridAdapter.ViewHolder>(DIFF_CALLBACK) {
+class ProductGridAdapter(private val onClick: (Int) -> Unit) :
+    ListAdapter<Product, ProductGridAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    class ViewHolder(private val binding: ProductItemGridBinding) :
+    inner class ViewHolder(private val binding: ProductItemGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
@@ -20,7 +22,11 @@ class ProductGridAdapter : ListAdapter<Product, ProductGridAdapter.ViewHolder>(D
                 product.categories?.map { binding.productCategoryTv.text = it.name }
                 Glide.with(itemView)
                     .load(product.imageUrl)
+                    .placeholder(R.drawable.ic_error_image)
+                    .dontAnimate()
+                    .dontTransform()
                     .into(binding.productImageIv)
+                root.setOnClickListener { onClick(product.id ?: 0) }
             }
         }
     }

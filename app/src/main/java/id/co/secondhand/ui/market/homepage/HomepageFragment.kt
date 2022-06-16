@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentHomepageBinding
-import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class HomepageFragment : Fragment() {
 
     private val viewModel: HomepageViewModel by viewModels()
 
-    private lateinit var adapter: ProductGridAdapter
+    private val adapter: ProductGridAdapter by lazy { ProductGridAdapter(::onClicked) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +72,6 @@ class HomepageFragment : Fragment() {
     }
 
     private fun showProduct(product: List<Product>) {
-        adapter = ProductGridAdapter()
         adapter.submitList(product)
         binding.productRv.layoutManager =
             GridLayoutManager(requireContext(), 2)
@@ -85,5 +85,11 @@ class HomepageFragment : Fragment() {
         } else {
             binding.progressCircular.visibility = View.GONE
         }
+    }
+
+    private fun onClicked(productId: Int) {
+        val direction =
+            HomepageFragmentDirections.actionHomepageFragmentToDetailProductFragment(productId)
+        findNavController().navigate(direction)
     }
 }

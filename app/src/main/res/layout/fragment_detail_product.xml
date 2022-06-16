@@ -10,14 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:indeterminateTint="@color/dark_blue_04"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.CircleButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
-            app:backgroundTint="@color/white"
             android:layout_marginTop="16dp"
             android:background="@drawable/circle_button"
+            app:backgroundTint="@color/white"
             app:icon="?attr/homeAsUpIndicator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,28 +37,25 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/product_image_iv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/product_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/product_info_container"
+            style="@style/Widget.MaterialComponents.CardView.RoundedCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/product_image_iv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_image_iv"
-            app:strokeColor="@color/neutral_03"
-            app:strokeWidth="1dp">
+            app:layout_constraintTop_toBottomOf="@+id/product_image_iv">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -103,18 +112,15 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/seller_info_container"
+            style="@style/Widget.MaterialComponents.CardView.RoundedCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_info_container"
-            app:strokeColor="@color/neutral_03"
-            app:strokeWidth="1dp">
+            app:layout_constraintTop_toBottomOf="@+id/product_info_container">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -165,18 +171,15 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/product_desc_container"
+            style="@style/Widget.MaterialComponents.CardView.RoundedCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seller_info_container"
-            app:strokeColor="@color/neutral_03"
-            app:strokeWidth="1dp">
+            app:layout_constraintTop_toBottomOf="@+id/seller_info_container">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

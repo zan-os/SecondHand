@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/circle_button.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/homepage_background.xml" value="0.205" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/ic_error_image.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_homepage.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_seller_notification.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/circle_button.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_add_product.xml" value="0.25" />
-        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.358695652173913" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_homepage.xml" value="0.22" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_product.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
