@@ -221,7 +221,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bargain_btn"
+            android:id="@+id/negotiate_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -231,7 +231,7 @@
             android:layout_marginBottom="16dp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="14dp"
-            android:text="@string/saya_tertarik_dan_ingin_nego"
+            android:text="@string/i_m_interested_and_want_to_negotiate"
             app:cornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

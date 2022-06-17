@@ -40,6 +40,10 @@ class DetailProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeToken()
         navigateToHomepage()
+
+        binding.negotiateBtn.setOnClickListener {
+            negotiate()
+        }
     }
 
     override fun onDestroyView() {
@@ -109,5 +113,9 @@ class DetailProductFragment : Fragment() {
 
     companion object {
         var EXTRA_ID = "extra_id"
+    }
+
+    private fun negotiate(){
+        findNavController().navigate(R.id.action_detailProductFragment_to_negotiateFragment)
     }
 }
