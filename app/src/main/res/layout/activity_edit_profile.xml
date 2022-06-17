@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.market.profile.update.UpdateProfileFragment">
+    tools:context=".ui.market.profile.update.EditProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,19 +15,20 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:navigationIconTint="@color/neutral_05">
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/TextAppearance.SecondHand.Heading.Bold"
+                style="@style/TextAppearance.SecondHand.Title.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/lengkapi_info_akun"
-                android:textColor="@color/neutral_05" />
+                android:textColor="@color/neutral_05"
+                tools:layout_editor_absoluteX="106dp"
+                tools:layout_editor_absoluteY="10dp" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -186,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/no_handphone"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:minHeight="48dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
