@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +15,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentDetailProductBinding
 import id.co.secondhand.domain.model.buyer.DetailProduct
+import id.co.secondhand.utils.Extension.currencyFormatter
 
 @AndroidEntryPoint
 class DetailProductFragment : Fragment() {
@@ -28,7 +30,7 @@ class DetailProductFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailProductBinding.inflate(layoutInflater)
         return binding.root
@@ -37,6 +39,7 @@ class DetailProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeToken()
+        navigateToHomepage()
     }
 
     override fun onDestroyView() {
@@ -86,8 +89,8 @@ class DetailProductFragment : Fragment() {
         binding.apply {
             if (detail != null) {
                 binding.productNameTv.text = detail.name
-                binding.productPriceTv.text = detail.basePrice.toString()
-                binding.descriptionTv.text = detail.description ?: "Tidak ada deskripsi"
+                binding.productPriceTv.text = detail.basePrice?.currencyFormatter()
+                binding.productDescTv.text = detail.description ?: "Tidak ada deskripsi"
                 Glide.with(requireContext())
                     .load(detail.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
@@ -95,6 +98,12 @@ class DetailProductFragment : Fragment() {
                     .dontTransform()
                     .into(binding.productImageIv)
             }
+        }
+    }
+
+    private fun navigateToHomepage() {
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

@@ -23,6 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_btn"
             style="@style/Widget.MaterialComponents.Button.CircleButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
