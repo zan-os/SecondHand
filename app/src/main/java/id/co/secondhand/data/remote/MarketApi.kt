@@ -3,10 +3,13 @@ package id.co.secondhand.data.remote
 import id.co.secondhand.data.remote.request.LoginRequest
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.remote.response.LoginDto
-import id.co.secondhand.data.remote.response.buyer.ProductDto
 import id.co.secondhand.data.remote.response.RegisterDto
 import id.co.secondhand.data.remote.response.buyer.DetailProductDto
-import retrofit2.http.*
+import id.co.secondhand.data.remote.response.buyer.ProductDto
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface MarketApi {
 
@@ -21,13 +24,10 @@ interface MarketApi {
     ): RegisterDto
 
     @GET("buyer/product")
-    suspend fun getProducts(
-        @Header("access_token") token: String
-    ): ProductDto
+    suspend fun getProducts(): ProductDto
 
     @GET("buyer/product/{id}")
     suspend fun getProductDetail(
-        @Header("access_token") token: String,
         @Path("id") productId: Int
     ): DetailProductDto
 }
