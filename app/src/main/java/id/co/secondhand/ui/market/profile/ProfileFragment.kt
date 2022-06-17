@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.ui.auth.login.LoginActivity
+import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -38,7 +37,7 @@ class ProfileFragment : Fragment() {
 
     private fun updateProfile() {
         binding.editProfileTv.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_updateProfileFragment)
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
     }
 
