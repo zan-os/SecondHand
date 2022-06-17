@@ -53,4 +53,14 @@
     <string name="minuman">Minuman</string>
     <string name="hobi">Hobi</string>
     <string name="kosmetik">Kosmetik</string>
+    <string name="kendaraan">Kendaraan</string>
+    <string name="elektronik">Elektronik</string>
+    <string name="kesehatan">Kesehatan</string>
+    <string name="lengkapi_detail_produk">Lengkapi Detail Produk</string>
+    <string name="kota">Kota</string>
+    <string name="lengkapi_info_akun">Lengkapi Info Akun</string>
+    <string name="simpan">Simpan</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_handphone">No Handphone</string>
+    <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
 </resources>

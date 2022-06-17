@@ -38,7 +38,8 @@ class DetailProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeToken()
+        val productId = args.productId
+        observeResult(productId = productId)
         navigateToHomepage()
     }
 
@@ -47,17 +48,8 @@ class DetailProductFragment : Fragment() {
         _binding = null
     }
 
-    private fun observeToken() {
-        viewModel.token.observe(viewLifecycleOwner) {
-            Log.d("Token", "Token = $it")
-            val productId = args.productId
-            observeResult(token = it, productId = productId)
-            viewModel.accessToken.postValue(it)
-        }
-    }
-
-    private fun observeResult(token: String, productId: Int) {
-        viewModel.getDetailProduct(token = token, productId = productId)
+    private fun observeResult(productId: Int) {
+        viewModel.getDetailProduct(productId = productId)
             .observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {

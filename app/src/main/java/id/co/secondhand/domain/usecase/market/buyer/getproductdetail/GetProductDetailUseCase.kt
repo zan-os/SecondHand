@@ -13,12 +13,12 @@ import javax.inject.Inject
 class GetProductDetailUseCase @Inject constructor(
     private val repository: BuyerRepository
 ) {
-    operator fun invoke(token: String, productId: Int): LiveData<Resource<DetailProduct>> =
+    operator fun invoke(productId: Int): LiveData<Resource<DetailProduct>> =
         liveData {
             try {
                 emit(Resource.Loading())
                 val data =
-                    repository.getProductDetail(token = token, productId = productId).toDomain()
+                    repository.getProductDetail(productId = productId).toDomain()
                 emit(Resource.Success(data))
             } catch (e: HttpException) {
                 emit(Resource.Error(e.code().toString()))

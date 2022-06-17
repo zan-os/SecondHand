@@ -99,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        app:passwordToggleEnabled="true"
         android:layout_marginEnd="16dp"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
@@ -114,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:minHeight="48dp" />
 
     </com.google.android.material.textfield.TextInputLayout>

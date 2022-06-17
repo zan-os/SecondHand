@@ -35,7 +35,7 @@ class HomepageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeToken()
+        observeResult()
     }
 
     override fun onDestroyView() {
@@ -43,16 +43,8 @@ class HomepageFragment : Fragment() {
         _binding = null
     }
 
-    private fun observeToken() {
-        viewModel.token.observe(viewLifecycleOwner) {
-            Log.d("Token", "Token = $it")
-            observeResult(it)
-            viewModel.accessToken.postValue(it)
-        }
-    }
-
-    private fun observeResult(token: String) {
-        viewModel.getProducts(token).observe(viewLifecycleOwner) { result ->
+    private fun observeResult() {
+        viewModel.getProducts().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
                     Log.d("Market", "Loading")
