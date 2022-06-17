@@ -26,7 +26,7 @@ object Extension {
     }
 
     fun String.validatePassword(): Boolean {
-        return this.length >= 6
+        return !TextUtils.isEmpty(this) && this.length >= 6
     }
 
     fun String.validateEmail(): Boolean {

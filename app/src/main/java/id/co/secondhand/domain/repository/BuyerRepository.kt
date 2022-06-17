@@ -5,7 +5,7 @@ import id.co.secondhand.data.remote.response.buyer.ProductItemDto
 
 interface BuyerRepository {
 
-    suspend fun getProducts(token: String): List<ProductItemDto>
+    suspend fun getProducts(): List<ProductItemDto>
 
-    suspend fun getProductDetail(token: String, productId: Int): DetailProductDto
+    suspend fun getProductDetail(productId: Int): DetailProductDto
 }

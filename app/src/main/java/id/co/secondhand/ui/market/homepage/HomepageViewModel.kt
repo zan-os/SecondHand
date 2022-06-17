@@ -19,8 +19,8 @@ class HomepageViewModel @Inject constructor(
     val token = preferences.getAccessToken().asLiveData()
 
     init {
-        getProducts(accessToken.value ?: "null")
+        getProducts()
     }
 
-    fun getProducts(token: String) = useCase(token)
+    fun getProducts() = useCase()
 }

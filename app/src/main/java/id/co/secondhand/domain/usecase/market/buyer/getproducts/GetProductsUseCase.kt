@@ -13,10 +13,10 @@ import javax.inject.Inject
 class GetProductsUseCase @Inject constructor(
     private val repository: BuyerRepository
 ) {
-    operator fun invoke(token: String): LiveData<Resource<List<Product>>> = liveData {
+    operator fun invoke(): LiveData<Resource<List<Product>>> = liveData {
         try {
             emit(Resource.Loading())
-            val data = repository.getProducts(token).map { it.toDomain() }
+            val data = repository.getProducts().map { it.toDomain() }
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error(e.code().toString()))

@@ -63,7 +63,4 @@
     <string name="alamat">Alamat</string>
     <string name="no_handphone">No Handphone</string>
     <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
-    <string name="negotiate_detail">Your bid price will be known by the seller, if the seller matches you will immediately contact the seller.</string>
-    <string name="insert_your_bid_price">Insert your bid price</string>
-    <string name="i_m_interested_and_want_to_negotiate">I\'m interested and want to negotiate</string>
 </resources>

@@ -1,5 +1,6 @@
 package id.co.secondhand.ui.market.homepage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,8 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentHomepageBinding
 import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.ui.adapter.ProductGridAdapter
+import id.co.secondhand.ui.market.product.detail.DetailProductActivity
+import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 
 @AndroidEntryPoint
 class HomepageFragment : Fragment() {
@@ -27,7 +30,7 @@ class HomepageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHomepageBinding.inflate(layoutInflater)
         return binding.root
@@ -35,7 +38,7 @@ class HomepageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeToken()
+        observeResult()
     }
 
     override fun onDestroyView() {
@@ -43,16 +46,8 @@ class HomepageFragment : Fragment() {
         _binding = null
     }
 
-    private fun observeToken() {
-        viewModel.token.observe(viewLifecycleOwner) {
-            Log.d("Token", "Token = $it")
-            observeResult(it)
-            viewModel.accessToken.postValue(it)
-        }
-    }
-
-    private fun observeResult(token: String) {
-        viewModel.getProducts(token).observe(viewLifecycleOwner) { result ->
+    private fun observeResult() {
+        viewModel.getProducts().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
                     Log.d("Market", "Loading")
@@ -88,8 +83,8 @@ class HomepageFragment : Fragment() {
     }
 
     private fun onClicked(productId: Int) {
-        val direction =
-            HomepageFragmentDirections.actionHomepageFragmentToDetailProductFragment(productId)
-        findNavController().navigate(direction)
+        val direction = Intent(requireContext(), DetailProductActivity::class.java)
+        direction.putExtra(EXTRA_ID, productId)
+        startActivity(direction)
     }
 }

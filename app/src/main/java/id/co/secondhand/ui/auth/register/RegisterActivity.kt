@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser() {
-        binding.registerBtn.setOnClickListener {
+        binding.registerBtn.setOnClickListener { view ->
             val name = binding.nameEt.text.toString()
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
                 !email.validateEmail() -> {
                     binding.emailEt.error = "Email tidak valid"
                 }
-                password.validatePassword() -> {
+                !password.validatePassword() -> {
                     binding.passwordEt.error = "min 6 karakter"
                 }
                 else -> {
@@ -56,11 +56,20 @@ class RegisterActivity : AppCompatActivity() {
                             is Resource.Success -> {
                                 showLoading(false)
                                 Log.d("Market", result.data.toString())
+                                "Berhasil mendaftar! Silahkan login".showSnackbar(
+                                    binding.root,
+                                    this,
+                                    R.color.white,
+                                    R.color.alert_success
+                                )
+                                val direction = Intent(this, LoginActivity::class.java)
+                                startActivity(direction)
+                                finish()
                             }
                             is Resource.Error -> {
                                 showLoading(false)
                                 Log.d("Market", "Error ${result.message}")
-                                showErrorMessage(result.message, it)
+                                showErrorMessage(code = result.message, view = view)
                             }
                         }
                     }
@@ -78,14 +87,32 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showErrorMessage(code: String?, view: View) {
-        if (code == "400") {
-            binding.emailEt.error = "Email sudah terdaftar"
-            "Email sudah terdaftar".showSnackbar(
-                view = view,
-                context = this,
-                textColor = R.color.white,
-                backgroundColor = R.color.alert_danger
-            )
+        when (code) {
+            "400" -> {
+                binding.emailEt.error = "Email sudah terdaftar"
+                "Email sudah terdaftar".showSnackbar(
+                    view = view,
+                    context = this,
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
+            "500" -> {
+                "Internal Server Error :(".showSnackbar(
+                    view,
+                    this,
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
+            "503" -> {
+                "Service Unavaiable".showSnackbar(
+                    view,
+                    this,
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
         }
     }
 

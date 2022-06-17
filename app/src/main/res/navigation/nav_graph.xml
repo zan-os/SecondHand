@@ -38,7 +38,7 @@
             android:id="@+id/action_profileFragment_to_updateProfileFragment"
             app:destination="@id/updateProfileFragment" />
     </fragment>
-    <dialog
+    <fragment
         android:id="@+id/detailProductFragment"
         android:name="id.co.secondhand.ui.market.product.detail.DetailProductFragment"
         android:label="fragment_detail_product"
@@ -47,17 +47,10 @@
             android:name="productId"
             app:argType="integer"
             android:defaultValue="0" />
-        <action
-            android:id="@+id/action_detailProductFragment_to_negotiateFragment"
-            app:destination="@id/negotiateFragment" />
-    </dialog>
+    </fragment>
     <fragment
         android:id="@+id/updateProfileFragment"
         android:name="id.co.secondhand.ui.market.profile.update.UpdateProfileFragment"
         android:label="fragment_update_profile"
         tools:layout="@layout/fragment_update_profile" />
-    <dialog
-        android:id="@+id/negotiateFragment"
-        android:name="id.co.secondhand.ui.market.product.detail.NegotiateFragment"
-        android:label="NegotiateFragment" />
 </navigation>
