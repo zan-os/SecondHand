@@ -77,13 +77,31 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showErrorMessage(code: String?, view: View) {
-        if (code == "401") {
-            "User tidak ditemukan".showSnackbar(
-                view = view,
-                context = this,
-                textColor = R.color.white,
-                backgroundColor = R.color.alert_danger
-            )
+        when (code) {
+            "401" -> {
+                "User tidak ditemukan".showSnackbar(
+                    view = view,
+                    context = this,
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
+            "500" -> {
+                "Internal Server Error :(".showSnackbar(
+                    view,
+                    this,
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
+            "503" -> {
+                "Service Unavailable".showSnackbar(
+                    view,
+                    this,
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
         }
     }
 
