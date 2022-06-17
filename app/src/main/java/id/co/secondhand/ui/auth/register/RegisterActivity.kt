@@ -1,5 +1,6 @@
 package id.co.secondhand.ui.auth.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
+import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.validateEmail
 import id.co.secondhand.utils.Extension.validatePassword

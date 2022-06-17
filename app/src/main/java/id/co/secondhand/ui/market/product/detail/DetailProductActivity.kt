@@ -31,10 +31,7 @@ class DetailProductActivity : AppCompatActivity() {
         observeResult(productId = productId)
 
         navigateToHomepage()
-
-        binding.negotiateBtn.setOnClickListener {
-            negotiate()
-        }
+        negotiate()
     }
 
     private fun observeResult(productId: Int) {
@@ -94,7 +91,10 @@ class DetailProductActivity : AppCompatActivity() {
         var EXTRA_ID = "extra_id"
     }
 
-    private fun negotiate(){
-        findNavController().navigate(R.id.action_detailProductFragment_to_negotiateFragment)
+    private fun negotiate() {
+        binding.bargainBtn.setOnClickListener {
+            val bottomSheetDialog = NegotiateFragment()
+            bottomSheetDialog.show(supportFragmentManager,"BottomSheetDialog")
+        }
     }
 }
