@@ -33,7 +33,11 @@
         android:id="@+id/profileFragment"
         android:name="id.co.secondhand.ui.market.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_updateProfileFragment"
+            app:destination="@id/updateProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
         android:name="id.co.secondhand.ui.market.product.detail.DetailProductFragment"
@@ -44,4 +48,9 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/updateProfileFragment"
+        android:name="id.co.secondhand.ui.market.profile.update.UpdateProfileFragment"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
 </navigation>

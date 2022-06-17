@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.ui.auth.login.LoginActivity
 
@@ -23,7 +25,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -31,12 +32,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        updateProfile()
         logout()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun updateProfile() {
+        binding.editProfileTv.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_updateProfileFragment)
+        }
     }
 
     private fun logout() {
@@ -47,5 +50,10 @@ class ProfileFragment : Fragment() {
             startActivity(direction)
             requireActivity().finish()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
