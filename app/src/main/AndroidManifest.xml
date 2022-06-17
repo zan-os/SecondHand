@@ -17,6 +17,9 @@
         android:theme="@style/Theme.SecondHand"
         tools:targetApi="31">
         <activity
+            android:name=".ui.market.product.detail.DetailProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.market.profile.update.EditProfileActivity"
             android:exported="false" />
         <activity
