@@ -31,6 +31,7 @@ class DetailProductActivity : AppCompatActivity() {
         observeResult(productId = productId)
 
         navigateToHomepage()
+        negotiate()
     }
 
     private fun observeResult(productId: Int) {
@@ -88,5 +89,12 @@ class DetailProductActivity : AppCompatActivity() {
 
     companion object {
         var EXTRA_ID = "extra_id"
+    }
+
+    private fun negotiate() {
+        binding.bargainBtn.setOnClickListener {
+            val bottomSheetDialog = NegotiateFragment()
+            bottomSheetDialog.show(supportFragmentManager,"BottomSheetDialog")
+        }
     }
 }
