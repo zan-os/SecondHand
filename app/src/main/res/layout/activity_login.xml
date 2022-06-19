@@ -33,7 +33,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/masuk"
-        android:textColor="@color/neutral_05"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
@@ -46,8 +45,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/email"
-        android:textColor="@color/black"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_tv" />
 
@@ -81,8 +78,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/password"
-        android:textColor="@color/black"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_et_layout" />
 
@@ -125,14 +120,12 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/register_tv"
-        style="@style/TextAppearance.SecondHand.Body.Regular"
+        style="@style/TextAppearance.SecondHand.Body.Regular.14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="-16dp"
         android:layout_marginBottom="24dp"
         android:text="@string/belum_punya_akun"
-        android:textColor="@color/neutral_05"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline" />
 
@@ -142,14 +135,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/daftar_di_sini"
-        android:textColor="@color/dark_blue_04"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/register_tv" />
+        app:layout_constraintBottom_toBottomOf="@+id/register_tv"
+        app:layout_constraintStart_toEndOf="@+id/register_tv"
+        app:layout_constraintTop_toTopOf="@+id/register_tv" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
