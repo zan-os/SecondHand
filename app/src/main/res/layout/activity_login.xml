@@ -127,10 +127,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="14dp"
+        style="@style/Button"
         android:text="@string/masuk"
-        app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_et_layout" />
