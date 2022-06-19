@@ -17,12 +17,18 @@
         android:theme="@style/Theme.SecondHand"
         tools:targetApi="31">
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ui.market.product.detail.DetailProductActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ui.market.profile.update.EditProfileActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ui.auth.login.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -32,9 +38,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ui.auth.register.RegisterActivity"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:name=".ui.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
