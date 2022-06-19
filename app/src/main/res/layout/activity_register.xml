@@ -261,11 +261,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/address_et"
-                    style="@style/EditText"
+                    style="@style/EditText.MultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/alamat"
-                    android:inputType="textEmailAddress" />
+                    android:hint="@string/alamat" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

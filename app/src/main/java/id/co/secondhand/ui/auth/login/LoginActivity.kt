@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        validateLogin()
         registerUser()
         navigateToRegister()
     }
@@ -52,6 +51,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun registerUser() {
+        validateLogin()
+
         binding.loginBtn.setOnClickListener {
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()

@@ -3,6 +3,7 @@ package id.co.secondhand.ui.auth.register
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -28,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        validateRegister()
         registerUser()
         navigateToLogin()
     }
@@ -45,6 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                     val password = passwordEt.text.toString()
                     val numberPhone = numberPhoneEt.text.toString()
                     val address = addressEt.text.toString()
+                    addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
 
                     if (email.validateEmail()) {
                         emailEtLayout.isErrorEnabled = false
@@ -70,6 +71,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser() {
+        validateRegister()
+
         binding.registerBtn.setOnClickListener { view ->
             val name = binding.nameEt.text.toString()
             val email = binding.emailEt.text.toString()
