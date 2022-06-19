@@ -2,7 +2,10 @@ package id.co.secondhand.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +21,7 @@ import id.co.secondhand.utils.Extension.validateEmail
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
 
@@ -25,8 +29,34 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        validateLogin()
         registerUser()
         navigateToRegister()
+    }
+
+    private fun validateLogin() {
+        binding.apply {
+            val textWatcher = object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    val email = emailEt.text.toString()
+                    val password = passwordEt.text.toString()
+                    val isValidEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                    val isValidPassword = password.length >= 6
+                    loginBtn.isEnabled = isValidEmail && isValidPassword
+                }
+            }
+            emailEt.addTextChangedListener(textWatcher)
+            passwordEt.addTextChangedListener(textWatcher)
+        }
     }
 
     private fun registerUser() {

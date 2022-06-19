@@ -18,8 +18,8 @@ import id.co.secondhand.utils.Extension.validatePassword
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
 
+    private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
