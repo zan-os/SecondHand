@@ -21,8 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/daftar"
-            android:textColor="@color/neutral_05"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="7dp" />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <ScrollView
@@ -85,8 +86,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/nama"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_image_container" />
 
@@ -124,8 +123,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/email"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/name_et_layout"
                 app:layout_constraintTop_toBottomOf="@+id/name_et_layout" />
 
@@ -161,8 +158,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/password"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/email_et_layout"
                 app:layout_constraintTop_toBottomOf="@+id/email_et_layout" />
 
@@ -200,8 +195,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/no_handphone"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/password_et_layout"
                 app:layout_constraintTop_toBottomOf="@+id/password_et_layout" />
 
@@ -238,23 +231,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/alamat"
-                android:textColor="@color/black"
-                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
                 app:layout_constraintTop_toBottomOf="@+id/number_phone_et_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/address_et_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:errorIconDrawable="@null"
-                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/number_phone_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/address_tv"
                 app:layout_constraintTop_toBottomOf="@+id/address_tv">
@@ -287,9 +272,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="-16dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/sudah_punya_akun"
-                android:textColor="@color/neutral_05"
-                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/register_btn" />
 
@@ -300,8 +285,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/masuk_di_sini"
-                android:textColor="@color/dark_blue_04"
-                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/have_account_tv"
                 app:layout_constraintStart_toEndOf="@+id/have_account_tv"
                 app:layout_constraintTop_toTopOf="@+id/have_account_tv" />
 
@@ -310,7 +294,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_end="205dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

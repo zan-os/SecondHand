@@ -45,7 +45,6 @@ class RegisterActivity : AppCompatActivity() {
                     val password = passwordEt.text.toString()
                     val numberPhone = numberPhoneEt.text.toString()
                     val address = addressEt.text.toString()
-                    addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
 
                     if (email.validateEmail()) {
                         emailEtLayout.isErrorEnabled = false
@@ -67,6 +66,7 @@ class RegisterActivity : AppCompatActivity() {
             passwordEt.addTextChangedListener(textWatcher)
             numberPhoneEt.addTextChangedListener(textWatcher)
             addressEt.addTextChangedListener(textWatcher)
+            addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
     }
 

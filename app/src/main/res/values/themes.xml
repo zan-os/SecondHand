@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColorSecondary">@color/dark_blue_04</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Heading.Bold" parent="TextAppearance.MaterialComponents.Headline1">
@@ -21,6 +22,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">700</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Heading.Medium" parent="TextAppearance.MaterialComponents.Headline1">
@@ -72,9 +74,10 @@
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">700</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Body.Medium" parent="TextAppearance.MaterialComponents.Headline1">
@@ -90,9 +93,10 @@
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">400</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
