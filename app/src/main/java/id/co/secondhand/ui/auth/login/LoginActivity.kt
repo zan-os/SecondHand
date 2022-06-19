@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +15,10 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityLoginBinding
 import id.co.secondhand.ui.MainActivity
 import id.co.secondhand.ui.auth.register.RegisterActivity
+import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.validateEmail
+import id.co.secondhand.utils.Extension.validatePassword
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -49,9 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun afterTextChanged(s: Editable?) {
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
-                    val isValidEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-                    val isValidPassword = password.length >= 6
-                    loginBtn.isEnabled = isValidEmail && isValidPassword
+                    loginBtn.isEnabled = email.validateEmail() && password.validatePassword()
                 }
             }
             emailEt.addTextChangedListener(textWatcher)
@@ -69,32 +68,28 @@ class LoginActivity : AppCompatActivity() {
                 password = password
             )
 
-            when {
-                !email.validateEmail() -> {
-                    binding.emailEt.error = "Email tidak valid"
-                }
-                else -> {
-                    viewModel.login(user).observe(this) { result ->
-                        when (result) {
-                            is Resource.Loading -> {
-                                Log.d("Market", "Loading")
-                                showLoading(true)
-                            }
-                            is Resource.Success -> {
-                                showLoading(false)
-                                viewModel.saveAccessToken(result.data?.accessToken ?: "")
-                                Log.d("Market", result.data.toString())
-                                navigateToHomepage()
-                            }
-                            is Resource.Error -> {
-                                showLoading(false)
-                                Log.d("Market", "Error ${result.message.toString()}")
-                                showErrorMessage(result.message, it)
-                            }
-                        }
+            viewModel.login(user).observe(this) { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        Log.d("Market", "Loading")
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+                        viewModel.saveAccessToken(result.data?.accessToken ?: "")
+                        Log.d("Market", result.data.toString())
+                        navigateToHomepage()
+                    }
+                    is Resource.Error -> {
+                        showLoading(false)
+                        Log.d("Market", "Error ${result.message.toString()}")
+                        showErrorMessage(result.message, it)
                     }
                 }
             }
+
+            window.decorView.clearFocus()
+            it.dismissKeyboard()
         }
     }
 
@@ -143,8 +138,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToRegister() {
         binding.toRegisterBtn.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
             val direction = Intent(this, RegisterActivity::class.java)
             startActivity(direction)
+            finish()
         }
     }
 }
