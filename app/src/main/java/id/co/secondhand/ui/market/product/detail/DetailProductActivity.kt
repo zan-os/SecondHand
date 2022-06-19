@@ -94,7 +94,7 @@ class DetailProductActivity : AppCompatActivity() {
     private fun negotiate() {
         binding.bargainBtn.setOnClickListener {
             val bottomSheetDialog = NegotiateFragment()
-            bottomSheetDialog.show(supportFragmentManager,"BottomSheetDialog")
+            bottomSheetDialog.show(supportFragmentManager, "BottomSheetDialog")
         }
     }
 }

@@ -2,6 +2,8 @@ package id.co.secondhand.ui.auth.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -26,8 +28,52 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        validateRegister()
         registerUser()
         navigateToLogin()
+    }
+
+    private fun validateRegister() {
+        binding.apply {
+            val textWatcher = object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    val photoProfile = photoProfileIv.toString()
+                    val name = nameEt.text.toString()
+                    val email = emailEt.text.toString()
+                    val password = passwordEt.text.toString()
+                    val numberPhone = numberPhoneEt.text.toString()
+                    val address = addressEt.text.toString()
+
+                    if (email.validateEmail()) {
+                        emailEtLayout.isErrorEnabled = false
+                    }
+
+                    if (password.validatePassword()) {
+                        passwordEtLayout.isErrorEnabled = false
+                    }
+
+                    registerBtn.isEnabled = name.isNotEmpty() &&
+                            email.isNotEmpty() &&
+                            password.isNotEmpty() &&
+                            numberPhone.isNotEmpty() &&
+                            address.isNotEmpty()
+                }
+            }
+            nameEt.addTextChangedListener(textWatcher)
+            emailEt.addTextChangedListener(textWatcher)
+            passwordEt.addTextChangedListener(textWatcher)
+            numberPhoneEt.addTextChangedListener(textWatcher)
+            addressEt.addTextChangedListener(textWatcher)
+        }
     }
 
     private fun registerUser() {
@@ -41,12 +87,13 @@ class RegisterActivity : AppCompatActivity() {
                 email = email,
                 password = password
             )
+
             when {
                 !email.validateEmail() -> {
-                    binding.emailEt.error = "Email tidak valid"
+                    binding.emailEtLayout.error = resources.getString(R.string.email_tidak_valid)
                 }
                 !password.validatePassword() -> {
-                    binding.passwordEt.error = "min 6 karakter"
+                    binding.passwordEtLayout.error = resources.getString(R.string.min_6_karakter)
                 }
                 else -> {
                     viewModel.register(user).observe(this) { result ->
@@ -77,6 +124,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             }
+            window.decorView.clearFocus()
         }
     }
 

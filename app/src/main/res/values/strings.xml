@@ -68,4 +68,12 @@
     <string name="kirim">Kirim</string>
     <string name="harga_tawar">Harga Tawar</string>
     <string name="description">Description</string>
+    <string name="me_mail_com">me@mail.com</string>
+    <string name="min_6_karakter">Min. 6 karakter</string>
+    <string name="_08xx">08xx</string>
+    <string name="nama_tidak_valid">Nama tidak valid</string>
+    <string name="email_tidak_valid">Email tidak valid</string>
+    <string name="no_handphone_tidak_valid">No Handphone tidak valid</string>
+    <string name="alamat_tidak_valid">Alamat tidak valid</string>
+    <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
 </resources>

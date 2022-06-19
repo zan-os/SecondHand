@@ -38,16 +38,9 @@ class LoginActivity : AppCompatActivity() {
     private fun validateLogin() {
         binding.apply {
             val textWatcher = object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-                override fun afterTextChanged(s: Editable?) {
+                override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
+                override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
+                override fun afterTextChanged(s: Editable) {
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
                     loginBtn.isEnabled = email.validateEmail() && password.validatePassword()

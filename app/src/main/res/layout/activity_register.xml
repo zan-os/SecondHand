@@ -41,15 +41,17 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/profile_image_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_marginTop="24dp"
                 app:cardBackgroundColor="@color/dark_blue_01"
+                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/photo_profile_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="37dp"
@@ -95,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
+                app:errorIconDrawable="@null"
                 app:boxCornerRadiusBottomEnd="16dp"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -135,6 +138,7 @@
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp"
+                app:errorIconDrawable="@null"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/email_tv"
@@ -142,11 +146,11 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email_et"
+                    style="@style/EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                 style="@style/EditText" />
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,6 +176,7 @@
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp"
+                app:errorIconDrawable="@null"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/password_tv"
@@ -210,6 +215,7 @@
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp"
+                app:errorIconDrawable="@null"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/number_phone_tv"
@@ -247,6 +253,7 @@
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp"
+                app:errorIconDrawable="@null"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/number_phone_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/address_tv"
@@ -264,11 +271,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register_btn"
+                style="@style/Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:enabled="false"
                 android:text="@string/daftar"
-                style="@style/Button"
                 app:layout_constraintEnd_toEndOf="@+id/number_phone_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
                 app:layout_constraintTop_toBottomOf="@+id/address_et_layout" />
