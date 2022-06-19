@@ -36,15 +36,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateRegister() {
         binding.apply {
             val textWatcher = object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
+                override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
                 override fun afterTextChanged(s: Editable?) {
                     val photoProfile = photoProfileIv.toString()
                     val name = nameEt.text.toString()
