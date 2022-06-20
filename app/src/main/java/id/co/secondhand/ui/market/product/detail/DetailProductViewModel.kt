@@ -18,6 +18,6 @@ class DetailProductViewModel @Inject constructor(
 
     val token = preferences.getAccessToken().asLiveData()
 
-    fun getDetailProduct(token: String, productId: Int) =
-        useCase(token = token, productId = productId)
+    fun getDetailProduct(productId: Int) =
+        useCase(productId = productId)
 }

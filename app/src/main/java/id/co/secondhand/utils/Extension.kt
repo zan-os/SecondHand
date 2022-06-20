@@ -25,12 +25,12 @@ object Extension {
             .show()
     }
 
-    fun String.validatePassword(): Boolean {
-        return !TextUtils.isEmpty(this) && this.length >= 6
-    }
-
     fun String.validateEmail(): Boolean {
         return !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+
+    fun String.validatePassword(): Boolean {
+        return !TextUtils.isEmpty(this) && this.length >= 6
     }
 
     fun Int.currencyFormatter(): String {

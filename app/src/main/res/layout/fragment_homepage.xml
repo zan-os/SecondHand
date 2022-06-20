@@ -126,9 +126,9 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView4">
@@ -140,8 +140,10 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/product_btn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/semua"
+                        android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -150,34 +152,63 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/hobby_btn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
                         android:layout_marginStart="16dp"
                         android:text="@string/hobi"
+                        android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/product_btn"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/food_btn"
+                        android:id="@+id/vehicle_btn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
                         android:layout_marginStart="16dp"
-                        android:text="@string/minuman"
+                        android:text="@string/kendaraan"
+                        android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/hobby_btn"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/cosmetic_btn"
+                        android:id="@+id/accessories_btn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
                         android:layout_marginStart="16dp"
-                        android:text="@string/kosmetik"
+                        android:text="@string/aksesoris"
+                        android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/food_btn"
+                        app:layout_constraintStart_toEndOf="@id/vehicle_btn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/electronic_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/elektronik"
+                        android:textAllCaps="false"
+                        app:icon="@drawable/ic_search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/accessories_btn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/health_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/kesehatan"
+                        android:textAllCaps="false"
+                        app:icon="@drawable/ic_search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/electronic_btn"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -191,6 +222,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:nestedScrollingEnabled="false"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

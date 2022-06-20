@@ -53,4 +53,27 @@
     <string name="minuman">Minuman</string>
     <string name="hobi">Hobi</string>
     <string name="kosmetik">Kosmetik</string>
+    <string name="kendaraan">Kendaraan</string>
+    <string name="elektronik">Elektronik</string>
+    <string name="kesehatan">Kesehatan</string>
+    <string name="lengkapi_detail_produk">Lengkapi Detail Produk</string>
+    <string name="kota">Kota</string>
+    <string name="lengkapi_info_akun">Lengkapi Info Akun</string>
+    <string name="simpan">Simpan</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_handphone">No Handphone</string>
+    <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
+    <string name="nego_desc">Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual.</string>
+    <string name="masukan_harga_tawarmu">Masukan harga tawarmu</string>
+    <string name="kirim">Kirim</string>
+    <string name="harga_tawar">Harga Tawar</string>
+    <string name="description">Description</string>
+    <string name="me_mail_com">me@mail.com</string>
+    <string name="min_6_karakter">Min. 6 karakter</string>
+    <string name="_08xx">08xx</string>
+    <string name="nama_tidak_valid">Nama tidak valid</string>
+    <string name="email_tidak_valid">Email tidak valid</string>
+    <string name="no_handphone_tidak_valid">No Handphone tidak valid</string>
+    <string name="alamat_tidak_valid">Alamat tidak valid</string>
+    <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
 </resources>

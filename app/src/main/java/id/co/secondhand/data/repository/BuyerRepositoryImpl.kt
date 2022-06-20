@@ -9,11 +9,11 @@ import javax.inject.Inject
 class BuyerRepositoryImpl @Inject constructor(
     private val api: MarketApi
 ) : BuyerRepository {
-    override suspend fun getProducts(token: String): List<ProductItemDto> {
-        return api.getProducts(token = token)
+    override suspend fun getProducts(): List<ProductItemDto> {
+        return api.getProducts()
     }
 
-    override suspend fun getProductDetail(token: String, productId: Int): DetailProductDto {
-        return api.getProductDetail(token = token, productId = productId)
+    override suspend fun getProductDetail(productId: Int): DetailProductDto {
+        return api.getProductDetail(productId = productId)
     }
 }
