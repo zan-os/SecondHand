@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_camera"/>
+                    android:src="@drawable/ic_camera" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/photo_profile_iv"
@@ -78,11 +78,11 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name_et_layout"
+                style="@style/TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/name_tv"
                 app:layout_constraintTop_toBottomOf="@+id/name_tv">
@@ -109,9 +109,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_et_layout"
+                style="@style/TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/email_tv"
                 app:layout_constraintTop_toBottomOf="@+id/email_tv">
@@ -138,10 +138,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_et_layout"
+                style="@style/TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                style="@style/TextInputLayout"
                 app:errorIconDrawable="@null"
                 app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/password_tv"
@@ -170,10 +170,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/number_phone_et_layout"
+                style="@style/TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/number_phone_tv"
                 app:layout_constraintTop_toBottomOf="@+id/number_phone_tv">
@@ -210,9 +210,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/auto_complete_city_tv"
+                    style="@style/AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/AutoCompleteTextView"
                     android:hint="@string/pilih_kota" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -299,8 +299,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
         android:indeterminateTint="@color/dark_blue_04"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />

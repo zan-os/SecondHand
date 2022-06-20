@@ -9,11 +9,7 @@
         android:id="@+id/homepageFragment"
         android:name="id.co.secondhand.ui.market.homepage.HomepageFragment"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" >
-        <action
-            android:id="@+id/action_homepageFragment_to_detailProductFragment"
-            app:destination="@id/detailProductFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_homepage" />
     <fragment
         android:id="@+id/sellerNotificationFragment"
         android:name="id.co.secondhand.ui.market.notification.seller.SellerNotificationFragment"
@@ -33,24 +29,5 @@
         android:id="@+id/profileFragment"
         android:name="id.co.secondhand.ui.market.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_updateProfileFragment"
-            app:destination="@id/updateProfileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailProductFragment"
-        android:name="id.co.secondhand.ui.market.product.detail.DetailProductFragment"
-        android:label="fragment_detail_product"
-        tools:layout="@layout/fragment_detail_product" >
-        <argument
-            android:name="productId"
-            app:argType="integer"
-            android:defaultValue="0" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateProfileFragment"
-        android:name="id.co.secondhand.ui.market.profile.update.UpdateProfileFragment"
-        android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,6 +1,5 @@
 package id.co.secondhand.domain.model.buyer
 
-import com.google.gson.annotations.SerializedName
 import id.co.secondhand.data.remote.response.buyer.Category
 
 data class DetailProduct(

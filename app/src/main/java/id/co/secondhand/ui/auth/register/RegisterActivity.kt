@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
