@@ -76,4 +76,6 @@
     <string name="no_handphone_tidak_valid">No Handphone tidak valid</string>
     <string name="alamat_tidak_valid">Alamat tidak valid</string>
     <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
+    <string name="silahkan_upload_foto_profile">Silahkan upload foto profile</string>
+    <string name="pilih_kota">Pilih Kota</string>
 </resources>

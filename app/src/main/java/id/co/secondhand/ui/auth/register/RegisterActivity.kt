@@ -9,7 +9,9 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.resource.Resource
@@ -35,11 +37,22 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun validateRegister() {
         binding.apply {
+            profileImageContainer.setOnClickListener {
+                TedImagePicker.with(this@RegisterActivity)
+                    .start { uri ->
+                        Glide.with(this@RegisterActivity)
+                            .load(uri)
+                            .override(300)
+                            .centerCrop()
+                            .into(photoProfileIv)
+                    }
+                window.decorView.clearFocus()
+            }
+
             val textWatcher = object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
                 override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
                 override fun afterTextChanged(s: Editable?) {
-                    val photoProfile = photoProfileIv.toString()
                     val name = nameEt.text.toString()
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
@@ -74,6 +87,7 @@ class RegisterActivity : AppCompatActivity() {
         validateRegister()
 
         binding.registerBtn.setOnClickListener { view ->
+            val photoProfile = binding.photoProfileIv.drawable
             val name = binding.nameEt.text.toString()
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
@@ -85,6 +99,14 @@ class RegisterActivity : AppCompatActivity() {
             )
 
             when {
+                photoProfile == null -> {
+                    resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
+                        view = view,
+                        context = this,
+                        textColor = R.color.white,
+                        backgroundColor = R.color.alert_danger
+                    )
+                }
                 !email.validateEmail() -> {
                     binding.emailEtLayout.error = resources.getString(R.string.email_tidak_valid)
                 }
