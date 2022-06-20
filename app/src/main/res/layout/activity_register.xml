@@ -209,7 +209,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/city_tv">
 
                 <AutoCompleteTextView
-                    android:id="@+id/auto_complete_tv"
+                    android:id="@+id/auto_complete_city_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/AutoCompleteTextView"

@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -48,6 +49,7 @@ class RegisterActivity : AppCompatActivity() {
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
                     val numberPhone = numberPhoneEt.text.toString()
+                    val city = autoCompleteCityTv.text.toString()
                     val address = addressEt.text.toString()
 
                     if (email.validateEmail()) {
@@ -62,6 +64,7 @@ class RegisterActivity : AppCompatActivity() {
                             email.isNotEmpty() &&
                             password.isNotEmpty() &&
                             numberPhone.isNotEmpty() &&
+                            city.isNotEmpty() &&
                             address.isNotEmpty()
                 }
             }
@@ -69,6 +72,7 @@ class RegisterActivity : AppCompatActivity() {
             emailEt.addTextChangedListener(textWatcher)
             passwordEt.addTextChangedListener(textWatcher)
             numberPhoneEt.addTextChangedListener(textWatcher)
+            autoCompleteCityTv.addTextChangedListener(textWatcher)
             addressEt.addTextChangedListener(textWatcher)
             addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
@@ -192,7 +196,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun dropDownMenu() {
         val city = resources.getStringArray(R.array.city)
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_city_item, city)
-        binding.autoCompleteTv.setAdapter(arrayAdapter)
+        binding.autoCompleteCityTv.setAdapter(arrayAdapter)
     }
 
     private fun navigateToLogin() {
