@@ -7,6 +7,7 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -37,18 +38,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun validateRegister() {
         binding.apply {
-            profileImageContainer.setOnClickListener {
-                TedImagePicker.with(this@RegisterActivity)
-                    .start { uri ->
-                        Glide.with(this@RegisterActivity)
-                            .load(uri)
-                            .override(300)
-                            .centerCrop()
-                            .into(photoProfileIv)
-                    }
-                window.decorView.clearFocus()
-            }
-
+            imagePicker()
+            dropDownMenu()
             val textWatcher = object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
                 override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
@@ -182,6 +173,26 @@ class RegisterActivity : AppCompatActivity() {
                 )
             }
         }
+    }
+
+    private fun imagePicker() {
+        binding.profileImageContainer.setOnClickListener {
+            TedImagePicker.with(this@RegisterActivity)
+                .start { uri ->
+                    Glide.with(this@RegisterActivity)
+                        .load(uri)
+                        .override(300)
+                        .centerCrop()
+                        .into(binding.photoProfileIv)
+                }
+            window.decorView.clearFocus()
+        }
+    }
+
+    private fun dropDownMenu() {
+        val city = resources.getStringArray(R.array.city)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_city_item, city)
+        binding.autoCompleteTv.setAdapter(arrayAdapter)
     }
 
     private fun navigateToLogin() {

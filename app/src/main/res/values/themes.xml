@@ -157,6 +157,8 @@
         <item name="boxCornerRadiusBottomStart">16dp</item>
         <item name="boxCornerRadiusBottomEnd">16dp</item>
         <item name="hintEnabled">false</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="EditText">
@@ -169,6 +171,13 @@
         <item name="android:minLines">3</item>
         <item name="android:gravity">top</item>
         <item name="android:imeOptions">actionDone</item>
+    </style>
+
+    <style name="AutoCompleteTextView">
+        <item name="android:focusable">false</item>
+        <item name="android:inputType">none</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="Widget.MaterialComponents.CardView.RoundedCardView">

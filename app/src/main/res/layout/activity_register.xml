@@ -220,11 +220,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/city_tv">
 
                 <AutoCompleteTextView
+                    android:id="@+id/auto_complete_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:hint="@string/pilih_kota"
-                    android:inputType="none" />
+                    style="@style/AutoCompleteTextView"
+                    android:hint="@string/pilih_kota" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

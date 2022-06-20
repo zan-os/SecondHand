@@ -9,7 +9,6 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="daftar">Daftar</string>
     <string name="nama">Nama</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="daftar_jual">Daftar Jual</string>
     <string name="akun">Akun</string>
@@ -78,4 +77,17 @@
     <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
     <string name="silahkan_upload_foto_profile">Silahkan upload foto profile</string>
     <string name="pilih_kota">Pilih Kota</string>
+
+    <string-array name="city">
+        <item>Aceh</item>
+        <item>Bandar Lampung</item>
+        <item>Bandung</item>
+        <item>Denpasar</item>
+        <item>Jakarta</item>
+        <item>Makassar</item>
+        <item>Medan</item>
+        <item>Palembang</item>
+        <item>Surabaya</item>
+        <item>Lainnya</item>
+    </string-array>
 </resources>
