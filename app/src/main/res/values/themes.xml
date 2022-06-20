@@ -151,6 +151,14 @@
         <item name="hintEnabled">false</item>
     </style>
 
+    <style name="TextInputLayout.DropDownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
     <style name="EditText">
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">14sp</item>

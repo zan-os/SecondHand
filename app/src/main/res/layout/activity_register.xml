@@ -89,17 +89,11 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name_et_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:errorIconDrawable="@null"
-                app:hintEnabled="false"
+                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/name_tv"
                 app:layout_constraintTop_toBottomOf="@+id/name_tv">
@@ -126,15 +120,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email_et_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:errorIconDrawable="@null"
-                app:hintEnabled="false"
+                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/email_tv"
                 app:layout_constraintTop_toBottomOf="@+id/email_tv">
@@ -161,16 +149,11 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_et_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
+                style="@style/TextInputLayout"
                 app:errorIconDrawable="@null"
-                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/password_tv"
                 app:layout_constraintTop_toBottomOf="@+id/password_tv"
@@ -198,16 +181,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/number_phone_et_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:boxCornerRadiusBottomEnd="16dp"
-                app:boxCornerRadiusBottomStart="16dp"
-                app:boxCornerRadiusTopEnd="16dp"
-                app:boxCornerRadiusTopStart="16dp"
-                app:errorIconDrawable="@null"
-                app:hintEnabled="false"
+                style="@style/TextInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/number_phone_tv"
                 app:layout_constraintTop_toBottomOf="@+id/number_phone_tv">
@@ -223,14 +200,43 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/city_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/kota"
+                app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
+                app:layout_constraintTop_toBottomOf="@+id/number_phone_et_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/city_et_layout"
+                style="@style/TextInputLayout.DropDownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
+                app:layout_constraintStart_toStartOf="@+id/city_tv"
+                app:layout_constraintTop_toBottomOf="@+id/city_tv">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/pilih_kota"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/address_tv"
                 style="@style/TextAppearance.SecondHand.Body.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/alamat"
-                app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/number_phone_et_layout" />
+                app:layout_constraintStart_toStartOf="@+id/city_et_layout"
+                app:layout_constraintTop_toBottomOf="@+id/city_et_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/address_et_layout"
