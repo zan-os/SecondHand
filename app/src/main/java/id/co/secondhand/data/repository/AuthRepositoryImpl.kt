@@ -7,6 +7,7 @@ import id.co.secondhand.data.remote.request.LoginRequest
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.remote.response.LoginDto
 import id.co.secondhand.data.remote.response.RegisterDto
+import id.co.secondhand.data.remote.response.auth.UserDataDto
 import id.co.secondhand.domain.repository.AuthRepository
 import javax.inject.Inject
 
@@ -25,5 +26,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun saveUserData(user: UserEntity): Long {
         return dao.saveUserData(user)
+    }
+
+    override suspend fun getUserData(accessToken: String): UserDataDto {
+        return api.getUserData(accessToken)
     }
 }
