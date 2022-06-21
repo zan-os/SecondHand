@@ -78,4 +78,6 @@
     <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
     <string name="silahkan_upload_foto_profile">Silahkan upload foto profile</string>
     <string name="pilih_kota">Pilih Kota</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="pilih_kategori">Pilih Kategori</string>
 </resources>

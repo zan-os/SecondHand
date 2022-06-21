@@ -4,12 +4,13 @@ import id.co.secondhand.data.remote.request.LoginRequest
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.remote.response.LoginDto
 import id.co.secondhand.data.remote.response.RegisterDto
+import id.co.secondhand.data.remote.response.auth.UserDataDto
 import id.co.secondhand.data.remote.response.buyer.DetailProductDto
 import id.co.secondhand.data.remote.response.buyer.ProductDto
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import id.co.secondhand.data.remote.response.seller.AddProductDto
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface MarketApi {
 
@@ -23,6 +24,11 @@ interface MarketApi {
         @Body user: RegisterRequest
     ): RegisterDto
 
+    @GET("auth/user")
+    suspend fun getUserData(
+        @Header("access_token") accessToken: String
+    ): UserDataDto
+
     @GET("buyer/product")
     suspend fun getProducts(): ProductDto
 
@@ -30,4 +36,16 @@ interface MarketApi {
     suspend fun getProductDetail(
         @Path("id") productId: Int
     ): DetailProductDto
+
+    @Multipart
+    @POST("seller/product")
+    suspend fun addProduct(
+        @Header("access_token") accessToken: String,
+        @Part image: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("base_price") basePrice: RequestBody,
+        @Part("category_ids") categoryIds: RequestBody,
+        @Part("location") location: RequestBody,
+    ): AddProductDto
 }
