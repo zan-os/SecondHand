@@ -86,7 +86,7 @@ class AddProductFragment : Fragment() {
                     getFile = file
 
                     Glide.with(this)
-                        .load(file)
+                        .load(uri)
                         .override(300)
                         .centerCrop()
                         .into(binding.productImageIv)
