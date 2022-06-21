@@ -172,7 +172,7 @@
         <item name="android:inputType">textMultiLine</item>
         <item name="android:minLines">3</item>
         <item name="android:gravity">top</item>
-        <item name="android:imeOptions">actionDone</item>
+        <item name="android:imeOptions">actionNext</item>
     </style>
 
     <style name="AutoCompleteTextView">
