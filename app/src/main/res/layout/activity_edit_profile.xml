@@ -14,17 +14,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:navigationIconTint="@color/neutral_05">
+        app:navigationIconTint="?colorOnSecondary">
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/TextAppearance.SecondHand.Title.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/lengkapi_info_akun"
-            android:textColor="@color/neutral_05"
-            tools:layout_editor_absoluteX="106dp"
-            tools:layout_editor_absoluteY="10dp" />
+            android:text="@string/lengkapi_info_akun" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
