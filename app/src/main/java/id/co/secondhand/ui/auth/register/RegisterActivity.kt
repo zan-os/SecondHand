@@ -3,7 +3,6 @@ package id.co.secondhand.ui.auth.register
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -61,19 +60,16 @@ class RegisterActivity : AppCompatActivity() {
 
                     registerBtn.isEnabled = name.isNotEmpty() &&
                             email.isNotEmpty() &&
-                            password.isNotEmpty() &&
-                            numberPhone.isNotEmpty() &&
-                            city.isNotEmpty() &&
-                            address.isNotEmpty()
+                            password.isNotEmpty()
                 }
             }
             nameEt.addTextChangedListener(textWatcher)
             emailEt.addTextChangedListener(textWatcher)
             passwordEt.addTextChangedListener(textWatcher)
-            numberPhoneEt.addTextChangedListener(textWatcher)
-            autoCompleteCityTv.addTextChangedListener(textWatcher)
-            addressEt.addTextChangedListener(textWatcher)
-            addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
+//            numberPhoneEt.addTextChangedListener(textWatcher)
+//            autoCompleteCityTv.addTextChangedListener(textWatcher)
+//            addressEt.addTextChangedListener(textWatcher)
+//            addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
     }
 
@@ -85,6 +81,10 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.nameEt.text.toString()
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
+//            val phoneNumber = binding.numberPhoneEt.text.toString().toLong()
+//            val address = binding.addressEt.text.toString()
+//            val imageUrl = binding.photoProfileIv.drawable.toBitmap().toString()
+//            val city = binding.autoCompleteCityTv.text.toString()
 
             val user = RegisterRequest(
                 fullName = name,
@@ -93,14 +93,14 @@ class RegisterActivity : AppCompatActivity() {
             )
 
             when {
-                photoProfile == null -> {
-                    resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
-                        view = view,
-                        context = this,
-                        textColor = R.color.white,
-                        backgroundColor = R.color.alert_danger
-                    )
-                }
+//                photoProfile == null -> {
+//                    resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
+//                        view = view,
+//                        context = this,
+//                        textColor = R.color.white,
+//                        backgroundColor = R.color.alert_danger
+//                    )
+//                }
                 !email.validateEmail() -> {
                     binding.emailEtLayout.error = resources.getString(R.string.email_tidak_valid)
                 }
@@ -151,7 +151,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun showErrorMessage(code: String?, view: View) {
         when (code) {
             "400" -> {
-                binding.emailEt.error = "Email sudah terdaftar"
+                binding.emailEtLayout.error = "Email sudah terdaftar"
                 "Email sudah terdaftar".showSnackbar(
                     view = view,
                     context = this,
