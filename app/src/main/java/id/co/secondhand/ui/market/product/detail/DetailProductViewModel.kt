@@ -1,5 +1,7 @@
 package id.co.secondhand.ui.market.product.detail
 
+import android.content.ClipData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

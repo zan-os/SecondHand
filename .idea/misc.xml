@@ -6,8 +6,6 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/circle_button.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/homepage_background.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/ic_error_image.xml" value="0.205" />
-        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_detail_product.xml" value="0.358695652173913" />
-        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_edit_profile.xml" value="0.17831813576494426" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_homepage.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
@@ -17,7 +15,6 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_add_product.xml" value="0.25" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_homepage.xml" value="0.33" />
-        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_negotiate.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_product.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_seller_notification.xml" value="0.33" />
@@ -25,18 +22,23 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/product_item_grid.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/product_item_list.xml" value="0.22" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/menu/bottom_nav_menu.xml" value="0.365625" />
-        <entry key="app/src/main/res/drawable/homepage_background.xml" value="0.2395" />
-        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.2145" />
-        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1755" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalChallengeBinar/app/src/main/res/layout/fragment_add_product.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalChallengeBinar/app/src/main/res/layout/fragment_negotiate.xml" value="0.4939759036144578" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FinalChallengeBinar/app/src/main/res/menu/bottom_nav_menu.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.4" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22002820874471085" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/backup.xml" value="0.3421875" />
-        <entry key="app/src/main/res/layout/dropdown_city_item.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_add_product.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_detail_product.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/fragment_homepage.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_seller_notification.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/product_item_grid.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/product_item_list.xml" value="0.34322916666666664" />
       </map>
     </option>
   </component>

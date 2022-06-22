@@ -1,11 +1,15 @@
 package id.co.secondhand.ui.market.product.detail
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
@@ -31,8 +35,9 @@ class DetailProductActivity : AppCompatActivity() {
         observeResult(productId = productId)
 
         navigateToHomepage()
-        negotiate()
+        negotiate(productId)
     }
+
 
     private fun observeResult(productId: Int) {
         viewModel.getDetailProduct(productId = productId)
@@ -91,9 +96,12 @@ class DetailProductActivity : AppCompatActivity() {
         var EXTRA_ID = "extra_id"
     }
 
-    private fun negotiate() {
-        binding.bargainBtn.setOnClickListener {
+    private fun negotiate(productId: Int) {
+        binding.negotiateBtn.setOnClickListener {
             val bottomSheetDialog = NegotiateFragment()
+            val bundle = Bundle()
+            bundle.putInt("productId", productId)
+            bottomSheetDialog.arguments = bundle
             bottomSheetDialog.show(supportFragmentManager, "BottomSheetDialog")
         }
     }

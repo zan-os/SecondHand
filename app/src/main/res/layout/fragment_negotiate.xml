@@ -52,7 +52,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ivProduct"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/ivProduct"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -87,8 +87,8 @@
                 android:textColor="@color/neutral_05"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+                app:layout_constraintStart_toEndOf="@+id/ivProduct"
                 app:layout_constraintStart_toStartOf="@+id/tvProductName"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
 
