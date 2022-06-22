@@ -97,7 +97,7 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     private fun negotiate(productId: Int) {
-        binding.negotiateBtn.setOnClickListener {
+        binding.bargainBtn.setOnClickListener {
             val bottomSheetDialog = NegotiateFragment()
             val bundle = Bundle()
             bundle.putInt("productId", productId)
