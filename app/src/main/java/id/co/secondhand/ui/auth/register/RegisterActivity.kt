@@ -1,14 +1,19 @@
 package id.co.secondhand.ui.auth.register
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.resource.Resource
@@ -25,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
+    private var getImage: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +40,86 @@ class RegisterActivity : AppCompatActivity() {
         navigateToLogin()
     }
 
+    private fun registerUser() {
+        validateRegister()
+
+        binding.apply {
+            registerBtn.setOnClickListener {
+                window.decorView.clearFocus()
+                it.dismissKeyboard()
+                val image = photoProfileIv.drawable
+                val name = nameEt.text.toString()
+                val email = emailEt.text.toString()
+                val password = passwordEt.text.toString()
+                val phoneNumber = phoneNumberEt.text.toString().toLong()
+                val city = autoCompleteCityTv.text.toString()
+                val address = addressEt.text.toString()
+
+                val user = RegisterRequest(
+                    fullName = name,
+                    email = email,
+                    password = password,
+                    phoneNumber = phoneNumber,
+                    city = city,
+                    address = address,
+                    imageUrl = getImage.toString()
+                )
+
+                when {
+                    image == null -> {
+                        resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
+                            binding.root,
+                            this@RegisterActivity,
+                            R.color.white,
+                            R.color.alert_danger
+                        )
+                    }
+                    !email.validateEmail() -> {
+                        binding.emailEtLayout.error =
+                            resources.getString(R.string.email_tidak_valid)
+                    }
+                    !password.validatePassword() -> {
+                        binding.passwordEtLayout.error =
+                            resources.getString(R.string.min_6_karakter)
+                    }
+                    else -> {
+                        viewModel.register(user).observe(this@RegisterActivity) { result ->
+                            when (result) {
+                                is Resource.Loading -> {
+                                    showLoading(true)
+                                    Log.d("Market", "Loading")
+                                }
+                                is Resource.Success -> {
+                                    showLoading(false)
+                                    Log.d("Market", result.data.toString())
+                                    "Berhasil mendaftar! Silahkan login".showSnackbar(
+                                        binding.root,
+                                        this@RegisterActivity,
+                                        R.color.white,
+                                        R.color.alert_success
+                                    )
+                                    lifecycleScope.launch {
+                                        delay(1000)
+                                        onBackPressed()
+                                    }
+                                }
+                                is Resource.Error -> {
+                                    showLoading(false)
+                                    Log.d("Market", "Error ${result.message}")
+                                    showErrorMessage(code = result.message, view = it)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private fun validateRegister() {
+        imagePicker()
+        dropDownMenu()
+
         binding.apply {
             val textWatcher = object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
@@ -43,6 +128,9 @@ class RegisterActivity : AppCompatActivity() {
                     val name = nameEt.text.toString()
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
+                    val numberPhone = phoneNumberEt.text.toString()
+                    val city = autoCompleteCityTv.text.toString()
+                    val address = addressEt.text.toString()
 
                     if (email.validateEmail()) {
                         emailEtLayout.isErrorEnabled = false
@@ -54,70 +142,41 @@ class RegisterActivity : AppCompatActivity() {
 
                     registerBtn.isEnabled = name.isNotEmpty() &&
                             email.isNotEmpty() &&
-                            password.isNotEmpty()
+                            password.isNotEmpty() &&
+                            numberPhone.isNotEmpty() &&
+                            city.isNotEmpty() &&
+                            address.isNotEmpty()
                 }
             }
             nameEt.addTextChangedListener(textWatcher)
             emailEt.addTextChangedListener(textWatcher)
             passwordEt.addTextChangedListener(textWatcher)
+            phoneNumberEt.addTextChangedListener(textWatcher)
+            autoCompleteCityTv.addTextChangedListener(textWatcher)
+            addressEt.addTextChangedListener(textWatcher)
+            addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
     }
 
-    private fun registerUser() {
-        validateRegister()
-
-        binding.registerBtn.setOnClickListener {
+    private fun imagePicker() {
+        binding.profileImageContainer.setOnClickListener {
+            TedImagePicker.with(this@RegisterActivity)
+                .start { uri ->
+                    getImage = uri
+                    Glide.with(this@RegisterActivity)
+                        .load(uri)
+                        .override(300)
+                        .centerCrop()
+                        .into(binding.photoProfileIv)
+                }
             window.decorView.clearFocus()
-            it.dismissKeyboard()
-
-            val name = binding.nameEt.text.toString()
-            val email = binding.emailEt.text.toString()
-            val password = binding.passwordEt.text.toString()
-
-            val user = RegisterRequest(
-                fullName = name,
-                email = email,
-                password = password
-            )
-
-            when {
-                !email.validateEmail() -> {
-                    binding.emailEtLayout.error = resources.getString(R.string.email_tidak_valid)
-                }
-                !password.validatePassword() -> {
-                    binding.passwordEtLayout.error = resources.getString(R.string.min_6_karakter)
-                }
-                else -> {
-                    viewModel.register(user).observe(this) { result ->
-                        when (result) {
-                            is Resource.Loading -> {
-                                showLoading(true)
-                                Log.d("Market", "Loading")
-                            }
-                            is Resource.Success -> {
-                                showLoading(false)
-                                Log.d("Market", result.data.toString())
-                                "Berhasil mendaftar! Silahkan login".showSnackbar(
-                                    binding.root,
-                                    this,
-                                    R.color.white,
-                                    R.color.alert_success
-                                )
-                                lifecycleScope.launch {
-                                    delay(1000)
-                                    onBackPressed()
-                                }
-                            }
-                            is Resource.Error -> {
-                                showLoading(false)
-                                Log.d("Market", "Error ${result.message}")
-                                showErrorMessage(code = result.message, view = it)
-                            }
-                        }
-                    }
-                }
-            }
         }
+    }
+
+    private fun dropDownMenu() {
+        val city = resources.getStringArray(R.array.city)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_city_item, city)
+        binding.autoCompleteCityTv.setAdapter(arrayAdapter)
     }
 
     private fun showLoading(value: Boolean) {

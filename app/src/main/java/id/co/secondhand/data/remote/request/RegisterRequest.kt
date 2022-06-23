@@ -10,11 +10,11 @@ data class RegisterRequest(
     @SerializedName("password")
     val password: String,
     @SerializedName("phone_number")
-    val phoneNumber: Long? = 0,
+    val phoneNumber: Long,
     @SerializedName("address")
-    val address: String? = "null",
+    val address: String,
     @SerializedName("image_url")
-    val imageUrl: String? = "null",
+    val imageUrl: String,
     @SerializedName("city")
-    val city: String? = "null"
+    val city: String
 )

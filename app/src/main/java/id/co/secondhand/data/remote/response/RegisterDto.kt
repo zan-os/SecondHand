@@ -4,6 +4,7 @@ package id.co.secondhand.data.remote.response
 import com.google.gson.annotations.SerializedName
 import id.co.secondhand.data.local.entity.UserEntity
 import id.co.secondhand.domain.model.Register
+import java.io.File
 
 data class RegisterDto(
     @SerializedName("id")
