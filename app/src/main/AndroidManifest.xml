@@ -17,6 +17,9 @@
         android:theme="@style/Theme.SecondHand"
         tools:targetApi="31">
         <activity
+            android:name=".ui.market.product.preview.PreviewProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.market.product.detail.DetailProductActivity"
             android:exported="false"
             android:screenOrientation="portrait"
@@ -48,7 +51,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
-
     </application>
 
 </manifest>
