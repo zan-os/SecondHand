@@ -10,9 +10,10 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorSecondary">@color/dark_blue_04</item>
+        <item name="snackbarTextViewStyle">@style/SnackBar</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Heading.Bold" parent="TextAppearance.MaterialComponents.Headline1">
@@ -59,6 +60,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Title.Regular" parent="TextAppearance.MaterialComponents.Headline1">
@@ -157,6 +159,8 @@
         <item name="boxCornerRadiusBottomStart">16dp</item>
         <item name="boxCornerRadiusBottomEnd">16dp</item>
         <item name="hintEnabled">false</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="EditText">
@@ -168,13 +172,24 @@
         <item name="android:inputType">textMultiLine</item>
         <item name="android:minLines">3</item>
         <item name="android:gravity">top</item>
-        <item name="android:imeOptions">actionDone</item>
+        <item name="android:imeOptions">actionNext</item>
+    </style>
+
+    <style name="AutoCompleteTextView">
+        <item name="android:focusable">false</item>
+        <item name="android:inputType">none</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="Widget.MaterialComponents.CardView.RoundedCardView">
         <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/neutral_03</item>
         <item name="cardCornerRadius">16dp</item>
+    </style>
+
+    <style name="SnackBar" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
 </resources>

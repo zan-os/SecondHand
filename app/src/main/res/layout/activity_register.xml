@@ -14,295 +14,175 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminateTint="@color/dark_blue_04"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/register_tv"
             style="@style/TextAppearance.SecondHand.Heading.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:text="@string/daftar"
             android:textSize="24sp"
-            tools:layout_editor_absoluteX="166dp"
-            tools:layout_editor_absoluteY="7dp" />
-    </com.google.android.material.appbar.MaterialToolbar>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:contentDescription="@string/description"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/materialToolbar">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name_tv"
+            style="@style/TextAppearance.SecondHand.Body.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/nama"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_tv" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_et_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/profile_image_container"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/dark_blue_01"
-                app:cardCornerRadius="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_camera"/>
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/photo_profile_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-            </androidx.cardview.widget.CardView>
-
-            <ProgressBar
-                android:id="@+id/progress_circular"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_et"
+                style="@style/EditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:indeterminateTint="@color/dark_blue_04"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/name_et_layout"
-                app:layout_constraintEnd_toEndOf="@+id/profile_image_container"
-                app:layout_constraintStart_toStartOf="@+id/profile_image_container"
-                app:layout_constraintTop_toBottomOf="@+id/profile_image_container" />
+                android:hint="@string/nama"
+                android:inputType="textEmailAddress" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/name_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/email_tv"
+            style="@style/TextAppearance.SecondHand.Body.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"
+            app:layout_constraintStart_toStartOf="@+id/name_et_layout"
+            app:layout_constraintTop_toBottomOf="@+id/name_et_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_et_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
+            app:layout_constraintStart_toStartOf="@+id/email_tv"
+            app:layout_constraintTop_toBottomOf="@+id/email_tv">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_et"
+                style="@style/EditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/nama"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_image_container" />
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_et_layout"
-                android:layout_width="0dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/password_tv"
+            style="@style/TextAppearance.SecondHand.Body.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/password"
+            app:layout_constraintStart_toStartOf="@+id/email_et_layout"
+            app:layout_constraintTop_toBottomOf="@+id/email_et_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_et_layout"
+            style="@style/TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
+            app:layout_constraintStart_toStartOf="@+id/password_tv"
+            app:layout_constraintTop_toBottomOf="@+id/password_tv"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_et"
+                style="@style/EditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                style="@style/TextInputLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/name_tv"
-                app:layout_constraintTop_toBottomOf="@+id/name_tv">
+                android:hint="@string/password"
+                android:inputType="textPassword" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nama"
-                    android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register_btn"
+            style="@style/Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:enabled="false"
+            android:text="@string/daftar"
+            app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
+            app:layout_constraintStart_toStartOf="@+id/password_et_layout"
+            app:layout_constraintTop_toBottomOf="@+id/password_et_layout" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/email_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/email"
-                app:layout_constraintStart_toStartOf="@+id/name_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/name_et_layout" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/have_account_tv"
+            style="@style/TextAppearance.SecondHand.Body.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-16dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/sudah_punya_akun"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_et_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="@style/TextInputLayout"
-                app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/email_tv"
-                app:layout_constraintTop_toBottomOf="@+id/email_tv">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/to_login_btn"
+            style="@style/TextAppearance.SecondHand.Body.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/masuk_di_sini"
+            app:layout_constraintBottom_toBottomOf="@+id/have_account_tv"
+            app:layout_constraintStart_toEndOf="@+id/have_account_tv"
+            app:layout_constraintTop_toTopOf="@+id/have_account_tv" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/password_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/password"
-                app:layout_constraintStart_toStartOf="@+id/email_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/email_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_et_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                style="@style/TextInputLayout"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/password_tv"
-                app:layout_constraintTop_toBottomOf="@+id/password_tv"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/number_phone_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/no_handphone"
-                app:layout_constraintStart_toStartOf="@+id/password_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/password_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/number_phone_et_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                style="@style/TextInputLayout"
-                app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/number_phone_tv"
-                app:layout_constraintTop_toBottomOf="@+id/number_phone_tv">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/number_phone_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/no_handphone"
-                    android:inputType="number" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/city_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/kota"
-                app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/number_phone_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/city_et_layout"
-                style="@style/TextInputLayout.DropDownMenu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/city_tv"
-                app:layout_constraintTop_toBottomOf="@+id/city_tv">
-
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:hint="@string/pilih_kota"
-                    android:inputType="none" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/address_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/alamat"
-                app:layout_constraintStart_toStartOf="@+id/city_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/city_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/address_et_layout"
-                style="@style/TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/number_phone_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/address_tv"
-                app:layout_constraintTop_toBottomOf="@+id/address_tv">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/address_et"
-                    style="@style/EditText.MultiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/alamat" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/register_btn"
-                style="@style/Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:enabled="false"
-                android:text="@string/daftar"
-                app:layout_constraintEnd_toEndOf="@+id/number_phone_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/number_phone_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/address_et_layout" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/have_account_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular.14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="-16dp"
-                android:layout_marginBottom="24dp"
-                android:text="@string/sudah_punya_akun"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@id/register_btn" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/to_login_btn"
-                style="@style/TextAppearance.SecondHand.Body.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/masuk_di_sini"
-                app:layout_constraintBottom_toBottomOf="@+id/have_account_tv"
-                app:layout_constraintStart_toEndOf="@+id/have_account_tv"
-                app:layout_constraintTop_toTopOf="@+id/have_account_tv" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="205dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

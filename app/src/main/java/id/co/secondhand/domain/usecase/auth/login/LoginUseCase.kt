@@ -3,7 +3,6 @@ package id.co.secondhand.domain.usecase.auth.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import id.co.secondhand.data.remote.request.LoginRequest
-import id.co.secondhand.data.remote.response.buyer.toDomain
 import id.co.secondhand.data.remote.response.toDomain
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.model.Login

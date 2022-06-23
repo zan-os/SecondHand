@@ -1,25 +1,24 @@
 package id.co.secondhand.ui.auth.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
-import id.co.secondhand.ui.auth.login.LoginActivity
+import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.validateEmail
 import id.co.secondhand.utils.Extension.validatePassword
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
@@ -37,18 +36,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun validateRegister() {
         binding.apply {
-            profileImageContainer.setOnClickListener {
-                TedImagePicker.with(this@RegisterActivity)
-                    .start { uri ->
-                        Glide.with(this@RegisterActivity)
-                            .load(uri)
-                            .override(300)
-                            .centerCrop()
-                            .into(photoProfileIv)
-                    }
-                window.decorView.clearFocus()
-            }
-
             val textWatcher = object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
                 override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
@@ -56,8 +43,6 @@ class RegisterActivity : AppCompatActivity() {
                     val name = nameEt.text.toString()
                     val email = emailEt.text.toString()
                     val password = passwordEt.text.toString()
-                    val numberPhone = numberPhoneEt.text.toString()
-                    val address = addressEt.text.toString()
 
                     if (email.validateEmail()) {
                         emailEtLayout.isErrorEnabled = false
@@ -69,25 +54,22 @@ class RegisterActivity : AppCompatActivity() {
 
                     registerBtn.isEnabled = name.isNotEmpty() &&
                             email.isNotEmpty() &&
-                            password.isNotEmpty() &&
-                            numberPhone.isNotEmpty() &&
-                            address.isNotEmpty()
+                            password.isNotEmpty()
                 }
             }
             nameEt.addTextChangedListener(textWatcher)
             emailEt.addTextChangedListener(textWatcher)
             passwordEt.addTextChangedListener(textWatcher)
-            numberPhoneEt.addTextChangedListener(textWatcher)
-            addressEt.addTextChangedListener(textWatcher)
-            addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
         }
     }
 
     private fun registerUser() {
         validateRegister()
 
-        binding.registerBtn.setOnClickListener { view ->
-            val photoProfile = binding.photoProfileIv.drawable
+        binding.registerBtn.setOnClickListener {
+            window.decorView.clearFocus()
+            it.dismissKeyboard()
+
             val name = binding.nameEt.text.toString()
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
@@ -99,14 +81,6 @@ class RegisterActivity : AppCompatActivity() {
             )
 
             when {
-                photoProfile == null -> {
-                    resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
-                        view = view,
-                        context = this,
-                        textColor = R.color.white,
-                        backgroundColor = R.color.alert_danger
-                    )
-                }
                 !email.validateEmail() -> {
                     binding.emailEtLayout.error = resources.getString(R.string.email_tidak_valid)
                 }
@@ -129,20 +103,20 @@ class RegisterActivity : AppCompatActivity() {
                                     R.color.white,
                                     R.color.alert_success
                                 )
-                                val direction = Intent(this, LoginActivity::class.java)
-                                startActivity(direction)
-                                finish()
+                                lifecycleScope.launch {
+                                    delay(1000)
+                                    onBackPressed()
+                                }
                             }
                             is Resource.Error -> {
                                 showLoading(false)
                                 Log.d("Market", "Error ${result.message}")
-                                showErrorMessage(code = result.message, view = view)
+                                showErrorMessage(code = result.message, view = it)
                             }
                         }
                     }
                 }
             }
-            window.decorView.clearFocus()
         }
     }
 
@@ -157,7 +131,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun showErrorMessage(code: String?, view: View) {
         when (code) {
             "400" -> {
-                binding.emailEt.error = "Email sudah terdaftar"
+                binding.emailEtLayout.error = "Email sudah terdaftar"
                 "Email sudah terdaftar".showSnackbar(
                     view = view,
                     context = this,

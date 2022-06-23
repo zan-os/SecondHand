@@ -9,8 +9,7 @@
         android:id="@+id/homepageFragment"
         android:name="id.co.secondhand.ui.market.homepage.HomepageFragment"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" >
-    </fragment>
+        tools:layout="@layout/fragment_homepage" />
     <fragment
         android:id="@+id/sellerNotificationFragment"
         android:name="id.co.secondhand.ui.market.notification.seller.SellerNotificationFragment"
@@ -30,6 +29,5 @@
         android:id="@+id/profileFragment"
         android:name="id.co.secondhand.ui.market.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
 </navigation>

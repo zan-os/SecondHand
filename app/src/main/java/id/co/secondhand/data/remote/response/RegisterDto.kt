@@ -6,43 +6,40 @@ import id.co.secondhand.data.local.entity.UserEntity
 import id.co.secondhand.domain.model.Register
 
 data class RegisterDto(
-    @SerializedName("address")
-    val address: String,
-    @SerializedName("createdAt")
-    val createdAt: String?,
-    @SerializedName("email")
-    val email: String,
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("full_name")
     val fullName: String,
-    @SerializedName("id")
-    val id: Int?,
-    @SerializedName("image_url")
-    val imageUrl: String?,
+    @SerializedName("email")
+    val email: String,
     @SerializedName("password")
     val password: String,
     @SerializedName("phone_number")
     val phoneNumber: Long,
+    @SerializedName("address")
+    val address: String,
+    @SerializedName("image_url")
+    val imageUrl: String,
+    @SerializedName("city")
+    val city: String,
+    @SerializedName("createdAt")
+    val createdAt: String,
     @SerializedName("updatedAt")
-    val updatedAt: String?,
-    @SerializedName("name")
-    val name: String?,
-    @SerializedName("message")
-    val message: String?
+    val updatedAt: String
 )
 
 fun RegisterDto.toDomain(): Register =
     Register(
-        address,
-        createdAt,
-        email,
-        fullName,
         id,
-        imageUrl,
+        fullName,
+        email,
         password,
         phoneNumber,
-        updatedAt,
-        name,
-        message
+        address,
+        imageUrl,
+        city,
+        createdAt,
+        updatedAt
     )
 
 fun RegisterDto.toUserEntity(): UserEntity =
