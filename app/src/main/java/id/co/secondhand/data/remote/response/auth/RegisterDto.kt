@@ -1,4 +1,4 @@
-package id.co.secondhand.data.remote.response
+package id.co.secondhand.data.remote.response.auth
 
 
 import com.google.gson.annotations.SerializedName

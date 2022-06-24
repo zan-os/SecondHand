@@ -19,6 +19,7 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         saveUser()
+        arrowBack()
     }
 
     private fun saveUser() {
@@ -50,5 +51,11 @@ class EditProfileActivity : AppCompatActivity() {
         val city = resources.getStringArray(R.array.city)
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_city_item, city)
         binding.autoCompleteCityTv.setAdapter(arrayAdapter)
+    }
+
+    private fun arrowBack() {
+        binding.materialToolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }
