@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import id.co.secondhand.data.remote.request.auth.RegisterRequest
 import id.co.secondhand.data.remote.response.auth.toDomain
-import id.co.secondhand.data.remote.response.auth.toUserEntity
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.model.auth.Register
 import id.co.secondhand.domain.repository.AuthRepository
@@ -17,7 +16,6 @@ class RegisterUseCase @Inject constructor(private val repository: AuthRepository
         try {
             emit(Resource.Loading())
             val data = repository.authRegister(user)
-            repository.saveUserData(data.toUserEntity())
             emit(Resource.Success(data.toDomain()))
         } catch (e: HttpException) {
             emit(Resource.Error(e.code().toString()))
