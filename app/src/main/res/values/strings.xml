@@ -79,6 +79,7 @@
     <string name="pilih_kota">Pilih Kota</string>
     <string name="lokasi">Lokasi</string>
     <string name="pilih_kategori">Pilih Kategori</string>
+    <string name="edit_profile">Edit Profile</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>
