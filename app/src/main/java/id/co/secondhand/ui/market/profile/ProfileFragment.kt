@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.ui.auth.login.LoginActivity
+import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -23,7 +24,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -31,12 +31,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        updateProfile()
         logout()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun updateProfile() {
+        binding.editProfileTv.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
     }
 
     private fun logout() {
@@ -47,5 +49,10 @@ class ProfileFragment : Fragment() {
             startActivity(direction)
             requireActivity().finish()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,6 +1,6 @@
-package id.co.secondhand.domain.model
+package id.co.secondhand.domain.model.buyer
 
-import id.co.secondhand.data.remote.response.Category
+import id.co.secondhand.data.remote.response.buyer.Category
 
 data class Product(
     val basePrice: Int?,

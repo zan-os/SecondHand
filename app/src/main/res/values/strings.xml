@@ -9,7 +9,6 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="daftar">Daftar</string>
     <string name="nama">Nama</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="daftar_jual">Daftar Jual</string>
     <string name="akun">Akun</string>
@@ -48,4 +47,48 @@
     <string name="ditawar_rp_250_000">Ditawar Rp.250.000</string>
     <string name="_20_apr_14_04">20 Apr, 14:04</string>
     <string name="penawaran_produk">Penawaran Produk</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="mulai_nego">Mulai Nego</string>
+    <string name="minuman">Minuman</string>
+    <string name="hobi">Hobi</string>
+    <string name="kosmetik">Kosmetik</string>
+    <string name="kendaraan">Kendaraan</string>
+    <string name="elektronik">Elektronik</string>
+    <string name="kesehatan">Kesehatan</string>
+    <string name="lengkapi_detail_produk">Lengkapi Detail Produk</string>
+    <string name="kota">Kota</string>
+    <string name="lengkapi_info_akun">Lengkapi Info Akun</string>
+    <string name="simpan">Simpan</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_handphone">No Handphone</string>
+    <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
+    <string name="nego_desc">Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual.</string>
+    <string name="masukan_harga_tawarmu">Masukan harga tawarmu</string>
+    <string name="kirim">Kirim</string>
+    <string name="harga_tawar">Harga Tawar</string>
+    <string name="description">Description</string>
+    <string name="me_mail_com">me@mail.com</string>
+    <string name="min_6_karakter">Min. 6 karakter</string>
+    <string name="_08xx">08xx</string>
+    <string name="nama_tidak_valid">Nama tidak valid</string>
+    <string name="email_tidak_valid">Email tidak valid</string>
+    <string name="no_handphone_tidak_valid">No Handphone tidak valid</string>
+    <string name="alamat_tidak_valid">Alamat tidak valid</string>
+    <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
+    <string name="silahkan_upload_foto_profile">Silahkan upload foto profile</string>
+    <string name="pilih_kota">Pilih Kota</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="pilih_kategori">Pilih Kategori</string>
+    <string-array name="city">
+        <item>Aceh</item>
+        <item>Bandar Lampung</item>
+        <item>Bandung</item>
+        <item>Denpasar</item>
+        <item>Jakarta</item>
+        <item>Makassar</item>
+        <item>Medan</item>
+        <item>Palembang</item>
+        <item>Surabaya</item>
+        <item>Lainnya</item>
+    </string-array>
 </resources>
