@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
-import id.co.secondhand.domain.model.buyer.DetailProduct
+import id.co.secondhand.domain.model.Product
 import id.co.secondhand.ui.MainActivity
 import id.co.secondhand.utils.Extension.currencyFormatter
 
@@ -63,7 +63,7 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun showProductData(detail: DetailProduct?) {
+    private fun showProductData(detail: Product?) {
         binding.apply {
             if (detail != null) {
                 binding.productNameTv.text = detail.name
