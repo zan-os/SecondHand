@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.request.RegisterRequest
+import id.co.secondhand.data.remote.request.auth.RegisterRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
 import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard

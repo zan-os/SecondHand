@@ -2,11 +2,11 @@ package id.co.secondhand.domain.usecase.auth.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import id.co.secondhand.data.remote.request.RegisterRequest
-import id.co.secondhand.data.remote.response.toDomain
-import id.co.secondhand.data.remote.response.toUserEntity
+import id.co.secondhand.data.remote.request.auth.RegisterRequest
+import id.co.secondhand.data.remote.response.auth.toDomain
+import id.co.secondhand.data.remote.response.auth.toUserEntity
 import id.co.secondhand.data.resource.Resource
-import id.co.secondhand.domain.model.Register
+import id.co.secondhand.domain.model.auth.Register
 import id.co.secondhand.domain.repository.AuthRepository
 import retrofit2.HttpException
 import java.io.IOException

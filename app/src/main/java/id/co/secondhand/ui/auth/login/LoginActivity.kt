@@ -10,7 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.request.LoginRequest
+import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityLoginBinding
 import id.co.secondhand.ui.MainActivity

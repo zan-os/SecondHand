@@ -1,9 +1,9 @@
 package id.co.secondhand.data.remote
 
-import id.co.secondhand.data.remote.request.LoginRequest
-import id.co.secondhand.data.remote.request.RegisterRequest
-import id.co.secondhand.data.remote.response.LoginDto
-import id.co.secondhand.data.remote.response.RegisterDto
+import id.co.secondhand.data.remote.request.auth.LoginRequest
+import id.co.secondhand.data.remote.request.auth.RegisterRequest
+import id.co.secondhand.data.remote.response.auth.LoginDto
+import id.co.secondhand.data.remote.response.auth.RegisterDto
 import id.co.secondhand.data.remote.response.auth.UserDataDto
 import id.co.secondhand.data.remote.response.buyer.DetailProductDto
 import id.co.secondhand.data.remote.response.buyer.ProductDto

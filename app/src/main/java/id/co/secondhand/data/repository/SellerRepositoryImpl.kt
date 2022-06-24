@@ -5,7 +5,6 @@ import id.co.secondhand.data.remote.response.seller.AddProductDto
 import id.co.secondhand.domain.repository.SellerRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class SellerRepositoryImpl @Inject constructor(

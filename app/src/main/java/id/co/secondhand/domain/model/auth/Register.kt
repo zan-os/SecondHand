@@ -1,4 +1,4 @@
-package id.co.secondhand.domain.model
+package id.co.secondhand.domain.model.auth
 
 data class Register(
     val id: Int,
