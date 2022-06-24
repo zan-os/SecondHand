@@ -6,11 +6,11 @@ import id.co.secondhand.domain.model.Login
 
 data class LoginDto(
     @SerializedName("access_token")
-    val accessToken: String?,
+    val accessToken: String,
     @SerializedName("email")
-    val email: String?,
+    val email: String,
     @SerializedName("name")
-    val name: String?
+    val name: String
 )
 
 fun LoginDto.toDomain(): Login =
