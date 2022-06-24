@@ -58,6 +58,7 @@ class SaleListFragment : Fragment() {
             getSaleProduct(token)
             getOrder(token)
             getUserData(token)
+            showSaleProduct(token)
         }
     }
 
@@ -82,22 +83,20 @@ class SaleListFragment : Fragment() {
     }
 
     private fun getSaleProduct(token: String) {
-        binding.productBtn.setOnClickListener {
-            viewModel.getSaleProduct(token).observe(viewLifecycleOwner) { result ->
-                when (result) {
-                    is Resource.Loading -> {
-                        Log.d("Market", "Loading")
-                        showLoading(true)
-                    }
-                    is Resource.Success -> {
-                        showLoading(false)
-                        Log.d("Market", result.data.toString())
-                        showProduct(result.data ?: emptyList())
-                    }
-                    is Resource.Error -> {
-                        showLoading(false)
-                        Log.d("Market", "Error ${result.message.toString()}")
-                    }
+        viewModel.getSaleProduct(token).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    Log.d("Market", "Loading")
+                    showLoading(true)
+                }
+                is Resource.Success -> {
+                    showLoading(false)
+                    Log.d("Market", result.data.toString())
+                    showProduct(result.data ?: emptyList())
+                }
+                is Resource.Error -> {
+                    showLoading(false)
+                    Log.d("Market", "Error ${result.message.toString()}")
                 }
             }
         }
@@ -168,6 +167,12 @@ class SaleListFragment : Fragment() {
         binding.editProfileBtn.setOnClickListener {
             val direction = Intent(requireActivity(), EditProfileActivity::class.java)
             startActivity(direction)
+        }
+    }
+
+    private fun showSaleProduct(token: String) {
+        binding.productBtn.setOnClickListener {
+            getSaleProduct(token)
         }
     }
 }
