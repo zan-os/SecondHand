@@ -1,7 +1,6 @@
 package id.co.secondhand.data.remote
 
 import id.co.secondhand.data.remote.request.auth.LoginRequest
-import id.co.secondhand.data.remote.request.auth.RegisterRequest
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.RegisterDto
 import id.co.secondhand.data.remote.response.auth.UserDataDto
@@ -19,9 +18,16 @@ interface MarketApi {
         @Body user: LoginRequest
     ): LoginDto
 
+    @Multipart
     @POST("auth/register")
     suspend fun authRegister(
-        @Body user: RegisterRequest
+        @Part("full_name") fullName: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("phone_number") phoneNumber: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part imageUrl: MultipartBody.Part,
+        @Part("city") city: RequestBody
     ): RegisterDto
 
     @GET("auth/user")

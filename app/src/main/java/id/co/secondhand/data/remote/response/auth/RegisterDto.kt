@@ -1,8 +1,6 @@
 package id.co.secondhand.data.remote.response.auth
 
-
 import com.google.gson.annotations.SerializedName
-import id.co.secondhand.domain.model.auth.Register
 
 data class RegisterDto(
     val id: Int,
@@ -19,14 +17,3 @@ data class RegisterDto(
     val createdAt: String,
     val updatedAt: String
 )
-
-fun RegisterDto.toDomain(): Register =
-    Register(
-        fullName,
-        email,
-        password,
-        phoneNumber,
-        address,
-        imageUrl,
-        city
-    )
