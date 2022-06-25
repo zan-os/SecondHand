@@ -7,8 +7,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/product_image_iv"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:src="@drawable/img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,18 +63,33 @@
         app:layout_constraintTop_toBottomOf="@+id/product_name_tv" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView5"
+        style="@style/TextAppearance.SecondHand.Body.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/ditawar"
+        android:textColor="@color/neutral_05"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/product_image_iv"
+        app:layout_constraintStart_toStartOf="@+id/product_price_tv"
+        app:layout_constraintTop_toBottomOf="@+id/product_price_tv" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/bargain_price_tv"
         style="@style/TextAppearance.SecondHand.Body.Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/ditawar_rp_250_000"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/rp_25_999"
         android:textColor="@color/neutral_05"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/materialTextView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/product_name_tv"
-        app:layout_constraintTop_toBottomOf="@+id/product_price_tv" />
+        app:layout_constraintStart_toEndOf="@+id/materialTextView5"
+        app:layout_constraintTop_toTopOf="@+id/materialTextView5" />
 
     <View
         style="@style/Divider"

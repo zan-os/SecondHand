@@ -38,5 +38,4 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun getUserData(accessToken: String): UserDataDto =
         api.getUserData(accessToken)
-
 }

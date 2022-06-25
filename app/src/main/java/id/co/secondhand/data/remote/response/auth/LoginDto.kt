@@ -1,6 +1,5 @@
 package id.co.secondhand.data.remote.response.auth
 
-
 import com.google.gson.annotations.SerializedName
 import id.co.secondhand.domain.model.auth.Login
 
