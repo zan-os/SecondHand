@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
@@ -66,8 +65,6 @@ class EditProfileActivity : AppCompatActivity() {
                 .centerCrop()
                 .into(photoProfileIv)
             nameEt.setText(user.fullName)
-            emailEt.setText(user.email)
-            passwordEt.setText(user.password)
             phoneNumberEt.setText(user.phoneNumber)
             autoCompleteCityTv.setText(user.city)
             addressEt.setText(user.address)

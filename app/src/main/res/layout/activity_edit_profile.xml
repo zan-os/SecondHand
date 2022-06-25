@@ -92,75 +92,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/email_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/email"
-                app:layout_constraintStart_toStartOf="@+id/name_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/name_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_et_layout"
-                style="@style/TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/email_tv"
-                app:layout_constraintTop_toBottomOf="@+id/email_tv">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/password_tv"
-                style="@style/TextAppearance.SecondHand.Body.Regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/password"
-                app:layout_constraintStart_toStartOf="@+id/email_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/email_et_layout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_et_layout"
-                style="@style/TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                app:errorIconDrawable="@null"
-                app:layout_constraintEnd_toEndOf="@+id/email_et_layout"
-                app:layout_constraintStart_toStartOf="@+id/password_tv"
-                app:layout_constraintTop_toBottomOf="@+id/password_tv"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_et"
-                    style="@style/EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/phone_number_tv"
                 style="@style/TextAppearance.SecondHand.Body.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/no_handphone"
-                app:layout_constraintStart_toStartOf="@+id/password_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/password_et_layout" />
+                app:layout_constraintStart_toStartOf="@+id/address_et_layout"
+                app:layout_constraintTop_toBottomOf="@+id/address_et_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phone_number_et_layout"
@@ -168,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
+                app:layout_constraintEnd_toEndOf="@+id/address_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/phone_number_tv"
                 app:layout_constraintTop_toBottomOf="@+id/phone_number_tv">
 
@@ -189,8 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/kota"
-                app:layout_constraintStart_toStartOf="@+id/phone_number_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/phone_number_et_layout" />
+                app:layout_constraintStart_toStartOf="@+id/name_et_layout"
+                app:layout_constraintTop_toBottomOf="@+id/name_et_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/city_et_layout"
@@ -198,7 +137,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/password_et_layout"
+                app:layout_constraintEnd_toEndOf="@+id/name_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/city_tv"
                 app:layout_constraintTop_toBottomOf="@+id/city_tv">
 
@@ -227,7 +166,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/phone_number_et_layout"
+                app:layout_constraintEnd_toEndOf="@+id/city_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/address_tv"
                 app:layout_constraintTop_toBottomOf="@+id/address_tv">
 
@@ -249,7 +188,7 @@
                 android:text="@string/simpan"
                 app:layout_constraintEnd_toEndOf="@+id/phone_number_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/phone_number_et_layout"
-                app:layout_constraintTop_toBottomOf="@+id/address_et_layout" />
+                app:layout_constraintTop_toBottomOf="@id/phone_number_et_layout" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
