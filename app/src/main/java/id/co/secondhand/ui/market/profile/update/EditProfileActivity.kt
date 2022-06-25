@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityEditProfileBinding
 
@@ -57,7 +57,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun showUserData(user: UserDataDto) {
+    private fun showUserData(user: UserDto) {
         binding.apply {
             Glide.with(this@EditProfileActivity)
                 .load(user.imageUrl)

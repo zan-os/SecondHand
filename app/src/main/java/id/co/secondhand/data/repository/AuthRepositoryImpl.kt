@@ -3,8 +3,7 @@ package id.co.secondhand.data.repository
 import id.co.secondhand.data.remote.MarketApi
 import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.remote.response.auth.LoginDto
-import id.co.secondhand.data.remote.response.auth.RegisterDto
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.domain.repository.AuthRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -25,7 +24,7 @@ class AuthRepositoryImpl @Inject constructor(
         address: RequestBody,
         imageUrl: MultipartBody.Part,
         city: RequestBody
-    ): RegisterDto =
+    ): UserDto =
         api.authRegister(
             fullName,
             email,
@@ -36,6 +35,9 @@ class AuthRepositoryImpl @Inject constructor(
             city
         )
 
-    override suspend fun getUserData(accessToken: String): UserDataDto =
+    override suspend fun getUserData(accessToken: String): UserDto =
         api.getUserData(accessToken)
+
+    override suspend fun editUserData(accessToken: String): UserDto =
+        api.editUserData(accessToken)
 }

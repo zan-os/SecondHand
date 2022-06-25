@@ -2,8 +2,7 @@ package id.co.secondhand.domain.repository
 
 import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.remote.response.auth.LoginDto
-import id.co.secondhand.data.remote.response.auth.RegisterDto
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -19,7 +18,9 @@ interface AuthRepository {
         address: RequestBody,
         imageUrl: MultipartBody.Part,
         city: RequestBody
-    ): RegisterDto
+    ): UserDto
 
-    suspend fun getUserData(accessToken: String): UserDataDto
+    suspend fun getUserData(accessToken: String): UserDto
+
+    suspend fun editUserData(accessToken: String): UserDto
 }

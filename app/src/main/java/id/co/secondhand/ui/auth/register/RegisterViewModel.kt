@@ -3,7 +3,7 @@ package id.co.secondhand.ui.auth.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.co.secondhand.data.remote.response.auth.RegisterDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.usecase.auth.register.RegisterUseCase
 import okhttp3.MediaType.Companion.toMediaType
@@ -24,7 +24,7 @@ class RegisterViewModel @Inject constructor(private val useCase: RegisterUseCase
         address: String,
         imageUrl: File,
         city: String
-    ): LiveData<Resource<RegisterDto>> {
+    ): LiveData<Resource<UserDto>> {
         val requestImageFile = imageUrl.asRequestBody("image/jpeg".toMediaType())
         val requestFullName = fullName.toRequestBody("text/plain".toMediaType())
         val requestEmail = email.toRequestBody("text/plain".toMediaType())

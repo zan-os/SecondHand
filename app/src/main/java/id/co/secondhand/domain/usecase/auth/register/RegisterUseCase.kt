@@ -2,7 +2,7 @@ package id.co.secondhand.domain.usecase.auth.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import id.co.secondhand.data.remote.response.auth.RegisterDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.repository.AuthRepository
 import okhttp3.MultipartBody
@@ -20,7 +20,7 @@ class RegisterUseCase @Inject constructor(private val repository: AuthRepository
         address: RequestBody,
         imageUrl: MultipartBody.Part,
         city: RequestBody
-    ): LiveData<Resource<RegisterDto>> = liveData {
+    ): LiveData<Resource<UserDto>> = liveData {
         try {
             emit(Resource.Loading())
             val data = repository.authRegister(
