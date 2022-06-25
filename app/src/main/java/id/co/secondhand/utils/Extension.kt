@@ -19,7 +19,7 @@ import java.util.*
 
 object Extension {
 
-    val timeStamp: String = SimpleDateFormat(
+    private val timeStamp: String = SimpleDateFormat(
         "dd-MMM-yyyy",
         Locale.US
     ).format(System.currentTimeMillis())
@@ -55,7 +55,7 @@ object Extension {
         return rupiahFormat.format(this)
     }
 
-    fun createTempFile(context: Context): File {
+    private fun createTempFile(context: Context): File {
         val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(timeStamp, ".jpg", storageDir)
     }

@@ -1,6 +1,5 @@
 package id.co.secondhand.ui.auth.register
 
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -15,22 +14,23 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.request.auth.RegisterRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
 import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
+import id.co.secondhand.utils.Extension.uriToFile
 import id.co.secondhand.utils.Extension.validateEmail
 import id.co.secondhand.utils.Extension.validatePassword
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.File
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
-    private var getImage: Uri? = null
+    private var getImage: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,26 +47,15 @@ class RegisterActivity : AppCompatActivity() {
             registerBtn.setOnClickListener {
                 window.decorView.clearFocus()
                 it.dismissKeyboard()
-                val image = photoProfileIv.drawable
                 val name = nameEt.text.toString()
                 val email = emailEt.text.toString()
                 val password = passwordEt.text.toString()
-                val phoneNumber = phoneNumberEt.text.toString().toLong()
+                val phoneNumber = phoneNumberEt.text.toString()
                 val city = autoCompleteCityTv.text.toString()
                 val address = addressEt.text.toString()
 
-                val user = RegisterRequest(
-                    fullName = name,
-                    email = email,
-                    password = password,
-                    phoneNumber = phoneNumber,
-                    city = city,
-                    address = address,
-                    imageUrl = getImage.toString()
-                )
-
                 when {
-                    image == null -> {
+                    getImage == null -> {
                         resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
                             binding.root,
                             this@RegisterActivity,
@@ -83,7 +72,15 @@ class RegisterActivity : AppCompatActivity() {
                             resources.getString(R.string.min_6_karakter)
                     }
                     else -> {
-                        viewModel.register(user).observe(this@RegisterActivity) { result ->
+                        viewModel.register(
+                            name,
+                            email,
+                            password,
+                            phoneNumber,
+                            city,
+                            getImage as File,
+                            address
+                        ).observe(this@RegisterActivity) { result ->
                             when (result) {
                                 is Resource.Loading -> {
                                     showLoading(true)
@@ -160,10 +157,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun imagePicker() {
         binding.profileImageContainer.setOnClickListener {
-            TedImagePicker.with(this@RegisterActivity)
+            TedImagePicker.with(this)
                 .start { uri ->
-                    getImage = uri
-                    Glide.with(this@RegisterActivity)
+                    val file = uriToFile(uri, this)
+                    getImage = file
+                    Glide.with(this)
                         .load(uri)
                         .override(300)
                         .centerCrop()

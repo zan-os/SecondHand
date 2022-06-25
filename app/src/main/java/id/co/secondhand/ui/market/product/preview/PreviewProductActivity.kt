@@ -107,7 +107,7 @@ class PreviewProductActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         showLoading(false)
                         Log.d("Market", result.data.toString())
-                        "Berehasil menambahkan barang".showSnackbar(
+                        "Berhasil menambahkan barang".showSnackbar(
                             binding.root,
                             this,
                             R.color.white,
