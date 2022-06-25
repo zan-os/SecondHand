@@ -46,17 +46,10 @@
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/dark_blue_01"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_camera" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/photo_profile_iv"
@@ -253,7 +246,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:enabled="false"
                 android:text="@string/simpan"
                 app:layout_constraintEnd_toEndOf="@+id/phone_number_et_layout"
                 app:layout_constraintStart_toStartOf="@+id/phone_number_et_layout"

@@ -7,6 +7,7 @@ import android.os.Environment
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -73,5 +74,10 @@ object Extension {
         inputStream.close()
 
         return file
+    }
+
+    fun View.dismissKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
     }
 }

@@ -16,7 +16,7 @@ import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
-import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard
+import id.co.secondhand.utils.Extension.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.uriToFile
 import id.co.secondhand.utils.Extension.validateEmail

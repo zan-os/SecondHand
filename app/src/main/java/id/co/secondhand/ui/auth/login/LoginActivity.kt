@@ -15,7 +15,7 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityLoginBinding
 import id.co.secondhand.ui.MainActivity
 import id.co.secondhand.ui.auth.register.RegisterActivity
-import id.co.secondhand.utils.DismissKeyboard.dismissKeyboard
+import id.co.secondhand.utils.Extension.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.validateEmail
 import id.co.secondhand.utils.Extension.validatePassword
