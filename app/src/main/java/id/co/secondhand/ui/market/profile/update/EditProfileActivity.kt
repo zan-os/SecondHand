@@ -66,7 +66,7 @@ class EditProfileActivity : AppCompatActivity() {
                 .into(photoProfileIv)
             nameEt.setText(user.fullName)
             phoneNumberEt.setText(user.phoneNumber)
-            autoCompleteCityTv.setText(user.city)
+            autoCompleteCityTv.setText(user.city, false)
             addressEt.setText(user.address)
         }
     }
@@ -84,12 +84,10 @@ class EditProfileActivity : AppCompatActivity() {
         validateEdit()
     }
 
-
     private fun validateEdit() {
         imagePicker()
         dropDownMenu()
         binding.addressEt.setRawInputType(InputType.TYPE_CLASS_TEXT)
-
     }
 
     private fun imagePicker() {
