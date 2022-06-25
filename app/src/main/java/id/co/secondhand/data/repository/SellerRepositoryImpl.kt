@@ -3,7 +3,6 @@ package id.co.secondhand.data.repository
 import id.co.secondhand.data.remote.MarketApi
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.seller.OrderDto
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.domain.repository.SellerRepository
 import okhttp3.MultipartBody

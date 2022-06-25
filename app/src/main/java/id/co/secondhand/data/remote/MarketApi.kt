@@ -1,7 +1,6 @@
 package id.co.secondhand.data.remote
 
 import id.co.secondhand.data.remote.request.auth.LoginRequest
-import id.co.secondhand.data.remote.request.RegisterRequest
 import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto

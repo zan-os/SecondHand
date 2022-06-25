@@ -32,7 +32,6 @@ data class ProductItemDto(
 )
 
 
-
 fun ProductItemDto.toDomain(): Product =
     Product(
         basePrice,

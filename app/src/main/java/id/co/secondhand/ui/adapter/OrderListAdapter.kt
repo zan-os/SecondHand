@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.databinding.ProductItemListBinding
-import id.co.secondhand.domain.model.Product
 import id.co.secondhand.utils.Extension.currencyFormatter
 
 class OrderListAdapter(private val onClick: (Int) -> Unit) :
