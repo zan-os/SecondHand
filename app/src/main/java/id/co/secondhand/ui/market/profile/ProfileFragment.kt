@@ -17,13 +17,12 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfileBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -44,7 +43,6 @@ class ProfileFragment : Fragment() {
     private fun logout() {
         binding.logOutTv.setOnClickListener {
             viewModel.clearCredential()
-
             val direction = Intent(requireContext(), LoginActivity::class.java)
             startActivity(direction)
             requireActivity().finish()

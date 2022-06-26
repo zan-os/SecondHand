@@ -11,6 +11,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityPreviewProductBinding
+import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.domain.model.seller.Preview
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.showSnackbar
@@ -58,7 +59,7 @@ class PreviewProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSellerData(seller: UserDto?) {
+    private fun showSellerData(seller: User?) {
         if (seller != null) {
             binding.sellerNameTv.text = seller.fullName
             binding.cityTv.text = seller.city

@@ -52,7 +52,7 @@ class EditProfileActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     Log.d("Market", result.data.toString())
-                    result.data?.let { showUserData(it) }
+//                    result.data?.let { showUserData(it) }
                 }
                 is Resource.Error -> {
                     showLoading(false)
