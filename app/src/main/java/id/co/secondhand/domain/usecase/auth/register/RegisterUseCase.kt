@@ -13,23 +13,23 @@ import javax.inject.Inject
 
 class RegisterUseCase @Inject constructor(private val repository: AuthRepository) {
     operator fun invoke(
+        imageUrl: MultipartBody.Part,
         fullName: RequestBody,
         email: RequestBody,
         password: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,
-        imageUrl: MultipartBody.Part,
         city: RequestBody
     ): LiveData<Resource<UserDto>> = liveData {
         try {
             emit(Resource.Loading())
             val data = repository.authRegister(
+                imageUrl,
                 fullName,
                 email,
                 password,
                 phoneNumber,
                 address,
-                imageUrl,
                 city
             )
             emit(Resource.Success(data))

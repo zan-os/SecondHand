@@ -17,27 +17,41 @@ class AuthRepositoryImpl @Inject constructor(
         api.authLogin(user)
 
     override suspend fun authRegister(
+        imageUrl: MultipartBody.Part,
         fullName: RequestBody,
         email: RequestBody,
         password: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,
-        imageUrl: MultipartBody.Part,
         city: RequestBody
     ): UserDto =
         api.authRegister(
+            imageUrl,
             fullName,
             email,
             password,
             phoneNumber,
             address,
-            imageUrl,
             city
         )
 
     override suspend fun getUserData(accessToken: String): UserDto =
         api.getUserData(accessToken)
 
-    override suspend fun editUserData(accessToken: String): UserDto =
-        api.editUserData(accessToken)
+    override suspend fun editUserData(
+        accessToken: String,
+        imageUrl: MultipartBody.Part,
+        fullName: RequestBody,
+        phoneNumber: RequestBody,
+        address: RequestBody,
+        city: RequestBody
+    ): UserDto =
+        api.editUserData(
+            accessToken,
+            imageUrl,
+            fullName,
+            phoneNumber,
+            address,
+            city
+        )
 }
