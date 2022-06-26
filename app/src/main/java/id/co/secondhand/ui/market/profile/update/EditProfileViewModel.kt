@@ -24,7 +24,9 @@ class EditProfileViewModel @Inject constructor(
 ) : ViewModel() {
 
     val token = preferences.getAccessToken().asLiveData()
+
     fun getUserData(accessToken: String) = getUserUseCase(accessToken)
+
     fun editUserData(
         accessToken: String,
         imageUrl: File,

@@ -1,11 +1,11 @@
 package id.co.secondhand.ui.market.profile.update
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -79,19 +79,23 @@ class EditProfileActivity : AppCompatActivity() {
     private fun saveUserData(accessToken: String) {
         validateEdit()
         binding.apply {
-            val fullName = nameEt.text.toString()
-            val phoneNumber = phoneNumberEt.text.toString()
-            val address = addressEt.text.toString()
-            val city = autoCompleteCityTv.text.toString()
-
             saveBtn.setOnClickListener {
+                val fullName = nameEt.text.toString()
+                val phoneNumber = phoneNumberEt.text.toString()
+                val address = addressEt.text.toString()
+                val city = autoCompleteCityTv.text.toString()
+
+//                val uri = Uri.parse(photoProfileIv.drawable.toString())
+//                val file = uriToFile(uri, this@EditProfileActivity)
+//                getImage = file
+
                 viewModel.editUserData(
-                    accessToken,
-                    getImage as File,
-                    fullName,
-                    phoneNumber,
-                    address,
-                    city
+                    accessToken = accessToken,
+                    imageUrl = getImage as File,
+                    fullName = fullName,
+                    phoneNumber = phoneNumber,
+                    address = address,
+                    city = city
                 ).observe(this@EditProfileActivity) { result ->
                     when (result) {
                         is Resource.Loading -> {
@@ -115,6 +119,7 @@ class EditProfileActivity : AppCompatActivity() {
                         }
                     }
                 }
+                window.decorView.clearFocus()
             }
         }
     }
