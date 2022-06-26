@@ -18,8 +18,6 @@ class LoginViewModel @Inject constructor(
 
     fun login(user: LoginRequest) = useCase(user)
 
-    val token = preferences.getAccessToken().asLiveData()
-
     fun saveAccessToken(token: String) {
         viewModelScope.launch {
             preferences.accessToken(token)
