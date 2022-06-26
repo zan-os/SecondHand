@@ -14,15 +14,15 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val useCase: RegisterUseCase) : ViewModel() {
+class RegisterViewModel @Inject constructor(private val registerUseCase: RegisterUseCase) : ViewModel() {
 
     fun register(
+        imageUrl: File,
         fullName: String,
         email: String,
         password: String,
         phoneNumber: String,
         address: String,
-        imageUrl: File,
         city: String
     ): LiveData<Resource<UserDto>> {
         val requestImageFile = imageUrl.asRequestBody("image/jpeg".toMediaType())
@@ -38,13 +38,13 @@ class RegisterViewModel @Inject constructor(private val useCase: RegisterUseCase
             requestImageFile
         )
 
-        return useCase(
+        return registerUseCase(
+            imageMultipart,
             requestFullName,
             requestEmail,
             requestPassword,
             requestPhoneNumber,
             requestAddress,
-            imageMultipart,
             requestCity
         )
     }

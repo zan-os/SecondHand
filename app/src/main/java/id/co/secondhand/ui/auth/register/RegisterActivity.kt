@@ -73,12 +73,12 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     else -> {
                         viewModel.register(
+                            getImage as File,
                             name,
                             email,
                             password,
                             phoneNumber,
                             city,
-                            getImage as File,
                             address
                         ).observe(this@RegisterActivity) { result ->
                             when (result) {

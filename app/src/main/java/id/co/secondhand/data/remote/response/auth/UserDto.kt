@@ -12,7 +12,7 @@ data class UserDto(
     val phoneNumber: String,
     val address: String,
     @SerializedName("image_url")
-    val imageUrl: String,
+    val imageUrl: String?,
     val city: String,
     val createdAt: String,
     val updatedAt: String
