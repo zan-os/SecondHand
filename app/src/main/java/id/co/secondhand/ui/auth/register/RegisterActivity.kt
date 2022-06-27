@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toFile
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +19,6 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityRegisterBinding
 import id.co.secondhand.utils.Extension.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar
-import id.co.secondhand.utils.Extension.uriToFile
 import id.co.secondhand.utils.Extension.validateEmail
 import id.co.secondhand.utils.Extension.validatePassword
 import kotlinx.coroutines.delay
@@ -159,7 +159,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.profileImageContainer.setOnClickListener {
             TedImagePicker.with(this)
                 .start { uri ->
-                    val file = uriToFile(uri, this)
+                    val file = uri.toFile()
                     getFile = file
                     Glide.with(this)
                         .load(uri)
