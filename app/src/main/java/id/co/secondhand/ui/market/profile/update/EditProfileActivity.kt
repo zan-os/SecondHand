@@ -1,20 +1,21 @@
 package id.co.secondhand.ui.market.profile.update
 
-import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityEditProfileBinding
+import id.co.secondhand.domain.model.auth.User
+import id.co.secondhand.utils.Extension.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.uriToFile
 import java.io.File
@@ -32,37 +33,22 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getAccessToken()
+        getUserData()
         arrowBack()
     }
 
     private fun getAccessToken() {
         viewModel.token.observe(this) { token ->
-            getUserData(token)
             saveUserData(token)
         }
     }
 
-    private fun getUserData(accessToken: String) {
-        viewModel.getUserData(accessToken).observe(this) { result ->
-            when (result) {
-                is Resource.Loading -> {
-                    Log.d("Market", "Loading")
-                    showLoading(true)
-                }
-                is Resource.Success -> {
-                    showLoading(false)
-                    Log.d("Market", result.data.toString())
-//                    result.data?.let { showUserData(it) }
-                }
-                is Resource.Error -> {
-                    showLoading(false)
-                    Log.d("Market", "Error ${result.message.toString()}")
-                }
-            }
-        }
+    fun getUserData() {
+        val data = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        showUserData(data)
     }
 
-    private fun showUserData(user: UserDto) {
+    private fun showUserData(user: User) {
         binding.apply {
             Glide.with(this@EditProfileActivity)
                 .load(user.imageUrl)
@@ -134,7 +120,7 @@ class EditProfileActivity : AppCompatActivity() {
         binding.profileImageContainer.setOnClickListener {
             TedImagePicker.with(this)
                 .start { uri ->
-                    val file = uriToFile(uri, this)
+                    val file = uriToFile(uri, this@EditProfileActivity)
                     getImage = file
                     Glide.with(this)
                         .load(uri)

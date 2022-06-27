@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
+import id.co.secondhand.utils.Extension.EXTRA_USER
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -36,7 +36,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getAccessToken()
-        updateProfile()
         logout()
     }
 
@@ -54,7 +53,10 @@ class ProfileFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     Log.d("Market", result.data.toString())
-                    result.data?.let { showUserData(it) }
+                    result.data?.let {
+                        showUserData(it)
+                        updateProfile(it)
+                    }
                 }
                 is Resource.Error -> {
                     Log.d("Market", "Error ${result.message.toString()}")
@@ -67,16 +69,24 @@ class ProfileFragment : Fragment() {
         binding.apply {
             Glide.with(requireContext())
                 .load(user.imageUrl)
-                .transition(DrawableTransitionOptions.withCrossFade())
+                .override(300)
                 .centerCrop()
                 .into(photoProfileIv)
             fullNameTv.text = user.fullName
+
+            editProfileTv.setOnClickListener {
+                val editProfileIntent = Intent(requireContext(), EditProfileActivity::class.java)
+                editProfileIntent.putExtra(EXTRA_USER, user)
+                startActivity(editProfileIntent)
+            }
         }
     }
 
-    private fun updateProfile() {
+    private fun updateProfile(user: User) {
         binding.editProfileTv.setOnClickListener {
-            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+            val direction = Intent(requireContext(), EditProfileActivity::class.java)
+            direction.putExtra(EXTRA_USER, user)
+            startActivity(direction)
         }
     }
 
