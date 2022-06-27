@@ -7,6 +7,7 @@ import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.usecase.auth.register.RegisterUseCase
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -14,7 +15,8 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val registerUseCase: RegisterUseCase) : ViewModel() {
+class RegisterViewModel @Inject constructor(private val registerUseCase: RegisterUseCase) :
+    ViewModel() {
 
     fun register(
         imageUrl: File,
@@ -26,7 +28,7 @@ class RegisterViewModel @Inject constructor(private val registerUseCase: Registe
         city: String
     ): LiveData<Resource<UserDto>> {
         val requestImageFile = imageUrl.asRequestBody("image/jpeg".toMediaType())
-        val requestFullName = fullName.toRequestBody("text/plain".toMediaType())
+        val requestFullName = fullName.toRequestBody("text/plain".toMediaTypeOrNull())
         val requestEmail = email.toRequestBody("text/plain".toMediaType())
         val requestPassword = password.toRequestBody("text/plain".toMediaType())
         val requestPhoneNumber = phoneNumber.toRequestBody("text/plain".toMediaType())

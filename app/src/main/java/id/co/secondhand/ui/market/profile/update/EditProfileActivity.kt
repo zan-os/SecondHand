@@ -5,7 +5,6 @@ import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -25,7 +24,8 @@ class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
     private val viewModel: EditProfileViewModel by viewModels()
-    private var getImage: File? = null
+    private var getFile: File? = null
+    private lateinit var data: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,12 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun getAccessToken() {
         viewModel.token.observe(this) { token ->
-            saveUserData(token)
+            saveUserData(token, data)
         }
     }
 
     fun getUserData() {
-        val data = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        data = intent.getParcelableExtra<User>(EXTRA_USER) as User
         showUserData(data)
     }
 
@@ -62,7 +62,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserData(accessToken: String) {
+    private fun saveUserData(accessToken: String, user: User) {
         validateEdit()
         binding.apply {
             saveBtn.setOnClickListener {
@@ -71,13 +71,9 @@ class EditProfileActivity : AppCompatActivity() {
                 val address = addressEt.text.toString()
                 val city = autoCompleteCityTv.text.toString()
 
-//                val uri = Uri.parse(photoProfileIv.drawable.toString())
-//                val file = uriToFile(uri, this@EditProfileActivity)
-//                getImage = file
-
                 viewModel.editUserData(
                     accessToken = accessToken,
-                    imageUrl = getImage as File,
+                    imageUrl = getFile,
                     fullName = fullName,
                     phoneNumber = phoneNumber,
                     address = address,
@@ -121,7 +117,7 @@ class EditProfileActivity : AppCompatActivity() {
             TedImagePicker.with(this)
                 .start { uri ->
                     val file = uriToFile(uri, this@EditProfileActivity)
-                    getImage = file
+                    getFile = file
                     Glide.with(this)
                         .load(uri)
                         .centerCrop()

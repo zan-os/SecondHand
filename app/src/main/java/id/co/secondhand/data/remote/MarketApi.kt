@@ -39,7 +39,7 @@ interface MarketApi {
     @PUT("auth/user")
     suspend fun editUserData(
         @Header("access_token") accessToken: String,
-        @Part imageUrl: MultipartBody.Part,
+        @Part imageUrl: MultipartBody.Part?,
         @Part("full_name") fullName: RequestBody,
         @Part("phone_number") phoneNumber: RequestBody,
         @Part("address") address: RequestBody,

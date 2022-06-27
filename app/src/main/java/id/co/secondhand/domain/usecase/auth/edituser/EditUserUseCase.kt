@@ -14,7 +14,7 @@ import javax.inject.Inject
 class EditUserUseCase @Inject constructor(private val repository: AuthRepository) {
     operator fun invoke(
         accessToken: String,
-        imageUrl: MultipartBody.Part,
+        imageUrl: MultipartBody.Part?,
         fullName: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,
