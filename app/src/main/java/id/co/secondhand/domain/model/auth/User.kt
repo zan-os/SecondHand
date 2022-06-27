@@ -8,6 +8,6 @@ data class User(
     val fullName: String,
     val phoneNumber: String,
     val address: String,
-    val imageUrl: String? = null,
+    val imageUrl: String,
     val city: String,
 ) : Parcelable

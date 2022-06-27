@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
                     Log.d("Market", result.data.toString())
                     result.data?.let {
                         showUserData(it)
-                        updateProfile(it)
+                        navigateToEditProfile(it)
                     }
                 }
                 is Resource.Error -> {
@@ -82,7 +82,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun updateProfile(user: User) {
+    private fun navigateToEditProfile(user: User) {
         binding.editProfileTv.setOnClickListener {
             val direction = Intent(requireContext(), EditProfileActivity::class.java)
             direction.putExtra(EXTRA_USER, user)
