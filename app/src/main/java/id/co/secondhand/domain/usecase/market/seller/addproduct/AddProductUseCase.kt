@@ -14,6 +14,7 @@ import javax.inject.Inject
 class AddProductUseCase @Inject constructor(
     private val repository: SellerRepository
 ) {
+
     operator fun invoke(
         accessToken: String,
         image: MultipartBody.Part,
