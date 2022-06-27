@@ -24,7 +24,7 @@ interface AuthRepository {
 
     suspend fun editUserData(
         accessToken: String,
-        imageUrl: MultipartBody.Part,
+        imageUrl: MultipartBody.Part?,
         fullName: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,

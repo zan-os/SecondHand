@@ -40,7 +40,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun editUserData(
         accessToken: String,
-        imageUrl: MultipartBody.Part,
+        imageUrl: MultipartBody.Part?,
         fullName: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,

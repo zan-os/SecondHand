@@ -1,7 +1,6 @@
 package id.co.secondhand.ui.auth.login
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.co.secondhand.data.local.datastore.UserPreferences

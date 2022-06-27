@@ -29,22 +29,24 @@ class EditProfileViewModel @Inject constructor(
 
     fun editUserData(
         accessToken: String,
-        imageUrl: File,
+        imageUrl: File?,
         fullName: String,
         phoneNumber: String,
         address: String,
         city: String
     ): LiveData<Resource<UserDto>> {
-        val requestImageFile = imageUrl.asRequestBody("image/jpeg".toMediaType())
+        val requestImageFile = imageUrl?.asRequestBody("image/jpeg".toMediaType())
         val requestFullName = fullName.toRequestBody("text/plain".toMediaType())
         val requestPhoneNumber = phoneNumber.toRequestBody("text/plain".toMediaType())
         val requestAddress = address.toRequestBody("text/plain".toMediaType())
         val requestCity = city.toRequestBody("text/plain".toMediaType())
-        val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "image",
-            imageUrl.name,
-            requestImageFile
-        )
+        val imageMultipart: MultipartBody.Part? = requestImageFile?.let {
+            MultipartBody.Part.createFormData(
+                "image",
+                imageUrl.name,
+                it
+            )
+        }
 
         return editUserUseCase(
             accessToken,
