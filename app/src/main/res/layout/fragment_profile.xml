@@ -18,10 +18,29 @@
             style="@style/TextAppearance.SecondHand.Heading.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/akun_saya"
-            android:textColor="@color/neutral_05" />
+            android:text="@string/akun_saya" />
 
     </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_image_container"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/dark_blue_01"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photo_profile_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_camera" />
+
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/edit_icon_iv"
@@ -33,16 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/full_name_tv" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/photo_profile_iv"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
-        tools:src="@drawable/ic_camera" />
-
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/edit_profile_tv"
         style="@style/TextAppearance.SecondHand.Body.Medium"
@@ -50,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/ubah_akun"
-        android:textColor="@color/neutral_05"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/edit_icon_iv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +92,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/pengaturan"
-        android:textColor="@color/neutral_05"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/settings_icon_iv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +125,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/keluar"
-        android:textColor="@color/neutral_05"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/log_out_icon_iv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +152,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_profile_iv"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_container"
         tools:text="@string/nama" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

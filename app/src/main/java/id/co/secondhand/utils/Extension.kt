@@ -20,6 +20,8 @@ import java.util.*
 
 object Extension {
 
+    const val EXTRA_USER = "extra_user"
+
     private val timeStamp: String = SimpleDateFormat(
         "dd-MMM-yyyy",
         Locale.US
