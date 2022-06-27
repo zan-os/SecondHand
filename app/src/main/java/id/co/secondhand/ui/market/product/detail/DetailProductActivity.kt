@@ -12,7 +12,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
 import id.co.secondhand.domain.model.Product
-import id.co.secondhand.ui.MainActivity
+import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.utils.Extension.currencyFormatter
 
 @AndroidEntryPoint
