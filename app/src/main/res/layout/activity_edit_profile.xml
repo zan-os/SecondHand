@@ -46,6 +46,7 @@
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/dark_blue_01"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,8 @@
                     android:id="@+id/photo_profile_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_camera" />
 
             </androidx.cardview.widget.CardView>
 

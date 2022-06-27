@@ -2,15 +2,12 @@ package id.co.secondhand.domain.model.auth
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import java.io.File
 
 @Parcelize
-data class Register(
+data class User(
     val fullName: String,
-    val email: String,
-    val password: String,
-    val phoneNumber: Long,
+    val phoneNumber: String,
     val address: String,
-    val imageUrl: File,
+    val imageUrl: String,
     val city: String,
 ) : Parcelable

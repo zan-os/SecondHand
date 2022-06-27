@@ -1,6 +1,5 @@
 package id.co.secondhand.ui.market.homepage
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,17 +9,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomepageViewModel @Inject constructor(
-    private val useCase: GetProductsUseCase,
+    private val getProductsUseCase: GetProductsUseCase,
     preferences: UserPreferences
 ) : ViewModel() {
-
-    var accessToken = MutableLiveData<String>()
-
-    val token = preferences.getAccessToken().asLiveData()
 
     init {
         getProducts()
     }
 
-    fun getProducts() = useCase()
+    val token = preferences.getAccessToken().asLiveData()
+
+    fun getProducts() = getProductsUseCase()
 }

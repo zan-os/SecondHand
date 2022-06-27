@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSaleListBinding
 import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
@@ -124,7 +124,7 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun showUserData(user: UserDto?) {
+    private fun showUserData(user: User?) {
         binding.apply {
             if (user != null) {
                 sellerNameTv.text = user.fullName
