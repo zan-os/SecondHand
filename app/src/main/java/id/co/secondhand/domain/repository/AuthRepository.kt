@@ -1,19 +1,26 @@
 package id.co.secondhand.domain.repository
 
-import id.co.secondhand.data.local.entity.UserEntity
-import id.co.secondhand.data.remote.request.LoginRequest
-import id.co.secondhand.data.remote.request.RegisterRequest
-import id.co.secondhand.data.remote.response.LoginDto
-import id.co.secondhand.data.remote.response.RegisterDto
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.request.auth.LoginRequest
+import id.co.secondhand.data.remote.response.auth.LoginDto
+import id.co.secondhand.data.remote.response.auth.UserDto
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 interface AuthRepository {
 
     suspend fun authLogin(user: LoginRequest): LoginDto
 
-    suspend fun authRegister(user: RegisterRequest): RegisterDto
+    suspend fun authRegister(
+        fullName: RequestBody,
+        email: RequestBody,
+        password: RequestBody,
+        phoneNumber: RequestBody,
+        address: RequestBody,
+        imageUrl: MultipartBody.Part,
+        city: RequestBody
+    ): UserDto
 
-    suspend fun saveUserData(user: UserEntity): Long
+    suspend fun getUserData(accessToken: String): UserDto
 
-    suspend fun getUserData(accessToken: String): UserDataDto
+    suspend fun editUserData(accessToken: String): UserDto
 }

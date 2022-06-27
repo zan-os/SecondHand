@@ -5,7 +5,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.co.secondhand.data.local.datastore.UserPreferences
-import id.co.secondhand.data.remote.request.LoginRequest
+import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.domain.usecase.auth.login.LoginUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject

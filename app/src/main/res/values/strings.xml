@@ -79,6 +79,9 @@
     <string name="pilih_kota">Pilih Kota</string>
     <string name="lokasi">Lokasi</string>
     <string name="pilih_kategori">Pilih Kategori</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="ditawar">Ditawar</string>
+    <string name="rp_25_999">Rp. 25.999</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>

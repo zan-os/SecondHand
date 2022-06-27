@@ -1,10 +1,10 @@
-package id.co.secondhand.domain.model.buyer
+package id.co.secondhand.domain.model
 
-import id.co.secondhand.data.remote.response.buyer.Category
+import id.co.secondhand.data.remote.response.CategoryDto
 
 data class Product(
     val basePrice: Int?,
-    val categories: List<Category>?,
+    val categories: List<CategoryDto>?,
     val createdAt: String?,
     val description: String?,
     val id: Int?,

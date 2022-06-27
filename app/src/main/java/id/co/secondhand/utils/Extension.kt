@@ -7,6 +7,7 @@ import android.os.Environment
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +20,7 @@ import java.util.*
 
 object Extension {
 
-    val timeStamp: String = SimpleDateFormat(
+    private val timeStamp: String = SimpleDateFormat(
         "dd-MMM-yyyy",
         Locale.US
     ).format(System.currentTimeMillis())
@@ -55,7 +56,7 @@ object Extension {
         return rupiahFormat.format(this)
     }
 
-    fun createTempFile(context: Context): File {
+    private fun createTempFile(context: Context): File {
         val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(timeStamp, ".jpg", storageDir)
     }
@@ -73,5 +74,10 @@ object Extension {
         inputStream.close()
 
         return file
+    }
+
+    fun View.dismissKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
     }
 }

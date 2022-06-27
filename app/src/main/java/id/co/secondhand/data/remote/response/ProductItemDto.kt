@@ -1,14 +1,14 @@
-package id.co.secondhand.data.remote.response.buyer
+package id.co.secondhand.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName
-import id.co.secondhand.domain.model.buyer.Product
+import id.co.secondhand.domain.model.Product
 
 data class ProductItemDto(
     @SerializedName("base_price")
     val basePrice: Int?,
     @SerializedName("Categories")
-    val categories: List<Category>?,
+    val categories: List<CategoryDto>?,
     @SerializedName("createdAt")
     val createdAt: String?,
     @SerializedName("description")
@@ -30,6 +30,7 @@ data class ProductItemDto(
     @SerializedName("user_id")
     val userId: Int?
 )
+
 
 fun ProductItemDto.toDomain(): Product =
     Product(

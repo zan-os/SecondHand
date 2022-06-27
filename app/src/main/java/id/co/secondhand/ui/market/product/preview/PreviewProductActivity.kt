@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityPreviewProductBinding
 import id.co.secondhand.domain.model.seller.Preview
@@ -58,15 +58,13 @@ class PreviewProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSellerData(seller: UserDataDto?) {
+    private fun showSellerData(seller: UserDto?) {
         if (seller != null) {
             binding.sellerNameTv.text = seller.fullName
             binding.cityTv.text = seller.city
-            if (seller.imageUrl != null) {
-                Glide.with(this)
-                    .load(seller.imageUrl)
-                    .into(binding.sellerImageIv)
-            }
+            Glide.with(this)
+                .load(seller.imageUrl)
+                .into(binding.sellerImageIv)
         }
     }
 
@@ -107,7 +105,7 @@ class PreviewProductActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         showLoading(false)
                         Log.d("Market", result.data.toString())
-                        "Berehasil menambahkan barang".showSnackbar(
+                        "Berhasil menambahkan barang".showSnackbar(
                             binding.root,
                             this,
                             R.color.white,

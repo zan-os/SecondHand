@@ -1,8 +1,7 @@
 package id.co.secondhand.data.repository
 
 import id.co.secondhand.data.remote.MarketApi
-import id.co.secondhand.data.remote.response.buyer.DetailProductDto
-import id.co.secondhand.data.remote.response.buyer.ProductItemDto
+import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.domain.repository.BuyerRepository
 import javax.inject.Inject
 
@@ -13,7 +12,7 @@ class BuyerRepositoryImpl @Inject constructor(
         return api.getProducts()
     }
 
-    override suspend fun getProductDetail(productId: Int): DetailProductDto {
+    override suspend fun getProductDetail(productId: Int): ProductItemDto {
         return api.getProductDetail(productId = productId)
     }
 }

@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import id.co.secondhand.data.local.room.dao.UserDao
 import id.co.secondhand.data.remote.MarketApi
 import id.co.secondhand.data.repository.AuthRepositoryImpl
 import id.co.secondhand.data.repository.BuyerRepositoryImpl
@@ -18,8 +17,8 @@ import id.co.secondhand.domain.repository.SellerRepository
 object RepositoryModule {
 
     @Provides
-    fun provideAuthRepository(api: MarketApi, userDao: UserDao): AuthRepository {
-        return AuthRepositoryImpl(userDao, api)
+    fun provideAuthRepository(api: MarketApi): AuthRepository {
+        return AuthRepositoryImpl(api)
     }
 
     @Provides

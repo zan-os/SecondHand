@@ -7,34 +7,34 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.co.secondhand.R
-import id.co.secondhand.databinding.ProductItemGridBinding
-import id.co.secondhand.domain.model.Product
+import id.co.secondhand.data.remote.response.seller.OrderDtoItem
+import id.co.secondhand.databinding.ProductItemListBinding
 import id.co.secondhand.utils.Extension.currencyFormatter
 
-class ProductGridAdapter(private val onClick: (Int) -> Unit) :
-    ListAdapter<Product, ProductGridAdapter.ViewHolder>(DIFF_CALLBACK) {
+class OrderListAdapter(private val onClick: (Int) -> Unit) :
+    ListAdapter<OrderDtoItem, OrderListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    inner class ViewHolder(private val binding: ProductItemGridBinding) :
+    inner class ViewHolder(private val binding: ProductItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: Product) {
+        fun bind(order: OrderDtoItem) {
             binding.apply {
-                productNameTv.text = product.name
-                productPriceTv.text = product.basePrice?.currencyFormatter()
-                product.categories?.map { binding.productCategoryTv.text = it.name }
+                productNameTv.text = order.product?.name
+                productPriceTv.text = order.product?.basePrice?.currencyFormatter()
+                bargainPriceTv.text = order.price?.currencyFormatter()
                 Glide.with(itemView)
-                    .load(product.imageUrl)
+                    .load(order.product?.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
                     .dontAnimate()
                     .dontTransform()
                     .into(binding.productImageIv)
-                root.setOnClickListener { onClick(product.id ?: 0) }
+                root.setOnClickListener { onClick(order.id ?: 0) }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ProductItemGridBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ProductItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -44,12 +44,12 @@ class ProductGridAdapter(private val onClick: (Int) -> Unit) :
 
     companion object {
 
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Product>() {
-            override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<OrderDtoItem>() {
+            override fun areItemsTheSame(oldItem: OrderDtoItem, newItem: OrderDtoItem): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+            override fun areContentsTheSame(oldItem: OrderDtoItem, newItem: OrderDtoItem): Boolean {
                 return oldItem == newItem
             }
         }
