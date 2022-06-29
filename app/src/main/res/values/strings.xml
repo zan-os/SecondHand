@@ -82,6 +82,13 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="ditawar">Ditawar</string>
     <string name="rp_25_999">Rp. 25.999</string>
+    <string name="login">Login</string>
+    <string name="silahkan_login">Silahkan login untuk mengakses fitur ini</string>
+    <string name="anda_belum_login">Anda belum login</string>
+    <string name="anda_tidak_memiliki_barang_dagangan">Anda tidak memiliki barang dagangan</string>
+    <string name="silahkan_upload_barang">Silahkan upload barang yang ingin dijual</string>
+    <string name="anda_belum_memiliki_pesanan">Anda belum memiliki pesanan</string>
+    <string name="belum_ada_barang_yang_ditawar">Belum ada barang yang ditawar</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>
