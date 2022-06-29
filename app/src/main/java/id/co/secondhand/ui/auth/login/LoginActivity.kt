@@ -13,7 +13,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityLoginBinding
-import id.co.secondhand.ui.MainActivity
+import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.ui.auth.register.RegisterActivity
 import id.co.secondhand.utils.Extension.dismissKeyboard
 import id.co.secondhand.utils.Extension.showSnackbar

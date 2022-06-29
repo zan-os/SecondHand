@@ -21,12 +21,12 @@ interface MarketApi {
     @Multipart
     @POST("auth/register")
     suspend fun authRegister(
+        @Part imageUrl: MultipartBody.Part,
         @Part("full_name") fullName: RequestBody,
         @Part("email") email: RequestBody,
         @Part("password") password: RequestBody,
         @Part("phone_number") phoneNumber: RequestBody,
         @Part("address") address: RequestBody,
-        @Part imageUrl: MultipartBody.Part,
         @Part("city") city: RequestBody
     ): UserDto
 
@@ -35,9 +35,15 @@ interface MarketApi {
         @Header("access_token") accessToken: String
     ): UserDto
 
+    @Multipart
     @PUT("auth/user")
     suspend fun editUserData(
-        @Header("access_token") accessToken: String
+        @Header("access_token") accessToken: String,
+        @Part imageUrl: MultipartBody.Part?,
+        @Part("full_name") fullName: RequestBody,
+        @Part("phone_number") phoneNumber: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("city") city: RequestBody
     ): UserDto
 
     @GET("buyer/product")

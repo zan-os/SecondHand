@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
-    private var getImage: File? = null
+    private var getFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                 val address = addressEt.text.toString()
 
                 when {
-                    getImage == null -> {
+                    getFile == null -> {
                         resources.getString(R.string.silahkan_upload_foto_profile).showSnackbar(
                             binding.root,
                             this@RegisterActivity,
@@ -73,13 +73,13 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     else -> {
                         viewModel.register(
-                            name,
-                            email,
-                            password,
-                            phoneNumber,
-                            city,
-                            getImage as File,
-                            address
+                            imageUrl = getFile as File,
+                            fullName = name,
+                            email = email,
+                            password = password,
+                            phoneNumber = phoneNumber,
+                            address = address,
+                            city = city
                         ).observe(this@RegisterActivity) { result ->
                             when (result) {
                                 is Resource.Loading -> {
@@ -160,7 +160,7 @@ class RegisterActivity : AppCompatActivity() {
             TedImagePicker.with(this)
                 .start { uri ->
                     val file = uriToFile(uri, this)
-                    getImage = file
+                    getFile = file
                     Glide.with(this)
                         .load(uri)
                         .override(300)

@@ -11,16 +11,23 @@ interface AuthRepository {
     suspend fun authLogin(user: LoginRequest): LoginDto
 
     suspend fun authRegister(
+        imageUrl: MultipartBody.Part,
         fullName: RequestBody,
         email: RequestBody,
         password: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,
-        imageUrl: MultipartBody.Part,
         city: RequestBody
     ): UserDto
 
     suspend fun getUserData(accessToken: String): UserDto
 
-    suspend fun editUserData(accessToken: String): UserDto
+    suspend fun editUserData(
+        accessToken: String,
+        imageUrl: MultipartBody.Part?,
+        fullName: RequestBody,
+        phoneNumber: RequestBody,
+        address: RequestBody,
+        city: RequestBody
+    ): UserDto
 }

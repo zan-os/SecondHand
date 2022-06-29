@@ -13,8 +13,17 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorSecondary">@color/dark_blue_04</item>
-        <item name="snackbarTextViewStyle">@style/SnackBar</item>
+        <item name="snackbarTextViewStyle">@style/Snackbar</item>
     </style>
+
+    <!-- Splash Screen -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.SecondHand</item>
+    </style>
+
+    <!-- Text -->
 
     <style name="TextAppearance.SecondHand.Heading.Bold" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/poppins_bold</item>
@@ -33,6 +42,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Heading.Regular" parent="TextAppearance.MaterialComponents.Headline1">
@@ -89,6 +99,7 @@
         <item name="android:textSize">10sp</item>
         <item name="android:letterSpacing">0</item>
         <item name="fontWeight">500</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.SecondHand.Body.Regular" parent="TextAppearance.MaterialComponents.Headline1">
@@ -104,7 +115,6 @@
     <style name="TextAppearance.SecondHand.Body.Regular.14">
         <item name="android:textSize">14sp</item>
     </style>
-
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:fontFamily">@font/poppins_bold</item>
@@ -188,7 +198,8 @@
         <item name="cardCornerRadius">16dp</item>
     </style>
 
-    <style name="SnackBar" parent="Widget.MaterialComponents.Snackbar.TextView">
+    <!-- Snackbar -->
+    <style name="Snackbar" parent="Widget.MaterialComponents.Snackbar.TextView">
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 

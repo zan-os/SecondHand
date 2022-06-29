@@ -11,15 +11,20 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityEditProfileBinding
+import id.co.secondhand.domain.model.auth.User
+import id.co.secondhand.utils.Extension.EXTRA_USER
+import id.co.secondhand.utils.Extension.showSnackbar
+import id.co.secondhand.utils.Extension.uriToFile
+import java.io.File
 
 @AndroidEntryPoint
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
     private val viewModel: EditProfileViewModel by viewModels()
+    private var getFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,37 +32,22 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getAccessToken()
-        saveUserData()
+        getUserData()
         arrowBack()
     }
 
     private fun getAccessToken() {
         viewModel.token.observe(this) { token ->
-            getUserData(token)
+            saveUserData(token)
         }
     }
 
-    private fun getUserData(token: String) {
-        viewModel.getUserData(token).observe(this) { result ->
-            when (result) {
-                is Resource.Loading -> {
-                    Log.d("Market", "Loading")
-                    showLoading(true)
-                }
-                is Resource.Success -> {
-                    showLoading(false)
-                    Log.d("Market", result.data.toString())
-                    result.data?.let { showUserData(it) }
-                }
-                is Resource.Error -> {
-                    showLoading(false)
-                    Log.d("Market", "Error ${result.message.toString()}")
-                }
-            }
-        }
+    fun getUserData() {
+        val data = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        showUserData(data)
     }
 
-    private fun showUserData(user: UserDto) {
+    private fun showUserData(user: User) {
         binding.apply {
             Glide.with(this@EditProfileActivity)
                 .load(user.imageUrl)
@@ -71,17 +61,48 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility =
-                View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
-        }
-    }
-
-    private fun saveUserData() {
+    private fun saveUserData(accessToken: String) {
         validateEdit()
+        binding.apply {
+            saveBtn.setOnClickListener {
+                val fullName = nameEt.text.toString()
+                val phoneNumber = phoneNumberEt.text.toString()
+                val address = addressEt.text.toString()
+                val city = autoCompleteCityTv.text.toString()
+
+                viewModel.editUserData(
+                    accessToken = accessToken,
+                    imageUrl = getFile,
+                    fullName = fullName,
+                    phoneNumber = phoneNumber,
+                    address = address,
+                    city = city
+                ).observe(this@EditProfileActivity) { result ->
+                    when (result) {
+                        is Resource.Loading -> {
+                            Log.d("Market", "Loading")
+                            showLoading(true)
+                        }
+                        is Resource.Success -> {
+                            showLoading(false)
+                            Log.d("Market", result.data.toString())
+                            "Data berhasil disimpan".showSnackbar(
+                                binding.root,
+                                this@EditProfileActivity,
+                                R.color.white,
+                                R.color.alert_success
+                            )
+                        }
+                        is Resource.Error -> {
+                            showLoading(false)
+                            showErrorMessage(result.message, it)
+                            Log.d("Market", "Error ${result.message.toString()}")
+                        }
+                    }
+                }
+                window.decorView.clearFocus()
+            }
+        }
     }
 
     private fun validateEdit() {
@@ -94,6 +115,8 @@ class EditProfileActivity : AppCompatActivity() {
         binding.profileImageContainer.setOnClickListener {
             TedImagePicker.with(this)
                 .start { uri ->
+                    val file = uriToFile(uri, this@EditProfileActivity)
+                    getFile = file
                     Glide.with(this)
                         .load(uri)
                         .centerCrop()
@@ -107,6 +130,36 @@ class EditProfileActivity : AppCompatActivity() {
         val city = resources.getStringArray(R.array.city)
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_city_item, city)
         binding.autoCompleteCityTv.setAdapter(arrayAdapter)
+    }
+
+    private fun showLoading(value: Boolean) {
+        if (value) {
+            binding.progressCircular.visibility =
+                View.VISIBLE
+        } else {
+            binding.progressCircular.visibility = View.GONE
+        }
+    }
+
+    private fun showErrorMessage(code: String?, view: View) {
+        when (code) {
+            "400" -> {
+                "Email sudah terdaftar".showSnackbar(
+                    view = view,
+                    context = this,
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
+            "500" -> {
+                "Internal Server Error :(".showSnackbar(
+                    view,
+                    this,
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
+        }
     }
 
     private fun arrowBack() {
