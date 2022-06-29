@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.auth.UserDataDto
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSaleListBinding
 import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
+import id.co.secondhand.utils.Extension
 
 @AndroidEntryPoint
 class SaleListFragment : Fragment() {
@@ -37,7 +38,6 @@ class SaleListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentSaleListBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -45,7 +45,6 @@ class SaleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getAccessToken()
-        navigateToEditProfile()
     }
 
     override fun onDestroyView() {
@@ -72,7 +71,10 @@ class SaleListFragment : Fragment() {
                 is Resource.Success -> {
                     showLoading(false)
                     Log.d("Market", result.data.toString())
-                    showUserData(result.data)
+                    result.data?.let {
+                        showUserData(it)
+                        navigateToEditProfile(it)
+                    }
                 }
                 is Resource.Error -> {
                     showLoading(false)
@@ -124,16 +126,14 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun showUserData(user: UserDataDto?) {
+    private fun showUserData(user: User) {
         binding.apply {
-            if (user != null) {
-                sellerNameTv.text = user.fullName
-                cityTv.text = user.city
-                Glide.with(requireContext())
-                    .load(user.imageUrl)
-                    .placeholder(R.drawable.ic_error_image)
-                    .into(profileImageIv)
-            }
+            sellerNameTv.text = user.fullName
+            cityTv.text = user.city
+            Glide.with(requireContext())
+                .load(user.imageUrl)
+                .placeholder(R.drawable.ic_error_image)
+                .into(profileImageIv)
         }
     }
 
@@ -163,9 +163,10 @@ class SaleListFragment : Fragment() {
     private fun onClicked(productId: Int) {
     }
 
-    private fun navigateToEditProfile() {
+    private fun navigateToEditProfile(user: User) {
         binding.editProfileBtn.setOnClickListener {
-            val direction = Intent(requireActivity(), EditProfileActivity::class.java)
+            val direction = Intent(requireContext(), EditProfileActivity::class.java)
+            direction.putExtra(Extension.EXTRA_USER, user)
             startActivity(direction)
         }
     }

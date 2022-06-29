@@ -128,7 +128,7 @@ class AddProductFragment : Fragment() {
                         is Resource.Success -> {
                             showLoading(false)
                             Log.d("Market", result.data.toString())
-                            "Berehasil menambahkan barang".showSnackbar(
+                            "Berhasil menambahkan barang".showSnackbar(
                                 binding.root,
                                 requireContext(),
                                 R.color.white,

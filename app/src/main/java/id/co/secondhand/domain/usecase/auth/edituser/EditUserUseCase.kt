@@ -1,4 +1,4 @@
-package id.co.secondhand.domain.usecase.auth.register
+package id.co.secondhand.domain.usecase.auth.edituser
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -11,23 +11,21 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class RegisterUseCase @Inject constructor(private val repository: AuthRepository) {
+class EditUserUseCase @Inject constructor(private val repository: AuthRepository) {
     operator fun invoke(
-        imageUrl: MultipartBody.Part,
+        accessToken: String,
+        imageUrl: MultipartBody.Part?,
         fullName: RequestBody,
-        email: RequestBody,
-        password: RequestBody,
         phoneNumber: RequestBody,
         address: RequestBody,
         city: RequestBody
     ): LiveData<Resource<UserDto>> = liveData {
         try {
             emit(Resource.Loading())
-            val data = repository.authRegister(
+            val data = repository.editUserData(
+                accessToken,
                 imageUrl,
                 fullName,
-                email,
-                password,
                 phoneNumber,
                 address,
                 city

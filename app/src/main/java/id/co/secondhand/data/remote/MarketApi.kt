@@ -1,12 +1,10 @@
 package id.co.secondhand.data.remote
 
-import id.co.secondhand.data.remote.request.LoginRequest
-import id.co.secondhand.data.remote.request.RegisterRequest
+import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
-import id.co.secondhand.data.remote.response.auth.RegisterDto
-import id.co.secondhand.data.remote.response.auth.UserDataDto
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import id.co.secondhand.data.remote.response.seller.OrderDto
 import okhttp3.MultipartBody
@@ -20,15 +18,33 @@ interface MarketApi {
         @Body user: LoginRequest
     ): LoginDto
 
+    @Multipart
     @POST("auth/register")
     suspend fun authRegister(
-        @Body user: RegisterRequest
-    ): RegisterDto
+        @Part imageUrl: MultipartBody.Part,
+        @Part("full_name") fullName: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("phone_number") phoneNumber: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("city") city: RequestBody
+    ): UserDto
 
     @GET("auth/user")
     suspend fun getUserData(
         @Header("access_token") accessToken: String
-    ): UserDataDto
+    ): UserDto
+
+    @Multipart
+    @PUT("auth/user")
+    suspend fun editUserData(
+        @Header("access_token") accessToken: String,
+        @Part imageUrl: MultipartBody.Part?,
+        @Part("full_name") fullName: RequestBody,
+        @Part("phone_number") phoneNumber: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("city") city: RequestBody
+    ): UserDto
 
     @GET("buyer/product")
     suspend fun getProducts(): ProductDto

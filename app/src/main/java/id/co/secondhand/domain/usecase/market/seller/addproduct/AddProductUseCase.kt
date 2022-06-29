@@ -7,7 +7,6 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.domain.repository.SellerRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject

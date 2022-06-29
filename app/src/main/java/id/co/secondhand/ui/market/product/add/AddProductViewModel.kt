@@ -32,7 +32,6 @@ class AddProductViewModel @Inject constructor(
         categoryIds: String,
         location: String,
     ): LiveData<Resource<AddProductDto>> {
-
         val requestImageFile = image.asRequestBody("image/jpeg".toMediaType())
         val requestName = name.toRequestBody("text/plain".toMediaType())
         val requestDescription = description.toRequestBody("text/plain".toMediaType())
