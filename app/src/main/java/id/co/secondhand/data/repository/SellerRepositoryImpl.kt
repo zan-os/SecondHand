@@ -4,6 +4,7 @@ import id.co.secondhand.data.remote.MarketApi
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
+import id.co.secondhand.data.remote.response.seller.OrderSellerDtoItem
 import id.co.secondhand.domain.repository.SellerRepository
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -39,5 +40,13 @@ class SellerRepositoryImpl @Inject constructor(
 
     override suspend fun getOrder(accessToken: String): List<OrderDtoItem> {
         return api.getOrder(accessToken)
+    }
+
+    override suspend fun getOrderSeller(accessToken: String): List<OrderSellerDtoItem> {
+        return api.getOrderSeller(accessToken)
+    }
+
+    override suspend fun getOrderSellerId(accessToken: String, id: Int): OrderSellerDtoItem {
+        return api.getOrderId(accessToken, id)
     }
 }
