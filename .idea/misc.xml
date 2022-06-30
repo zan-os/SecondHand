@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/Android Studio/Binar/new/SecondHand/app/src/main/res/layout/fragment_sale_list.xml" value="0.16666666666666666" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/circle_button.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/homepage_background.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/ic_error_image.xml" value="0.205" />
@@ -46,6 +47,14 @@
         <entry key="..\:/Users/fawaz/AndroidStudioProjects/SecondHand/app/src/main/res/layout/product_item_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.32222222222222224" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24444444444444444" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_homepage.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_sale_list.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/fragment_seller_notification.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/product_item_list.xml" value="0.536" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.34322916666666664" />
       </map>
     </option>
   </component>

@@ -5,6 +5,7 @@ import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.UserDto
+import id.co.secondhand.data.remote.response.notification.NotificationDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import id.co.secondhand.data.remote.response.seller.OrderDto
 import id.co.secondhand.data.remote.response.seller.OrderSellerDto
@@ -88,4 +89,9 @@ interface MarketApi {
     suspend fun getOrderSeller(
         @Header("access_token") accessToken: String
     ): OrderSellerDto
+
+    @GET("notification")
+    suspend fun getNotification(
+        @Header("access_token") accessToken: String
+    ): List<NotificationDto>
 }

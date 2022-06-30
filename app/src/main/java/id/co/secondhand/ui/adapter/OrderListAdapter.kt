@@ -1,5 +1,6 @@
 package id.co.secondhand.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.databinding.ProductItemListBinding
 import id.co.secondhand.utils.Extension.currencyFormatter
+import id.co.secondhand.utils.Extension.dateTimeFormatter
 
 class OrderListAdapter(private val onClick: (Int) -> Unit) :
     ListAdapter<OrderDtoItem, OrderListAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -21,6 +23,8 @@ class OrderListAdapter(private val onClick: (Int) -> Unit) :
                 productNameTv.text = order.product?.name
                 productPriceTv.text = order.product?.basePrice?.currencyFormatter()
                 bargainPriceTv.text = order.price?.currencyFormatter()
+                dateTimeTv.text = order.createdAt?.dateTimeFormatter()
+                Log.d("TAG", "${System.currentTimeMillis()}")
                 Glide.with(itemView)
                     .load(order.product?.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
