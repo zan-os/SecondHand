@@ -18,8 +18,6 @@ class ProductMatch : Fragment() {
 
     private val viewModel: ProductMatchViewModel by viewModels()
 
-    private val
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
