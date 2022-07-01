@@ -18,15 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen().apply {
-            setKeepOnScreenCondition { viewModel.isLoading.value }
-        }
+        installSplashScreen().setKeepOnScreenCondition { viewModel.isLoading.value }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navController = findNavController(R.id.nav_host_fragment)
         binding.navView.setupWithNavController(navController)
-        binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment).isVisible = true
     }
 }
+
 

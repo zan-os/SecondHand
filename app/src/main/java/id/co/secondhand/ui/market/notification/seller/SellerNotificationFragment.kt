@@ -5,17 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import id.co.secondhand.R
 import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.ui.adapter.OrderListAdapter
-import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
 class SellerNotificationFragment : Fragment() {
@@ -50,8 +47,8 @@ class SellerNotificationFragment : Fragment() {
         viewModel.getNotification(accessToken).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("Market", "Loading")
                     showLoading(true)
+                    Log.d("Market", "Loading")
                 }
                 is Resource.Success -> {
                     Log.d("Market", result.data.toString())
@@ -59,7 +56,6 @@ class SellerNotificationFragment : Fragment() {
                 is Resource.Error -> {
                     showLoading(false)
                     Log.d("Market", "Error ${result.message}")
-                    showErrorMessage(result.message, binding.root)
                 }
             }
         }
@@ -70,14 +66,16 @@ class SellerNotificationFragment : Fragment() {
             when (result) {
                 is Resource.Loading -> {
                     showLoading(true)
+                    Log.d("Market", "Loading")
                 }
                 is Resource.Success -> {
                     showLoading(false)
                     showOrder(result.data ?: emptyList())
+                    Log.d("Market", result.data.toString())
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showErrorMessage(result.message, binding.root)
+                    Log.d("Market", "Error ${result.message}")
                 }
             }
         }
@@ -93,15 +91,6 @@ class SellerNotificationFragment : Fragment() {
     }
 
     private fun onClicked(productId: Int) {
-    }
-
-    private fun showErrorMessage(message: String?, view: View) {
-        message?.showSnackbar(
-            view = view,
-            context = requireContext(),
-            textColor = R.color.white,
-            backgroundColor = R.color.alert_danger
-        )
     }
 
     private fun showLoading(value: Boolean) {

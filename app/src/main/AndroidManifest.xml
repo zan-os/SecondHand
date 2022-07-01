@@ -47,8 +47,8 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.Starting"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.App.Starting"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity">
 
