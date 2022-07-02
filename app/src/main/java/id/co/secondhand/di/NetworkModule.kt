@@ -18,7 +18,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideTheMovieDbApi(): MarketApi {
+    fun provideMarketApi(): MarketApi {
         val loggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
 

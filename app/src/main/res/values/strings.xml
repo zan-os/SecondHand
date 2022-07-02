@@ -9,7 +9,6 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="daftar">Daftar</string>
     <string name="nama">Nama</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="daftar_jual">Daftar Jual</string>
     <string name="akun">Akun</string>
@@ -63,4 +62,44 @@
     <string name="alamat">Alamat</string>
     <string name="no_handphone">No Handphone</string>
     <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
+    <string name="nego_desc">Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual.</string>
+    <string name="masukan_harga_tawarmu">Masukan harga tawarmu</string>
+    <string name="kirim">Kirim</string>
+    <string name="harga_tawar">Harga Tawar</string>
+    <string name="description">Description</string>
+    <string name="me_mail_com">me@mail.com</string>
+    <string name="min_6_karakter">Min. 6 karakter</string>
+    <string name="_08xx">08xx</string>
+    <string name="nama_tidak_valid">Nama tidak valid</string>
+    <string name="email_tidak_valid">Email tidak valid</string>
+    <string name="no_handphone_tidak_valid">No Handphone tidak valid</string>
+    <string name="alamat_tidak_valid">Alamat tidak valid</string>
+    <string name="isi_alamat_dengan_benar">Isi alamat dengan benar</string>
+    <string name="silahkan_upload_foto_profile">Silahkan upload foto profile</string>
+    <string name="pilih_kota">Pilih Kota</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="pilih_kategori">Pilih Kategori</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="ditawar">Ditawar</string>
+    <string name="rp_25_999">Rp. 25.999</string>
+    <string name="selamat_anda_mendapatkan_harga_yang_sesuai">Selamat, anda mendapatkan harga yang sesuai</string>
+    <string name="segera_hubungi_pembeli_melalui_whatsapp_untuk_transaksi_selanjutnya">Segera hubungi pembeli melalui whatsapp untuk transaksi selanjutnya</string>
+    <string name="product_match">Product Match</string>
+    <string name="hubungi_via_whatsapp">Hubungi Via WhatsApp</string>
+    <string name="nama_pembeli">Nama pembeli</string>
+    <string name="kota_product_match">Kota</string>
+    <string name="ditawar_product_match">Ditawar</string>
+    <string name="rp_200_000">Rp.200.000</string>
+    <string-array name="city">
+        <item>Aceh</item>
+        <item>Bandar Lampung</item>
+        <item>Bandung</item>
+        <item>Denpasar</item>
+        <item>Jakarta</item>
+        <item>Makassar</item>
+        <item>Medan</item>
+        <item>Palembang</item>
+        <item>Surabaya</item>
+        <item>Lainnya</item>
+    </string-array>
 </resources>
