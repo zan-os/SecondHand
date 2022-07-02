@@ -94,15 +94,4 @@ interface MarketApi {
     suspend fun getNotification(
         @Header("access_token") accessToken: String
     ): List<NotificationDto>
-
-    @GET("seller/order/{id}")
-    suspend fun getOrderId(
-        @Header("access_token") accessToken: String,
-        @Path("id") OrderId: Int
-    ): OrderSellerDtoItem
-
-    @GET("seller/order")
-    suspend fun getOrderSeller(
-        @Header("access_token") accessToken: String
-    ): OrderSellerDto
 }
