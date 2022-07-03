@@ -92,11 +92,11 @@ class SellerNotificationFragment : Fragment() {
 //    }
 
     private fun showNotification(notification: List<Notification>) {
-        listAdapter.submitList(notification)
         binding.apply {
             notificationRv.layoutManager = LinearLayoutManager(requireContext())
             notificationRv.setHasFixedSize(true)
             notificationRv.adapter = listAdapter
+            listAdapter.submitList(notification.sortedByDescending { it.id })
         }
     }
 

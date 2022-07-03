@@ -1,6 +1,5 @@
 package id.co.secondhand.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -23,7 +22,7 @@ class NotificationListAdapter(private val onClick: (Int) -> Unit) :
                 productNameTv.text = notification.product.name
                 productPriceTv.text = notification.product.basePrice.currencyFormatter()
                 bargainPriceTv.text = notification.bidPrice.currencyFormatter()
-                dateTimeTv.text = notification.createdAt.dateTimeFormatter()
+                dateTimeTv.text = notification.transactionDate.dateTimeFormatter()
                 Glide.with(itemView)
                     .load(notification.product.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
