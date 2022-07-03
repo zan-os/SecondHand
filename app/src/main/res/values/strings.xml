@@ -97,6 +97,11 @@
     <string name="kota_product_match">Kota</string>
     <string name="ditawar_product_match">Ditawar</string>
     <string name="rp_200_000">Rp.200.000</string>
+    <string name="info_penawar">Info Penawar</string>
+    <string name="daftar_produkmu_yang_ditawar">Daftar Produkmu yang Ditawar</string>
+    <string name="tolak">Tolak</string>
+    <string name="terima">Terima</string>
+    <string name="ditawar_rp_25_000">Ditawar Rp.25.000</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>

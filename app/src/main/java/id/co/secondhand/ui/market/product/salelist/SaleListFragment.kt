@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.product
+package id.co.secondhand.ui.market.product.salelist
 
 import android.content.Intent
 import android.os.Bundle

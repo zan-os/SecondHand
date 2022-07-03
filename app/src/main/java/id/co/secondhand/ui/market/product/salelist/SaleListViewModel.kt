@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.product
+package id.co.secondhand.ui.market.product.salelist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

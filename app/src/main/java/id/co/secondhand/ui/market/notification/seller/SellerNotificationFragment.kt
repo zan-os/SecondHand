@@ -62,35 +62,6 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
-//    private fun getOrder(accessToken: String) {
-//        viewModel.getOrder(accessToken).observe(viewLifecycleOwner) { result ->
-//            when (result) {
-//                is Resource.Loading -> {
-//                    showLoading(true)
-//                    Log.d("Market", "Loading")
-//                }
-//                is Resource.Success -> {
-//                    showLoading(false)
-//                    showOrder(result.data ?: emptyList())
-//                    Log.d("Market", result.data.toString())
-//                }
-//                is Resource.Error -> {
-//                    showLoading(false)
-//                    Log.d("Market", "Error ${result.message}")
-//                }
-//            }
-//        }
-//    }
-
-//    private fun showOrder(product: List<OrderDtoItem>) {
-//        listAdapter.submitList(product)
-//        binding.apply {
-//            notificationRv.layoutManager = LinearLayoutManager(requireContext())
-//            notificationRv.setHasFixedSize(true)
-//            notificationRv.adapter = listAdapter
-//        }
-//    }
-
     private fun showNotification(notification: List<Notification>) {
         binding.apply {
             notificationRv.layoutManager = LinearLayoutManager(requireContext())
@@ -100,7 +71,7 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
-    private fun onClicked(productId: Int) {
+    private fun onClicked(notificationId: Int) {
     }
 
     private fun showLoading(value: Boolean) {

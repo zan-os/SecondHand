@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
-    tools:context=".ui.market.product.SaleListFragment">
+    tools:context=".ui.market.product.salelist.SaleListFragment">
 
     <include
         android:id="@+id/not_logged_in_layout"
