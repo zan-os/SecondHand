@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
-import id.co.secondhand.ui.adapter.OrderListAdapter
+import id.co.secondhand.domain.model.notification.Notification
+import id.co.secondhand.ui.adapter.NotificationListAdapter
 
 @AndroidEntryPoint
 class SellerNotificationFragment : Fragment() {
@@ -21,7 +21,7 @@ class SellerNotificationFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: SellerNotificationViewModel by viewModels()
 
-    private val listAdapter: OrderListAdapter by lazy { OrderListAdapter(::onClicked) }
+    private val listAdapter: NotificationListAdapter by lazy { NotificationListAdapter(::onClicked) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,6 @@ class SellerNotificationFragment : Fragment() {
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
             getNotification(token)
-            getOrder(token)
         }
     }
 
@@ -51,6 +50,8 @@ class SellerNotificationFragment : Fragment() {
                     Log.d("Market", "Loading")
                 }
                 is Resource.Success -> {
+                    showLoading(false)
+                    showNotification(result.data ?: emptyList())
                     Log.d("Market", result.data.toString())
                 }
                 is Resource.Error -> {
@@ -61,28 +62,37 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
-    private fun getOrder(accessToken: String) {
-        viewModel.getOrder(accessToken).observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Resource.Loading -> {
-                    showLoading(true)
-                    Log.d("Market", "Loading")
-                }
-                is Resource.Success -> {
-                    showLoading(false)
-                    showOrder(result.data ?: emptyList())
-                    Log.d("Market", result.data.toString())
-                }
-                is Resource.Error -> {
-                    showLoading(false)
-                    Log.d("Market", "Error ${result.message}")
-                }
-            }
-        }
-    }
+//    private fun getOrder(accessToken: String) {
+//        viewModel.getOrder(accessToken).observe(viewLifecycleOwner) { result ->
+//            when (result) {
+//                is Resource.Loading -> {
+//                    showLoading(true)
+//                    Log.d("Market", "Loading")
+//                }
+//                is Resource.Success -> {
+//                    showLoading(false)
+//                    showOrder(result.data ?: emptyList())
+//                    Log.d("Market", result.data.toString())
+//                }
+//                is Resource.Error -> {
+//                    showLoading(false)
+//                    Log.d("Market", "Error ${result.message}")
+//                }
+//            }
+//        }
+//    }
 
-    private fun showOrder(product: List<OrderDtoItem>) {
-        listAdapter.submitList(product)
+//    private fun showOrder(product: List<OrderDtoItem>) {
+//        listAdapter.submitList(product)
+//        binding.apply {
+//            notificationRv.layoutManager = LinearLayoutManager(requireContext())
+//            notificationRv.setHasFixedSize(true)
+//            notificationRv.adapter = listAdapter
+//        }
+//    }
+
+    private fun showNotification(notification: List<Notification>) {
+        listAdapter.submitList(notification)
         binding.apply {
             notificationRv.layoutManager = LinearLayoutManager(requireContext())
             notificationRv.setHasFixedSize(true)

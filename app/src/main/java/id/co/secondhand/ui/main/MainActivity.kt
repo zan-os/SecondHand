@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         binding.navView.setupWithNavController(navController)
+        binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment).isVisible = true
     }
 }
 

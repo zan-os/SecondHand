@@ -86,5 +86,5 @@ interface MarketApi {
     @GET("notification")
     suspend fun getNotification(
         @Header("access_token") accessToken: String
-    ): List<NotificationDto>
+    ): NotificationDto
 }

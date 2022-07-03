@@ -8,29 +8,29 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.seller.OrderDtoItem
 import id.co.secondhand.databinding.ProductItemListBinding
+import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.dateTimeFormatter
 
-class OrderListAdapter(private val onClick: (Int) -> Unit) :
-    ListAdapter<OrderDtoItem, OrderListAdapter.ViewHolder>(DIFF_CALLBACK) {
+class NotificationListAdapter(private val onClick: (Int) -> Unit) :
+    ListAdapter<Notification, NotificationListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     inner class ViewHolder(private val binding: ProductItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(order: OrderDtoItem) {
+        fun bind(notification: Notification) {
             binding.apply {
-                productNameTv.text = order.product?.name
-                productPriceTv.text = order.product?.basePrice?.currencyFormatter()
-                bargainPriceTv.text = order.price?.currencyFormatter()
-                dateTimeTv.text = order.createdAt?.dateTimeFormatter()
+                productNameTv.text = notification.product.name
+                productPriceTv.text = notification.product.basePrice.currencyFormatter()
+                bargainPriceTv.text = notification.bidPrice.currencyFormatter()
+                dateTimeTv.text = notification.createdAt.dateTimeFormatter()
                 Glide.with(itemView)
-                    .load(order.product?.imageUrl)
+                    .load(notification.product.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
                     .dontAnimate()
                     .dontTransform()
                     .into(binding.productImageIv)
-                root.setOnClickListener { onClick(order.id ?: 0) }
+                root.setOnClickListener { onClick(notification.id) }
             }
         }
     }
@@ -47,12 +47,18 @@ class OrderListAdapter(private val onClick: (Int) -> Unit) :
 
     companion object {
 
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<OrderDtoItem>() {
-            override fun areItemsTheSame(oldItem: OrderDtoItem, newItem: OrderDtoItem): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Notification>() {
+            override fun areItemsTheSame(
+                oldItem: Notification,
+                newItem: Notification
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: OrderDtoItem, newItem: OrderDtoItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: Notification,
+                newItem: Notification
+            ): Boolean {
                 return oldItem == newItem
             }
         }
