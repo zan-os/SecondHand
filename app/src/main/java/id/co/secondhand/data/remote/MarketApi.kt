@@ -8,8 +8,6 @@ import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.notification.NotificationDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import id.co.secondhand.data.remote.response.seller.OrderDto
-import id.co.secondhand.data.remote.response.seller.OrderSellerDto
-import id.co.secondhand.data.remote.response.seller.OrderSellerDtoItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -83,12 +81,7 @@ interface MarketApi {
     suspend fun getOrderId(
         @Header("access_token") accessToken: String,
         @Path("id") OrderId: Int
-    ): OrderSellerDtoItem
-
-    @GET("seller/order")
-    suspend fun getOrderSeller(
-        @Header("access_token") accessToken: String
-    ): OrderSellerDto
+    ): ProductItemDto
 
     @GET("notification")
     suspend fun getNotification(
