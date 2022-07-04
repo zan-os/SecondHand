@@ -1,5 +1,6 @@
 package id.co.secondhand.ui.market.notification.seller
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
+import id.co.secondhand.ui.market.product.bidderinfo.BidderInfoActivity
+import id.co.secondhand.utils.Extension.EXTRA_NOTIFICATION
 
 @AndroidEntryPoint
 class SellerNotificationFragment : Fragment() {
@@ -71,7 +74,14 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
-    private fun onClicked(notificationId: Int) {
+    private fun onClicked(notification: Notification) {
+        if (notification.status == "create") {
+//            findNavController().navigate(R.id.action_sellerNotificationFragment_to_productFragment)
+        } else {
+            val direction = Intent(requireContext(), BidderInfoActivity::class.java)
+            direction.putExtra(EXTRA_NOTIFICATION, notification)
+            startActivity(direction)
+        }
     }
 
     private fun showLoading(value: Boolean) {

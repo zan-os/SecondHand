@@ -13,7 +13,7 @@ import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.dateTimeFormatter
 
-class NotificationListAdapter(private val onClick: (Int) -> Unit) :
+class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
     ListAdapter<Notification, NotificationListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     inner class ViewHolder(private val binding: ProductItemListBinding) :
@@ -23,6 +23,9 @@ class NotificationListAdapter(private val onClick: (Int) -> Unit) :
                 if (notification.status == "create") {
                     statusTv.text = "Berhasil diterbitkan"
                     bargainPriceTv.visibility = View.GONE
+                }
+                if (notification.read) {
+                    reminderIv.visibility = View.GONE
                 }
                 productNameTv.text = notification.product.name
                 productPriceTv.text = notification.product.basePrice.currencyFormatter()
@@ -38,7 +41,7 @@ class NotificationListAdapter(private val onClick: (Int) -> Unit) :
                     .dontAnimate()
                     .dontTransform()
                     .into(binding.productImageIv)
-                root.setOnClickListener { onClick(notification.id) }
+                root.setOnClickListener { onClick(notification) }
             }
         }
     }

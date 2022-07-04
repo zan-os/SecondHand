@@ -163,8 +163,6 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun arrowBack() {
-        binding.materialToolbar.setNavigationOnClickListener {
-            finish()
-        }
+        binding.materialToolbar.setNavigationOnClickListener { finish() }
     }
 }

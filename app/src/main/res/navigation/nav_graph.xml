@@ -9,7 +9,11 @@
         android:id="@+id/homepageFragment"
         android:name="id.co.secondhand.ui.market.homepage.HomepageFragment"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" />
+        tools:layout="@layout/fragment_homepage" >
+        <action
+            android:id="@+id/action_homepageFragment_to_sellerNotificationFragment"
+            app:destination="@id/sellerNotificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sellerNotificationFragment"
         android:name="id.co.secondhand.ui.market.notification.seller.SellerNotificationFragment"

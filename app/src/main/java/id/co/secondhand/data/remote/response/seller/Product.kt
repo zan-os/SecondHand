@@ -1,8 +1,10 @@
 package id.co.secondhand.data.remote.response.seller
 
-
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Product(
     @SerializedName("base_price")
     val basePrice: Int,
@@ -20,4 +22,4 @@ data class Product(
     val status: String?,
     @SerializedName("user_id")
     val userId: Int?
-)
+) : Parcelable
