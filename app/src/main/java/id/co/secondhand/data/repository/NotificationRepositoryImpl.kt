@@ -11,4 +11,7 @@ class NotificationRepositoryImpl @Inject constructor(
 
     override suspend fun getNotification(accessToken: String): List<NotificationDtoItem> =
         api.getNotification(accessToken)
+
+    override suspend fun readNotification(accessToken: String, id: Int): NotificationDtoItem =
+        api.readNotification(accessToken, id)
 }

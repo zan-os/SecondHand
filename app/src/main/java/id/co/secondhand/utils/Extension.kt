@@ -20,6 +20,7 @@ import java.util.*
 
 object Extension {
 
+    const val TAG = "tag"
     const val EXTRA_USER = "extra_user"
     const val EXTRA_NOTIFICATION = "extra_notification"
 

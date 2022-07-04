@@ -1,4 +1,4 @@
-package id.co.secondhand.domain.usecase.notification.getnotification
+package id.co.secondhand.domain.usecase.notification.readnotification
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -10,13 +10,13 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class GetNotificationUseCase @Inject constructor(
+class ReadNotificationUseCase @Inject constructor(
     private val repository: NotificationRepository
 ) {
-    operator fun invoke(accessToken: String): LiveData<Resource<List<Notification>>> = liveData {
+    operator fun invoke(accessToken: String, id: Int): LiveData<Resource<Notification>> = liveData {
         try {
             emit(Resource.Loading())
-            val data = repository.getNotification(accessToken).map { it.toDomain() }
+            val data = repository.readNotification(accessToken, id).toDomain()
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An Unexpected error occurred"))

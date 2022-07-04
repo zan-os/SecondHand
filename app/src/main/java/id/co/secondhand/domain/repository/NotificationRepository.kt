@@ -5,4 +5,6 @@ import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
 interface NotificationRepository {
 
     suspend fun getNotification(accessToken: String): List<NotificationDtoItem>
+
+    suspend fun readNotification(accessToken: String, id: Int): NotificationDtoItem
 }

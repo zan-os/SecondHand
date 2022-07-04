@@ -11,7 +11,7 @@ data class Notification(
     val productId: Int,
     val productName: String,
     val basePrice: String,
-    val bidPrice: Int,
+    val bidPrice: Int?,
     val imageUrl: String?,
     val transactionDate: String?,
     val status: String,
@@ -21,5 +21,5 @@ data class Notification(
     val read: Boolean,
     val createdAt: String,
     val updatedAt: String,
-    val product: @RawValue Product
+    val product: @RawValue Product?
 ) : Parcelable

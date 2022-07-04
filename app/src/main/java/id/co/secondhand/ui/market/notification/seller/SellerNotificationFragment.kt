@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,8 +15,10 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
+import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.ui.market.product.bidderinfo.BidderInfoActivity
 import id.co.secondhand.utils.Extension.EXTRA_NOTIFICATION
+import id.co.secondhand.utils.Extension.TAG
 
 @AndroidEntryPoint
 class SellerNotificationFragment : Fragment() {
@@ -24,6 +27,7 @@ class SellerNotificationFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: SellerNotificationViewModel by viewModels()
 
+    private lateinit var accessToken: String
     private val listAdapter: NotificationListAdapter by lazy { NotificationListAdapter(::onClicked) }
 
     override fun onCreateView(
@@ -42,6 +46,7 @@ class SellerNotificationFragment : Fragment() {
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
             getNotification(token)
+            accessToken = token
         }
     }
 
@@ -50,16 +55,16 @@ class SellerNotificationFragment : Fragment() {
             when (result) {
                 is Resource.Loading -> {
                     showLoading(true)
-                    Log.d("Market", "Loading")
+                    Log.d(TAG, "Loading")
                 }
                 is Resource.Success -> {
                     showLoading(false)
                     showNotification(result.data ?: emptyList())
-                    Log.d("Market", result.data.toString())
+                    Log.d(TAG, result.data.toString())
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    Log.d("Market", "Error ${result.message}")
+                    Log.d(TAG, "Error ${result.message}")
                 }
             }
         }
@@ -74,12 +79,32 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
+    private fun readNotification(accessToken: String, id: Int) {
+        viewModel.readNotification(accessToken, id).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    Log.d(TAG, "readNotification: Loading")
+                }
+                is Resource.Success -> {
+                    Log.d(TAG, "readNotification: Success")
+                }
+                is Resource.Error -> {
+                    Log.d(TAG, "readNotification: ${result.message}")
+                }
+            }
+        }
+    }
+
     private fun onClicked(notification: Notification) {
         if (notification.status == "create") {
+            readNotification(accessToken, notification.id)
 //            findNavController().navigate(R.id.action_sellerNotificationFragment_to_productFragment)
         } else {
+            readNotification(accessToken, notification.id)
+//            val reload = Intent(requireContext(), MainActivity::class.java)
             val direction = Intent(requireContext(), BidderInfoActivity::class.java)
             direction.putExtra(EXTRA_NOTIFICATION, notification)
+//            startActivity(reload)
             startActivity(direction)
         }
     }

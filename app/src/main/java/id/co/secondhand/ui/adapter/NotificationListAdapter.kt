@@ -27,16 +27,16 @@ class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
                 if (notification.read) {
                     reminderIv.visibility = View.GONE
                 }
-                productNameTv.text = notification.product.name
-                productPriceTv.text = notification.product.basePrice.currencyFormatter()
+                productNameTv.text = notification.product?.name
+                productPriceTv.text = notification.product?.basePrice?.currencyFormatter()
                 bargainPriceTv.text =
                     itemView.resources.getString(
                         R.string.data_ditawar,
-                        notification.bidPrice.currencyFormatter()
+                        notification.bidPrice?.currencyFormatter()
                     )
                 dateTimeTv.text = notification.createdAt.dateTimeFormatter()
                 Glide.with(itemView)
-                    .load(notification.product.imageUrl)
+                    .load(notification.product?.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
                     .dontAnimate()
                     .dontTransform()

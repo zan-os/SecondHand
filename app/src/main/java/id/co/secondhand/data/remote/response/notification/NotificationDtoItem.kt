@@ -1,6 +1,7 @@
 package id.co.secondhand.data.remote.response.notification
 
 import com.google.gson.annotations.SerializedName
+import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.seller.Product
 import id.co.secondhand.domain.model.notification.Notification
 
@@ -29,7 +30,9 @@ data class NotificationDtoItem(
     val createdAt: String,
     val updatedAt: String,
     @SerializedName("Product")
-    val product: Product
+    val product: Product,
+    @SerializedName("User")
+    val user: UserDto
 )
 
 fun NotificationDtoItem.toDomain(): Notification =
