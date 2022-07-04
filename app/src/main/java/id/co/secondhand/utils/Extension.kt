@@ -62,7 +62,8 @@ object Extension {
     fun Int.currencyFormatter(): String {
         val localeId = Locale("in", "ID")
         val rupiahFormat = NumberFormat.getCurrencyInstance(localeId)
-        return rupiahFormat.format(this)
+        val result = rupiahFormat.format(this)
+        return result.replace("Rp", "Rp ").replace(",00", "")
     }
 
     private fun createTempFile(context: Context): File {
