@@ -6,6 +6,7 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/circle_button.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/homepage_background.xml" value="0.205" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/ic_error_image.xml" value="0.205" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/drawable/ic_log_in.xml" value="0.2275" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_detail_product.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_edit_profile.xml" value="0.17831813576494426" />
@@ -17,6 +18,8 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/activity_seller_notification.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/circle_button.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/dropdown_item.xml" value="0.27049180327868855" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/empty_order_layout.xml" value="0.365625" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/empty_product_layout.xml" value="0.365625" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_add_product.xml" value="0.25" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_detail_product.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_homepage.xml" value="0.33" />
@@ -25,6 +28,7 @@
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_sale_list.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/fragment_seller_notification.xml" value="0.33" />
+        <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/not_logged_layout.xml" value="0.33" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/product_item.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/product_item_grid.xml" value="0.358695652173913" />
         <entry key="..\:/Project/final project/SecondHand/app/src/main/res/layout/product_item_list.xml" value="0.33" />

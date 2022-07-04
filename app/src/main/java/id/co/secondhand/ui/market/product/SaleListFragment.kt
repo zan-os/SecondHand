@@ -20,8 +20,10 @@ import id.co.secondhand.domain.model.Product
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
+import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 import id.co.secondhand.utils.Extension
+import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
 class SaleListFragment : Fragment() {
@@ -31,8 +33,8 @@ class SaleListFragment : Fragment() {
 
     private val viewModel: SaleListViewModel by viewModels()
 
-    private val gridAdapter: ProductGridAdapter by lazy { ProductGridAdapter(::onClicked) }
-    private val listAdapter: OrderListAdapter by lazy { OrderListAdapter(::onClicked) }
+    private val gridAdapter: ProductGridAdapter by lazy { ProductGridAdapter(::onClick) }
+    private val listAdapter: OrderListAdapter by lazy { OrderListAdapter(::onClick) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +56,18 @@ class SaleListFragment : Fragment() {
 
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
+            credentialCheck(token)
+        }
+    }
+
+    private fun credentialCheck(token: String) {
+        if (token.isEmpty()) {
+            binding.notLoggedInLayout.root.visibility = View.VISIBLE
+            binding.saleListLayout.visibility = View.GONE
+            navigateToLogin()
+        } else {
+            binding.notLoggedInLayout.root.visibility = View.GONE
+            binding.saleListLayout.visibility = View.VISIBLE
             getSaleProduct(token)
             getOrder(token)
             getUserData(token)
@@ -94,11 +108,12 @@ class SaleListFragment : Fragment() {
                 is Resource.Success -> {
                     showLoading(false)
                     Log.d("Market", result.data.toString())
-                    showProduct(result.data ?: emptyList())
+                    showProduct(result.data)
                 }
                 is Resource.Error -> {
                     showLoading(false)
                     Log.d("Market", "Error ${result.message.toString()}")
+                    showErrorMessage(result.message, binding.root)
                 }
             }
         }
@@ -115,11 +130,12 @@ class SaleListFragment : Fragment() {
                     is Resource.Success -> {
                         showLoading(false)
                         Log.d("Market", result.data.toString())
-                        showOrder(result.data ?: emptyList())
+                        showOrder(result.data)
                     }
                     is Resource.Error -> {
                         showLoading(false)
                         Log.d("Market", "Error ${result.message.toString()}")
+                        showErrorMessage(result.message, binding.root)
                     }
                 }
             }
@@ -137,19 +153,31 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun showProduct(product: List<Product>) {
-        gridAdapter.submitList(product)
-        binding.productRv.layoutManager =
-            GridLayoutManager(requireContext(), 2)
-        binding.productRv.isNestedScrollingEnabled = false
-        binding.productRv.adapter = gridAdapter
+    private fun showProduct(product: List<Product>?) {
+        if (product?.isEmpty() == true) {
+            binding.emptyListTv.visibility = View.VISIBLE
+            binding.emptyListTv.text = getString(R.string.anda_tidak_memiliki_barang_dagangan)
+        } else {
+            binding.productRv.visibility = View.VISIBLE
+            gridAdapter.submitList(product)
+            binding.productRv.layoutManager =
+                GridLayoutManager(requireContext(), 2)
+            binding.productRv.isNestedScrollingEnabled = false
+            binding.productRv.adapter = gridAdapter
+        }
     }
 
-    private fun showOrder(product: List<OrderDtoItem>) {
-        listAdapter.submitList(product)
-        binding.productRv.layoutManager = LinearLayoutManager(requireContext())
-        binding.productRv.isNestedScrollingEnabled = false
-        binding.productRv.adapter = listAdapter
+    private fun showOrder(product: List<OrderDtoItem>?) {
+        if (product?.isEmpty() == true) {
+            binding.emptyListTv.visibility = View.VISIBLE
+            binding.emptyListTv.text = getString(R.string.belum_ada_barang_yang_ditawar)
+        } else {
+            binding.productRv.visibility = View.VISIBLE
+            listAdapter.submitList(product)
+            binding.productRv.layoutManager = LinearLayoutManager(requireContext())
+            binding.productRv.isNestedScrollingEnabled = false
+            binding.productRv.adapter = listAdapter
+        }
     }
 
     private fun showLoading(value: Boolean) {
@@ -160,7 +188,8 @@ class SaleListFragment : Fragment() {
         }
     }
 
-    private fun onClicked(productId: Int) {
+    private fun onClick(productId: Int) {
+
     }
 
     private fun navigateToEditProfile(user: User) {
@@ -174,6 +203,43 @@ class SaleListFragment : Fragment() {
     private fun showSaleProduct(token: String) {
         binding.productBtn.setOnClickListener {
             getSaleProduct(token)
+        }
+    }
+
+    private fun showErrorMessage(code: String?, view: View) {
+        when (code) {
+            "403" -> {
+                "Anda belum login".showSnackbar(
+                    view = view,
+                    context = requireContext(),
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
+            "500" -> {
+                "Internal Server Error :(".showSnackbar(
+                    view,
+                    requireContext(),
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
+            "503" -> {
+                "Service Unavailable".showSnackbar(
+                    view,
+                    requireContext(),
+                    R.color.white,
+                    R.color.alert_danger
+                )
+            }
+        }
+    }
+
+    private fun navigateToLogin() {
+        binding.notLoggedInLayout.loginBtn.setOnClickListener {
+            val direction = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(direction)
+            requireActivity()
         }
     }
 }
