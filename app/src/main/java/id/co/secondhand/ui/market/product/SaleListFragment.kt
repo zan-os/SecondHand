@@ -21,6 +21,8 @@ import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.auth.login.LoginActivity
+import id.co.secondhand.ui.market.product.detail.DetailProductActivity
+import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 import id.co.secondhand.utils.Extension
 import id.co.secondhand.utils.Extension.showSnackbar
@@ -33,7 +35,7 @@ class SaleListFragment : Fragment() {
 
     private val viewModel: SaleListViewModel by viewModels()
 
-    private val gridAdapter: ProductGridAdapter by lazy { ProductGridAdapter(::onClick) }
+    private val gridAdapter: ProductGridAdapter by lazy { ProductGridAdapter(::navigateToDetail) }
     private val listAdapter: OrderListAdapter by lazy { OrderListAdapter(::onClick) }
 
     override fun onCreateView(
@@ -190,6 +192,12 @@ class SaleListFragment : Fragment() {
 
     private fun onClick(productId: Int) {
 
+    }
+
+    private fun navigateToDetail(productId: Int) {
+        val direction = Intent(requireContext(), DetailProductActivity::class.java)
+        direction.putExtra(EXTRA_ID, productId)
+        startActivity(direction)
     }
 
     private fun navigateToEditProfile(user: User) {
