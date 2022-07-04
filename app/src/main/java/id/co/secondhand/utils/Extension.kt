@@ -52,6 +52,13 @@ object Extension {
         return !TextUtils.isEmpty(this) && this.length >= 6
     }
 
+    fun String.dateTimeFormatter(): String {
+        val sdfIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+        val date = sdfIn.parse(this)
+        val sdfOut = SimpleDateFormat("dd MMM, HH:mm")
+        return sdfOut.format(date as Date)
+    }
+
     fun Int.currencyFormatter(): String {
         val localeId = Locale("in", "ID")
         val rupiahFormat = NumberFormat.getCurrencyInstance(localeId)

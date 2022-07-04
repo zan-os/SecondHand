@@ -68,7 +68,7 @@ class AddProductFragment : Fragment() {
 
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, categories)
         binding.autoCompleteTv.setAdapter(arrayAdapter)
-        binding.autoCompleteTv.setOnItemClickListener { adapterView: AdapterView<*>?, view: View?, pos: Int, l: Long ->
+        binding.autoCompleteTv.setOnItemClickListener { adapterView: AdapterView<*>?, _: View?, pos: Int, _: Long ->
             run {
                 val string: CategoryList = adapterView?.getItemAtPosition(pos) as CategoryList
                 categoryId = string.tag as String
