@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,6 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
-import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.ui.market.product.bidderinfo.BidderInfoActivity
 import id.co.secondhand.utils.Extension.EXTRA_NOTIFICATION
 import id.co.secondhand.utils.Extension.TAG
@@ -40,6 +38,11 @@ class SellerNotificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getAccessToken()
+    }
+
+    override fun onResume() {
+        super.onResume()
         getAccessToken()
     }
 
