@@ -50,11 +50,12 @@
         <entry key="app/src/main/res/layout/activity_bidder_info.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.32222222222222224" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/dropdown_city_item.xml" value="0.3365679264555669" />
         <entry key="app/src/main/res/layout/fragment_sale_list.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/fragment_seller_notification.xml" value="0.264" />
         <entry key="app/src/main/res/layout/product_item_bid_list.xml" value="0.4" />
         <entry key="app/src/main/res/layout/product_item_grid.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/product_item_list.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/product_item_list.xml" value="0.4" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.34322916666666664" />
       </map>
     </option>

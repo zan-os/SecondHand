@@ -1,6 +1,5 @@
 package id.co.secondhand.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -22,7 +21,10 @@ class OrderListAdapter(private val onClick: (Int) -> Unit) :
             binding.apply {
                 productNameTv.text = order.product?.name
                 productPriceTv.text = order.product?.basePrice?.currencyFormatter()
-                bargainPriceTv.text = order.price?.currencyFormatter()
+                bargainPriceTv.text = itemView.resources.getString(
+                    R.string.data_ditawar,
+                    order.price?.currencyFormatter()
+                )
                 dateTimeTv.text = order.createdAt?.dateTimeFormatter()
                 Glide.with(itemView)
                     .load(order.product?.imageUrl)
