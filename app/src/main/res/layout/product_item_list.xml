@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
+        android:id="@+id/status_tv"
         style="@style/TextAppearance.SecondHand.Body.Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

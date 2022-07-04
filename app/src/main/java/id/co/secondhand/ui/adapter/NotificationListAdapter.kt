@@ -1,6 +1,7 @@
 package id.co.secondhand.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -19,10 +20,18 @@ class NotificationListAdapter(private val onClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(notification: Notification) {
             binding.apply {
+                if (notification.status == "create") {
+                    statusTv.text = "Berhasil diterbitkan"
+                    bargainPriceTv.visibility = View.GONE
+                }
                 productNameTv.text = notification.product.name
                 productPriceTv.text = notification.product.basePrice.currencyFormatter()
-                bargainPriceTv.text = notification.bidPrice.currencyFormatter()
-                dateTimeTv.text = notification.transactionDate.dateTimeFormatter()
+                bargainPriceTv.text =
+                    itemView.resources.getString(
+                        R.string.data_ditawar,
+                        notification.bidPrice.currencyFormatter()
+                    )
+                dateTimeTv.text = notification.createdAt.dateTimeFormatter()
                 Glide.with(itemView)
                     .load(notification.product.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
