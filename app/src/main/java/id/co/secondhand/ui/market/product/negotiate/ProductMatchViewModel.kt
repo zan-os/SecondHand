@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ProductMatchViewModel @Inject constructor(
     private val useCase: ProductMatchUseCase,
     preferences: UserPreferences
-): ViewModel() {
+) : ViewModel() {
     var accessToken = MutableLiveData<String>()
 
     val token = preferences.getAccessToken().asLiveData()

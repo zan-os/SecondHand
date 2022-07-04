@@ -24,8 +24,8 @@ class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
                     statusTv.text = "Berhasil diterbitkan"
                     bargainPriceTv.visibility = View.GONE
                 }
-                if (notification.read) {
-                    reminderIv.visibility = View.GONE
+                if (!notification.read) {
+                    reminderIv.visibility = View.VISIBLE
                 }
                 productNameTv.text = notification.product?.name
                 productPriceTv.text = notification.product?.basePrice?.currencyFormatter()
