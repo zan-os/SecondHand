@@ -103,6 +103,7 @@
     <string name="terima">Terima</string>
     <string name="ditawar_rp_25_000">Ditawar Rp.25.000</string>
     <string name="data_ditawar">Ditawar %s</string>
+    <string name="data_berhasil_ditawar">Berhasil Ditawar %s</string>
     <string name="kamu_akan_segera_dihubungi_penjual_via_whatsapp">Kamu akan segera dihubungi penjual via whatsapp</string>
     <string-array name="city">
         <item>Aceh</item>

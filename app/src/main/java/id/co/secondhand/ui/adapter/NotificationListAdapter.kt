@@ -1,5 +1,6 @@
 package id.co.secondhand.ui.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,13 +21,6 @@ class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(notification: Notification) {
             binding.apply {
-                if (notification.status == "create") {
-                    statusTv.text = "Berhasil diterbitkan"
-                    bargainPriceTv.visibility = View.GONE
-                }
-                if (!notification.read) {
-                    reminderIv.visibility = View.VISIBLE
-                }
                 productNameTv.text = notification.product?.name
                 productPriceTv.text = notification.product?.basePrice?.currencyFormatter()
                 bargainPriceTv.text =
@@ -42,6 +36,23 @@ class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
                     .dontTransform()
                     .into(binding.productImageIv)
                 root.setOnClickListener { onClick(notification) }
+                if (notification.status == "create") {
+                    statusTv.text = "Berhasil diterbitkan"
+                    bargainPriceTv.visibility = View.GONE
+                }
+                if (!notification.read) {
+                    reminderIv.visibility = View.VISIBLE
+                }
+                if (notification.status == "accepted") {
+                    productPriceTv.paintFlags =
+                        productPriceTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    bargainPriceTv.text =
+                        itemView.resources.getString(
+                            R.string.data_berhasil_ditawar,
+                            notification.bidPrice?.currencyFormatter()
+                        )
+                    bidApprovedTv.visibility = View.VISIBLE
+                }
             }
         }
     }

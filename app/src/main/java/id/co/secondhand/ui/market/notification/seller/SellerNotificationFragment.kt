@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
@@ -17,6 +18,7 @@ import id.co.secondhand.ui.adapter.NotificationListAdapter
 import id.co.secondhand.ui.market.product.bidderinfo.BidderInfoActivity
 import id.co.secondhand.utils.Extension.EXTRA_NOTIFICATION
 import id.co.secondhand.utils.Extension.TAG
+import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
 class SellerNotificationFragment : Fragment() {
@@ -34,11 +36,6 @@ class SellerNotificationFragment : Fragment() {
     ): View {
         _binding = FragmentSellerNotificationBinding.inflate(layoutInflater)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getAccessToken()
     }
 
     override fun onResume() {
@@ -67,6 +64,12 @@ class SellerNotificationFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    result.message?.showSnackbar(
+                        binding.root,
+                        requireContext(),
+                        R.color.white,
+                        R.color.alert_danger
+                    )
                     Log.d(TAG, "Error ${result.message}")
                 }
             }
