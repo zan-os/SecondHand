@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="16dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/product_image_iv"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/penawaran_produk"
         app:layout_constraintEnd_toStartOf="@+id/date_time_tv"
         app:layout_constraintStart_toEndOf="@+id/product_image_iv"
@@ -30,6 +34,7 @@
         style="@style/TextAppearance.SecondHand.Body.Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:drawablePadding="8dp"
         android:text="@string/_20_apr_14_04"
@@ -84,11 +89,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:text="@string/kamu_akan_segera_dihubungi_penjual_via_whatsapp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/bargain_price_tv"
         app:layout_constraintTop_toBottomOf="@+id/bargain_price_tv"
-        android:text="@string/kamu_akan_segera_dihubungi_penjual_via_whatsapp"
         tools:visibility="visible" />
 
     <Button
@@ -135,10 +140,11 @@
         android:id="@+id/reminder_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/description"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/date_time_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/date_time_tv"
         app:srcCompat="@drawable/ellipse_danger"
         tools:visibility="visible" />
 
