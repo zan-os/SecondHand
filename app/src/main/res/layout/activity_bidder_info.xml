@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.market.product.detail.DetailProductActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:indeterminateTint="@color/dark_blue_04"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/back_btn"
+                style="@style/Widget.MaterialComponents.Button.CircleButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/circle_button"
+                app:backgroundTint="@color/white"
+                app:icon="?attr/homeAsUpIndicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/TextAppearance.SecondHand.Body.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="116dp"
+                android:text="Info Penawar"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/back_btn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageView2"
+                style="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/seller_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/seller_name_tv"
+                style="@style/TextAppearance.SecondHand.Body.Medium"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Nama Pembeli"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/shapeableImageView2"
+                app:layout_constraintTop_toTopOf="@+id/shapeableImageView2" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/city_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Kota"
+                app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView2"
+                app:layout_constraintStart_toEndOf="@+id/shapeableImageView2"
+                app:layout_constraintTop_toBottomOf="@+id/seller_name_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/TextAppearance.SecondHand.Body.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Daftar Produkmu yang Ditawar"
+            android:textColor="@color/neutral_05"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/product_image_iv"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/penawaran_produk"
+                app:layout_constraintEnd_toStartOf="@+id/date_time_tv"
+                app:layout_constraintStart_toEndOf="@+id/product_image_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/date_time_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_20_apr_14_04"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/product_name_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/jam_tangan_casio"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/product_image_iv"
+                app:layout_constraintTop_toBottomOf="@+id/date_time_tv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/product_price_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/rp_250_000"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/product_name_tv"
+                app:layout_constraintTop_toBottomOf="@+id/product_name_tv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView5"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/ditawar"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/product_image_iv"
+                app:layout_constraintStart_toStartOf="@+id/product_price_tv"
+                app:layout_constraintTop_toBottomOf="@+id/product_price_tv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bargain_price_tv"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/rp_25_999"
+                android:textColor="@color/neutral_05"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/materialTextView5"
+                app:layout_constraintTop_toTopOf="@+id/materialTextView5" />
+
+            <Button
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/btnTolak"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Tolak"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView5" />
+
+            <Button
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/send_negotiate_btn"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Terima"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bargain_price_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
