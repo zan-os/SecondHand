@@ -1,6 +1,7 @@
 package id.co.secondhand.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -10,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityMainBinding
+import id.co.secondhand.utils.Extension.TAG
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -36,14 +38,21 @@ class MainActivity : AppCompatActivity() {
     private fun getNotification(token: String) {
         viewModel.getNotification(token).observe(this) { result ->
             when (result) {
-                is Resource.Loading -> {}
+                is Resource.Loading -> {
+                    Log.d(TAG, "getNotification: Loading")
+                }
                 is Resource.Success -> {
+                    Log.d(TAG, "getNotification: ${result.data?.map { it.read }}")
                     result.data?.map { notification ->
-                        binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment)
-                            .isVisible = !notification.read
+                        if (!notification.read) {
+                            binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment)
+                                .isVisible = true
+                        }
                     }
                 }
-                is Resource.Error -> {}
+                is Resource.Error -> {
+                    Log.d(TAG, "getNotification: ${result.message}")
+                }
             }
         }
     }

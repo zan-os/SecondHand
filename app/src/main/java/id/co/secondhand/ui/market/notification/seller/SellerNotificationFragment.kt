@@ -1,10 +1,10 @@
 package id.co.secondhand.ui.market.notification.seller
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +14,6 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
-import id.co.secondhand.utils.Extension.TAG
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
@@ -35,15 +34,15 @@ class SellerNotificationFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         getAccessToken()
     }
 
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
-            getNotification(token)
             accessToken = token
+            getNotification(token)
         }
     }
 
@@ -52,12 +51,10 @@ class SellerNotificationFragment : Fragment() {
             when (result) {
                 is Resource.Loading -> {
                     showLoading(true)
-                    Log.d(TAG, "Loading")
                 }
                 is Resource.Success -> {
                     showLoading(false)
                     showNotification(result.data ?: emptyList())
-                    Log.d(TAG, result.data.toString())
                 }
                 is Resource.Error -> {
                     showLoading(false)
@@ -67,7 +64,6 @@ class SellerNotificationFragment : Fragment() {
                         R.color.white,
                         R.color.alert_danger
                     )
-                    Log.d(TAG, "Error ${result.message}")
                 }
             }
         }
@@ -86,13 +82,10 @@ class SellerNotificationFragment : Fragment() {
         viewModel.readNotification(accessToken, id).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d(TAG, "readNotification: Loading")
                 }
                 is Resource.Success -> {
-                    Log.d(TAG, "readNotification: Success")
                 }
                 is Resource.Error -> {
-                    Log.d(TAG, "readNotification: ${result.message}")
                 }
             }
         }
@@ -101,21 +94,14 @@ class SellerNotificationFragment : Fragment() {
     private fun onClicked(notification: Notification) {
         readNotification(accessToken, notification.id)
         when (notification.status) {
-            "create" -> {
-            }
-            "bid" -> {
-            }
-            else -> {
-            }
+            "create" -> {}
+            "bid" -> {}
+            else -> {}
         }
     }
 
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility = View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
-        }
+    private fun showLoading(visible: Boolean) {
+        binding.progressCircular.isVisible = visible
     }
 
     override fun onDestroy() {
