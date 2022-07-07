@@ -58,12 +58,21 @@ class SellerNotificationFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    result.message?.showSnackbar(
-                        binding.root,
-                        requireContext(),
-                        R.color.white,
-                        R.color.alert_danger
-                    )
+                    result.message?.let { showErrorMessage(it) }
+                }
+            }
+        }
+    }
+
+    private fun readNotification(accessToken: String, id: Int) {
+        viewModel.readNotification(accessToken, id).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    getNotification(accessToken)
+                }
+                is Resource.Error -> {
+                    result.message?.let { showErrorMessage(it) }
                 }
             }
         }
@@ -78,19 +87,6 @@ class SellerNotificationFragment : Fragment() {
         }
     }
 
-    private fun readNotification(accessToken: String, id: Int) {
-        viewModel.readNotification(accessToken, id).observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Resource.Loading -> {
-                }
-                is Resource.Success -> {
-                }
-                is Resource.Error -> {
-                }
-            }
-        }
-    }
-
     private fun onClicked(notification: Notification) {
         readNotification(accessToken, notification.id)
         when (notification.status) {
@@ -102,6 +98,15 @@ class SellerNotificationFragment : Fragment() {
 
     private fun showLoading(visible: Boolean) {
         binding.progressCircular.isVisible = visible
+    }
+
+    private fun showErrorMessage(message: String) {
+        message.showSnackbar(
+            view = requireView(),
+            context = requireContext(),
+            textColor = R.color.white,
+            backgroundColor = R.color.alert_danger
+        )
     }
 
     override fun onDestroy() {
