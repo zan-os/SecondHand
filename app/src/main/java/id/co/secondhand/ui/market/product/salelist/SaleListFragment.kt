@@ -124,7 +124,7 @@ class SaleListFragment : Fragment() {
 
     private fun getOrder(token: String) {
         binding.interestedBtn.setOnClickListener {
-            viewModel.getOrder(token,"pending").observe(viewLifecycleOwner) { result ->
+            viewModel.getOrder(token, "pending").observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
                         Log.d("Market", "Loading")
@@ -147,7 +147,7 @@ class SaleListFragment : Fragment() {
 
     private fun getOrderHistory(token: String) {
         binding.soldBtn.setOnClickListener {
-            viewModel.getOrder(token,"accepted").observe(viewLifecycleOwner) { result ->
+            viewModel.getOrder(token, "accepted").observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
                         Log.d("Market", "Loading")

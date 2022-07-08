@@ -107,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 )
             }
             else -> {
-               message.showSnackbar(
+                message.showSnackbar(
                     view = binding.root,
                     context = this,
                     textColor = R.color.white,
