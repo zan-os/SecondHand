@@ -25,5 +25,5 @@ interface SellerRepository {
 
     suspend fun getOrderSeller(accessToken: String): List<OrderSellerDtoItem>
 
-    suspend fun getOrderSellerId(accessToken: String, id: Int): OrderSellerDtoItem
+    suspend fun getOrderSellerId(accessToken: String, id: Int): OrderDtoItem
 }

@@ -46,7 +46,7 @@ class SellerRepositoryImpl @Inject constructor(
         return api.getOrderSeller(accessToken)
     }
 
-    override suspend fun getOrderSellerId(accessToken: String, id: Int): OrderSellerDtoItem {
+    override suspend fun getOrderSellerId(accessToken: String, id: Int): OrderDtoItem {
         return api.getOrderId(accessToken, id)
     }
 }

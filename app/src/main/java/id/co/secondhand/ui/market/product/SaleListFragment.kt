@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -20,6 +21,7 @@ import id.co.secondhand.domain.model.Product
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
+import id.co.secondhand.ui.market.product.negotiate.BidderInfoActivity
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 import id.co.secondhand.utils.Extension
 
@@ -161,6 +163,13 @@ class SaleListFragment : Fragment() {
     }
 
     private fun onClicked(productId: Int) {
+
+        val bundle = Bundle()
+        bundle.putInt("id", productId)
+
+        val intent = Intent(this@SaleListFragment.requireContext(), BidderInfoActivity::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent, bundle)
     }
 
     private fun navigateToEditProfile(user: User) {

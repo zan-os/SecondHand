@@ -5,10 +5,7 @@ import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.UserDto
-import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.seller.OrderDto
-import id.co.secondhand.data.remote.response.seller.OrderSellerDto
-import id.co.secondhand.data.remote.response.seller.OrderSellerDtoItem
+import id.co.secondhand.data.remote.response.seller.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -82,7 +79,7 @@ interface MarketApi {
     suspend fun getOrderId(
         @Header("access_token") accessToken: String,
         @Path("id") OrderId: Int
-    ): OrderSellerDtoItem
+    ): OrderDtoItem
 
     @GET("seller/order")
     suspend fun getOrderSeller(
