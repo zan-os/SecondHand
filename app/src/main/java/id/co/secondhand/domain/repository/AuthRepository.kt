@@ -8,7 +8,7 @@ import okhttp3.RequestBody
 
 interface AuthRepository {
 
-    suspend fun authLogin(user: LoginRequest): LoginDto
+    suspend fun authLogin(loginRequest: LoginRequest): LoginDto
 
     suspend fun authRegister(
         imageUrl: MultipartBody.Part,

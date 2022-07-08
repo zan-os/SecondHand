@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.auth.LoginRequest
@@ -30,7 +29,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        registerUser()
+
+        login()
         navigateToRegister()
     }
 
@@ -50,34 +50,31 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser() {
+    private fun login() {
         validateLogin()
 
-        binding.loginBtn.setOnClickListener {
+        binding.loginBtn.setOnClickListener { it ->
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
 
-            val user = LoginRequest(
+            val loginRequest = LoginRequest(
                 email = email,
                 password = password
             )
 
-            viewModel.login(user).observe(this) { result ->
+            viewModel.login(loginRequest).observe(this) { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        Log.d("Market", "Loading")
                         showLoading(true)
                     }
                     is Resource.Success -> {
                         showLoading(false)
                         viewModel.saveAccessToken(result.data?.accessToken ?: "")
-                        Log.d("Market", result.data.toString())
                         navigateToHomepage()
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        Log.d("Market", "Error ${result.message}")
-                        showErrorMessage(result.message, it)
+                        result.message?.let { showErrorMessage(it) }
                     }
                 }
             }
@@ -87,38 +84,34 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility = View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
-        }
+    private fun showLoading(visible: Boolean) {
+        binding.progressCircular.isVisible = visible
     }
 
-    private fun showErrorMessage(code: String?, view: View) {
-        when (code) {
+    private fun showErrorMessage(message: String) {
+        when (message) {
             "401" -> {
-                "User tidak ditemukan".showSnackbar(
-                    view = view,
+                getString(R.string.error_email_password).showSnackbar(
+                    view = binding.root,
                     context = this,
                     textColor = R.color.white,
                     backgroundColor = R.color.alert_danger
                 )
             }
             "500" -> {
-                "Internal Server Error :(".showSnackbar(
-                    view,
-                    this,
-                    R.color.white,
-                    R.color.alert_danger
+                getString(R.string.error_internal_server).showSnackbar(
+                    view = binding.root,
+                    context = this,
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
                 )
             }
-            "503" -> {
-                "Service Unavailable".showSnackbar(
-                    view,
-                    this,
-                    R.color.white,
-                    R.color.alert_danger
+            else -> {
+               message.showSnackbar(
+                    view = binding.root,
+                    context = this,
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
                 )
             }
         }
