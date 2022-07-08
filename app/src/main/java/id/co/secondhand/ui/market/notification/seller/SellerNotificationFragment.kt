@@ -14,6 +14,7 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSellerNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
+import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
@@ -70,6 +71,7 @@ class SellerNotificationFragment : Fragment() {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     getNotification(accessToken)
+                    MainActivity().getAccessToken()
                 }
                 is Resource.Error -> {
                     result.message?.let { showErrorMessage(it) }

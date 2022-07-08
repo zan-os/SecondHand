@@ -1,7 +1,7 @@
 package id.co.secondhand.ui.main
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityMainBinding
-import id.co.secondhand.utils.Extension.TAG
+import id.co.secondhand.domain.model.notification.Notification
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setupNavView()
     }
 
-    private fun getAccessToken() {
+    fun getAccessToken() {
         viewModel.token.observe(this) { token ->
             getNotification(token)
         }
@@ -38,22 +38,18 @@ class MainActivity : AppCompatActivity() {
     private fun getNotification(token: String) {
         viewModel.getNotification(token).observe(this) { result ->
             when (result) {
-                is Resource.Loading -> {
-                    Log.d(TAG, "getNotification: Loading")
-                }
+                is Resource.Loading -> {}
                 is Resource.Success -> {
-                    Log.d(TAG, "getNotification: ${result.data?.map { it.read }}")
-                    result.data?.map { notification ->
-                        if (!notification.read) {
-                            binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment)
-                                .isVisible = true
-                        }
-                    }
+                    result.data?.map { notificationStatus(it) }
                 }
-                is Resource.Error -> {
-                    Log.d(TAG, "getNotification: ${result.message}")
-                }
+                is Resource.Error -> {}
             }
+        }
+    }
+
+    private fun notificationStatus(notification: Notification) {
+        if (!notification.read) {
+            binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment).isVisible = true
         }
     }
 
