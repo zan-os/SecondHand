@@ -97,6 +97,7 @@
     <string name="kota_product_match">Kota</string>
     <string name="ditawar_product_match">Ditawar</string>
     <string name="rp_200_000">Rp.200.000</string>
+    <string name="no_order">Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>

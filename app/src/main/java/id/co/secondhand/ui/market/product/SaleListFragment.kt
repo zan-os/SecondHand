@@ -171,8 +171,8 @@ class SaleListFragment : Fragment() {
 
     private fun showOrder(product: List<OrderDtoItem>?) {
         if (product?.isEmpty() == true) {
+            binding.noOrderIv.visibility = View.VISIBLE
             binding.emptyListTv.visibility = View.VISIBLE
-            binding.emptyListTv.text = getString(R.string.belum_ada_barang_yang_ditawar)
         } else {
             binding.productRv.visibility = View.VISIBLE
             listAdapter.submitList(product)
