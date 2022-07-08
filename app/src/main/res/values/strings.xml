@@ -108,6 +108,7 @@
     <string name="error_email_password">Email atau Password salah</string>
     <string name="error_no_internet">Tidak ada koneksi internet</string>
     <string name="error_internal_server">TInternal Server Error</string>
+    <string name="no_order">Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>
