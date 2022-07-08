@@ -118,8 +118,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToHomepage() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
