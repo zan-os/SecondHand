@@ -67,11 +67,13 @@ class ProfileFragment : Fragment() {
 
     private fun showUserData(user: User) {
         binding.apply {
-            Glide.with(requireContext())
-                .load(user.imageUrl)
-                .override(300)
-                .centerCrop()
-                .into(photoProfileIv)
+            if (user.imageUrl != null) {
+                Glide.with(requireContext())
+                    .load(user.imageUrl)
+                    .override(300)
+                    .centerCrop()
+                    .into(photoProfileIv)
+            }
             fullNameTv.text = user.fullName
 
             editProfileTv.setOnClickListener {
