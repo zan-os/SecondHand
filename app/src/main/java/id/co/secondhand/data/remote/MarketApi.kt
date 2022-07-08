@@ -75,7 +75,8 @@ interface MarketApi {
 
     @GET("seller/order")
     suspend fun getOrder(
-        @Header("access_token") accessToken: String
+        @Header("access_token") accessToken: String,
+        @Query("status") status: String
     ): OrderDto
 
     @GET("seller/order/{id}")

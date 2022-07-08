@@ -72,6 +72,7 @@ class SaleListFragment : Fragment() {
             binding.saleListLayout.visibility = View.VISIBLE
             getSaleProduct(token)
             getOrder(token)
+            getOrderHistory(token)
             getUserData(token)
             showSaleProduct(token)
         }
@@ -123,7 +124,30 @@ class SaleListFragment : Fragment() {
 
     private fun getOrder(token: String) {
         binding.interestedBtn.setOnClickListener {
-            viewModel.getOrder(token).observe(viewLifecycleOwner) { result ->
+            viewModel.getOrder(token,"pending").observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        Log.d("Market", "Loading")
+                        showLoading(true)
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+                        Log.d("Market", result.data.toString())
+                        showOrder(result.data)
+                    }
+                    is Resource.Error -> {
+                        showLoading(false)
+                        Log.d("Market", "Error ${result.message.toString()}")
+                        showErrorMessage(result.message, binding.root)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getOrderHistory(token: String) {
+        binding.soldBtn.setOnClickListener {
+            viewModel.getOrder(token,"accepted").observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
                         Log.d("Market", "Loading")

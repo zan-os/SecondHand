@@ -23,5 +23,5 @@ class SaleListViewModel @Inject constructor(
 
     fun getSaleProduct(accessToken: String) = getSaleListUseCase(accessToken)
 
-    fun getOrder(accessToken: String) = getOrderUseCase(accessToken)
+    fun getOrder(accessToken: String, status: String) = getOrderUseCase(accessToken, status)
 }
