@@ -12,10 +12,10 @@ import javax.inject.Inject
 class GetOrderUseCase @Inject constructor(
     private val repository: SellerRepository
 ) {
-    operator fun invoke(accessToken: String): LiveData<Resource<List<OrderDtoItem>>> = liveData {
+    operator fun invoke(accessToken: String, status: String): LiveData<Resource<List<OrderDtoItem>>> = liveData {
         try {
             emit(Resource.Loading())
-            val data = repository.getOrder(accessToken)
+            val data = repository.getOrder(accessToken, status)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error(e.code().toString()))

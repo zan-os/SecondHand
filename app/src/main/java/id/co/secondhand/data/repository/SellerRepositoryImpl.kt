@@ -37,8 +37,8 @@ class SellerRepositoryImpl @Inject constructor(
         return api.getSaleProduct(accessToken)
     }
 
-    override suspend fun getOrder(accessToken: String): List<OrderDtoItem> {
-        return api.getOrder(accessToken)
+    override suspend fun getOrder(accessToken: String, status: String): List<OrderDtoItem> {
+        return api.getOrder(accessToken, status)
     }
 
     override suspend fun getOrderSellerId(accessToken: String, id: Int): ProductItemDto {

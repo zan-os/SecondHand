@@ -20,7 +20,7 @@ interface SellerRepository {
 
     suspend fun getSaleProduct(accessToken: String): List<ProductItemDto>
 
-    suspend fun getOrder(accessToken: String): List<OrderDtoItem>
+    suspend fun getOrder(accessToken: String, status: String): List<OrderDtoItem>
 
     suspend fun getOrderSellerId(accessToken: String, id: Int): ProductItemDto
 }
