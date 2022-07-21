@@ -30,7 +30,7 @@ class DetailProductActivity : AppCompatActivity() {
         val productId = intent.getIntExtra(EXTRA_ID, 0)
         observeResult(productId = productId)
 
-        navigateToHomepage()
+        navigateBack()
         negotiate()
     }
 
@@ -79,10 +79,8 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToHomepage() {
+    private fun navigateBack() {
         binding.backBtn.setOnClickListener {
-            val direction = Intent(this, MainActivity::class.java)
-            startActivity(direction)
             finish()
         }
     }
