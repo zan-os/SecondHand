@@ -122,6 +122,12 @@ class SaleListFragment : Fragment() {
         }
     }
 
+    private fun showSaleProduct(token: String) {
+        binding.productBtn.setOnClickListener {
+            getSaleProduct(token)
+        }
+    }
+
     private fun getOrder(token: String) {
         binding.interestedBtn.setOnClickListener {
             viewModel.getOrder(token, "pending").observe(viewLifecycleOwner) { result ->
@@ -181,9 +187,13 @@ class SaleListFragment : Fragment() {
 
     private fun showProduct(product: List<Product>?) {
         if (product?.isEmpty() == true) {
+            binding.productRv.visibility = View.GONE
             binding.emptyListTv.visibility = View.VISIBLE
+            binding.noOrderIv.visibility = View.VISIBLE
             binding.emptyListTv.text = getString(R.string.anda_tidak_memiliki_barang_dagangan)
         } else {
+            binding.emptyListTv.visibility = View.GONE
+            binding.noOrderIv.visibility = View.GONE
             binding.productRv.visibility = View.VISIBLE
             gridAdapter.submitList(product)
             binding.productRv.layoutManager =
@@ -195,9 +205,12 @@ class SaleListFragment : Fragment() {
 
     private fun showOrder(product: List<OrderDtoItem>?) {
         if (product?.isEmpty() == true) {
+            binding.productRv.visibility = View.GONE
             binding.noOrderIv.visibility = View.VISIBLE
             binding.emptyListTv.visibility = View.VISIBLE
         } else {
+            binding.emptyListTv.visibility = View.GONE
+            binding.noOrderIv.visibility = View.GONE
             binding.productRv.visibility = View.VISIBLE
             listAdapter.submitList(product)
             binding.productRv.layoutManager = LinearLayoutManager(requireContext())
@@ -229,12 +242,6 @@ class SaleListFragment : Fragment() {
             val direction = Intent(requireContext(), EditProfileActivity::class.java)
             direction.putExtra(Extension.EXTRA_USER, user)
             startActivity(direction)
-        }
-    }
-
-    private fun showSaleProduct(token: String) {
-        binding.productBtn.setOnClickListener {
-            getSaleProduct(token)
         }
     }
 
