@@ -68,7 +68,12 @@ class NegotiateFragment : BottomSheetDialogFragment() {
 
     private fun getAccessToken(productId: Int) {
         viewModel.accessToken.observe(viewLifecycleOwner) { token ->
-            bidProduct(token, productId)
+            if (token.isEmpty()) {
+                binding.sendNegotiateBtn.text = getString(R.string.silahkan_login)
+            } else {
+                binding.sendNegotiateBtn.isEnabled = true
+                bidProduct(token, productId)
+            }
         }
     }
 
