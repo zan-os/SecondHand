@@ -2,6 +2,7 @@ package id.co.secondhand.data.remote
 
 import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.remote.request.auth.RegisterRequest
+import id.co.secondhand.data.remote.request.product.BargainRequest
 import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
@@ -9,7 +10,8 @@ import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.notification.NotificationDto
 import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
 import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.seller.OrderDto
+import id.co.secondhand.data.remote.response.OrderDto
+import id.co.secondhand.data.remote.response.OrderDtoItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -89,4 +91,10 @@ interface MarketApi {
         @Header("access_token") accessToken: String,
         @Path("id") id: Int
     ): NotificationDtoItem
+
+    @POST("buyer/order")
+    suspend fun bargainProduct(
+        @Header("access_token") accessToken: String,
+        @Body bargainRequest: BargainRequest
+    ) : OrderDtoItem
 }

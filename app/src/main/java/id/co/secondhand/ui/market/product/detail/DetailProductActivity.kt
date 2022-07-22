@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
@@ -13,6 +14,7 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
 import id.co.secondhand.domain.model.Product
 import id.co.secondhand.ui.main.MainActivity
+import id.co.secondhand.ui.market.product.detail.NegotiateFragment.Companion.EXTRA_PRODUCT
 import id.co.secondhand.utils.Extension.currencyFormatter
 
 @AndroidEntryPoint
@@ -31,7 +33,6 @@ class DetailProductActivity : AppCompatActivity() {
         observeResult(productId = productId)
 
         navigateBack()
-        negotiate()
     }
 
     private fun observeResult(productId: Int) {
@@ -44,7 +45,8 @@ class DetailProductActivity : AppCompatActivity() {
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        Log.d("Market", result.data.toString())
+                        Log.d("Market", "Product ${result.data}")
+                        negotiate(result.data)
                         showProductData(result.data)
                     }
                     is Resource.Error -> {
@@ -89,9 +91,9 @@ class DetailProductActivity : AppCompatActivity() {
         var EXTRA_ID = "extra_id"
     }
 
-    private fun negotiate() {
+    private fun negotiate(product: Product?) {
         binding.bargainBtn.setOnClickListener {
-            val bottomSheetDialog = NegotiateFragment()
+            val bottomSheetDialog = NegotiateFragment().newInstance(product)
             bottomSheetDialog.show(supportFragmentManager, "BottomSheetDialog")
         }
     }

@@ -106,6 +106,7 @@
     <string name="data_berhasil_ditawar">Berhasil Ditawar %s</string>
     <string name="kamu_akan_segera_dihubungi_penjual_via_whatsapp">Kamu akan segera dihubungi penjual via whatsapp</string>
     <string name="success_register">Berhasil mendaftar! Silahkan login</string>
+    <string name="bargain_success">Berhasil menawar! Silahkan tunggu respon penjual</string>
     <string name="error_email_password">Email atau Password salah</string>
     <string name="error_email_already_exist">Email sudah ada</string>
     <string name="error_no_internet">Tidak ada koneksi internet</string>

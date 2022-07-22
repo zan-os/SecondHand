@@ -1,7 +1,7 @@
 package id.co.secondhand.domain.model.notification
 
 import android.os.Parcelable
-import id.co.secondhand.data.remote.response.seller.Product
+import id.co.secondhand.data.remote.response.Product
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 

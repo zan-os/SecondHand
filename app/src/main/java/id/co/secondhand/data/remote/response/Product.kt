@@ -1,4 +1,4 @@
-package id.co.secondhand.data.remote.response.seller
+package id.co.secondhand.data.remote.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

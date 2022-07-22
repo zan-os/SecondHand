@@ -2,7 +2,7 @@ package id.co.secondhand.domain.repository
 
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.seller.OrderDtoItem
+import id.co.secondhand.data.remote.response.OrderDtoItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
