@@ -16,8 +16,8 @@ import id.co.secondhand.R
 import id.co.secondhand.data.remote.response.OrderDtoItem
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentSaleListBinding
-import id.co.secondhand.domain.model.Product
 import id.co.secondhand.domain.model.auth.User
+import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.ui.adapter.OrderListAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.auth.login.LoginActivity

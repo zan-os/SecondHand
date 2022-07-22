@@ -21,4 +21,4 @@ data class Product(
     val updatedAt: String?,
     val user: @RawValue UserDto?,
     val userId: Int?
-): Parcelable
+) : Parcelable

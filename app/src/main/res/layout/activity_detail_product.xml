@@ -70,6 +70,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
+                    android:text="@string/nama_produk"
                     android:textColor="@color/neutral_05"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +85,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
+                    android:text="@string/aksesoris"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/product_name_tv" />
@@ -97,6 +99,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:text="@string/rp_250_000"
                     android:textColor="@color/neutral_05"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -132,6 +135,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
+                    android:src="@drawable/seller_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -143,6 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:text="@string/nama_penjual"
                     android:textColor="@color/neutral_05"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -150,12 +155,13 @@
                     app:layout_constraintTop_toTopOf="@+id/seller_image_iv" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/city_tv"
+                    android:id="@+id/seller_city_tv"
                     style="@style/TextAppearance.SecondHand.Body.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:text="@string/asal_kota"
                     app:layout_constraintBottom_toBottomOf="@+id/seller_image_iv"
                     app:layout_constraintStart_toEndOf="@+id/seller_image_iv"
                     app:layout_constraintTop_toBottomOf="@+id/seller_name_tv" />
@@ -203,6 +209,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:text="@string/lorem_ipsum"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

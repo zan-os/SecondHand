@@ -1,20 +1,15 @@
 package id.co.secondhand.ui.market.product.detail
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
-import id.co.secondhand.domain.model.Product
-import id.co.secondhand.ui.main.MainActivity
-import id.co.secondhand.ui.market.product.detail.NegotiateFragment.Companion.EXTRA_PRODUCT
+import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.utils.Extension.currencyFormatter
 
 @AndroidEntryPoint
@@ -40,52 +35,46 @@ class DetailProductActivity : AppCompatActivity() {
             .observe(this) { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        Log.d("Market", "Loading")
                         showLoading(true)
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        Log.d("Market", "Product ${result.data}")
                         negotiate(result.data)
                         showProductData(result.data)
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        Log.d("Market", "Error ${result.message.toString()}")
                     }
                 }
             }
     }
 
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility = View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
-        }
+    private fun showLoading(visible: Boolean) {
+        binding.progressCircular.isVisible = visible
     }
 
     private fun showProductData(detail: Product?) {
         binding.apply {
-            if (detail != null) {
-                binding.productNameTv.text = detail.name
-                binding.productPriceTv.text = detail.basePrice?.currencyFormatter()
-                binding.productDescTv.text = detail.description ?: "Tidak ada deskripsi"
-                binding.categoryTv.text = detail.categories?.map { it.name }.toString()
-                Glide.with(this@DetailProductActivity)
-                    .load(detail.imageUrl)
-                    .placeholder(R.drawable.ic_error_image)
-                    .dontAnimate()
-                    .dontTransform()
-                    .into(binding.productImageIv)
-                binding.sellerNameTv.text = detail.user?.fullName
-                binding.cityTv.text = detail.user?.city
-                Glide.with(this@DetailProductActivity)
-                    .load(detail.user?.imageUrl)
-                    .placeholder(R.drawable.ic_error_image)
-                    .dontAnimate()
-                    .dontTransform()
-                    .into(binding.sellerImageIv)
+            if (detail?.user != null) {
+                binding.apply {
+                    sellerNameTv.text = detail.user.fullName
+                    sellerCityTv.text = detail.user.city
+                    productNameTv.text = detail.name
+                    productPriceTv.text = detail.basePrice.currencyFormatter()
+                    productDescTv.text = detail.description
+                    Glide.with(this@DetailProductActivity)
+                        .load(detail.imageUrl)
+                        .placeholder(R.drawable.ic_error_image)
+                        .dontAnimate()
+                        .dontTransform()
+                        .into(productImageIv)
+                    Glide.with(this@DetailProductActivity)
+                        .load(detail.user.imageUrl)
+                        .placeholder(R.drawable.ic_error_image)
+                        .dontAnimate()
+                        .dontTransform()
+                        .into(sellerImageIv)
+                }
             }
         }
     }
@@ -96,14 +85,14 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        var EXTRA_ID = "extra_id"
-    }
-
     private fun negotiate(product: Product?) {
         binding.bargainBtn.setOnClickListener {
             val bottomSheetDialog = NegotiateFragment().newInstance(product)
             bottomSheetDialog.show(supportFragmentManager, "BottomSheetDialog")
         }
+    }
+
+    companion object {
+        var EXTRA_ID = "extra_id"
     }
 }

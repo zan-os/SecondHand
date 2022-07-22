@@ -3,15 +3,14 @@ package id.co.secondhand.data.remote
 import id.co.secondhand.data.remote.request.auth.LoginRequest
 import id.co.secondhand.data.remote.request.auth.RegisterRequest
 import id.co.secondhand.data.remote.request.product.BargainRequest
-import id.co.secondhand.data.remote.response.ProductDto
+import id.co.secondhand.data.remote.response.OrderDto
+import id.co.secondhand.data.remote.response.OrderDtoItem
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.notification.NotificationDto
 import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
 import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.OrderDto
-import id.co.secondhand.data.remote.response.OrderDtoItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -45,12 +44,12 @@ interface MarketApi {
     ): UserDto
 
     @GET("buyer/product")
-    suspend fun getProducts(): ProductDto
+    suspend fun getProducts(): List<id.co.secondhand.data.remote.response.buyer.ProductDto>
 
     @GET("buyer/product/{id}")
     suspend fun getProductDetail(
         @Path("id") productId: Int
-    ): ProductItemDto
+    ): id.co.secondhand.data.remote.response.buyer.ProductDto
 
     @Multipart
     @POST("seller/product")
@@ -67,7 +66,7 @@ interface MarketApi {
     @GET("seller/product")
     suspend fun getSaleProduct(
         @Header("access_token") accessToken: String
-    ): ProductDto
+    ): List<id.co.secondhand.data.remote.response.buyer.ProductDto>
 
     @GET("seller/order")
     suspend fun getOrder(
@@ -96,5 +95,5 @@ interface MarketApi {
     suspend fun bargainProduct(
         @Header("access_token") accessToken: String,
         @Body bargainRequest: BargainRequest
-    ) : OrderDtoItem
+    ): OrderDtoItem
 }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentHomepageBinding
-import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
