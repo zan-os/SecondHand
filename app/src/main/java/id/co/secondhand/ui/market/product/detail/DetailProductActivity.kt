@@ -11,6 +11,7 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
 import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.utils.Extension.currencyFormatter
+import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
 class DetailProductActivity : AppCompatActivity() {
@@ -44,13 +45,10 @@ class DetailProductActivity : AppCompatActivity() {
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        showErrorMessage(result.message)
                     }
                 }
             }
-    }
-
-    private fun showLoading(visible: Boolean) {
-        binding.progressCircular.isVisible = visible
     }
 
     private fun showProductData(detail: Product?) {
@@ -80,16 +78,29 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateBack() {
-        binding.backBtn.setOnClickListener {
-            finish()
-        }
-    }
-
     private fun negotiate(product: Product?) {
         binding.bargainBtn.setOnClickListener {
             val bottomSheetDialog = NegotiateFragment().newInstance(product)
             bottomSheetDialog.show(supportFragmentManager, "BottomSheetDialog")
+        }
+    }
+
+    private fun showErrorMessage(message: String?) {
+        message?.showSnackbar(
+            view = binding.root,
+            context = this,
+            textColor = R.color.white,
+            backgroundColor = R.color.alert_danger
+        )
+    }
+
+    private fun showLoading(visible: Boolean) {
+        binding.progressCircular.isVisible = visible
+    }
+
+    private fun navigateBack() {
+        binding.backBtn.setOnClickListener {
+            finish()
         }
     }
 

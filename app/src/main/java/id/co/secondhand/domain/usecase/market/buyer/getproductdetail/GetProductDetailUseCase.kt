@@ -22,7 +22,7 @@ class GetProductDetailUseCase @Inject constructor(
             } catch (e: HttpException) {
                 emit(Resource.Error(e.code().toString()))
             } catch (e: IOException) {
-                emit(Resource.Error("Couldn't reach server. Check your internet connectivity"))
+                emit(Resource.Error("No Internet Connection"))
             }
         }
 }
