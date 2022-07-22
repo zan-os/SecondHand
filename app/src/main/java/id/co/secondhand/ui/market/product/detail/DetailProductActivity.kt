@@ -57,6 +57,7 @@ class DetailProductActivity : AppCompatActivity() {
         binding.apply {
             if (detail?.user != null) {
                 binding.apply {
+                    container.isVisible = true
                     sellerNameTv.text = detail.user.fullName
                     sellerCityTv.text = detail.user.city
                     productNameTv.text = detail.name
