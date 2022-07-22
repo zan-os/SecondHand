@@ -71,12 +71,21 @@ class DetailProductActivity : AppCompatActivity() {
                 binding.productNameTv.text = detail.name
                 binding.productPriceTv.text = detail.basePrice?.currencyFormatter()
                 binding.productDescTv.text = detail.description ?: "Tidak ada deskripsi"
+                binding.categoryTv.text = detail.categories?.map { it.name }.toString()
                 Glide.with(this@DetailProductActivity)
                     .load(detail.imageUrl)
                     .placeholder(R.drawable.ic_error_image)
                     .dontAnimate()
                     .dontTransform()
                     .into(binding.productImageIv)
+                binding.sellerNameTv.text = detail.user?.fullName
+                binding.cityTv.text = detail.user?.city
+                Glide.with(this@DetailProductActivity)
+                    .load(detail.user?.imageUrl)
+                    .placeholder(R.drawable.ic_error_image)
+                    .dontAnimate()
+                    .dontTransform()
+                    .into(binding.sellerImageIv)
             }
         }
     }

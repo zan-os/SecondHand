@@ -21,5 +21,5 @@ data class OrderDtoItem(
     @SerializedName("updatedAt")
     val updatedAt: String?,
     @SerializedName("User")
-    val user: User?
+    val userDto: UserDto?
 )

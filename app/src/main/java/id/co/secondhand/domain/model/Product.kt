@@ -2,6 +2,7 @@ package id.co.secondhand.domain.model
 
 import android.os.Parcelable
 import id.co.secondhand.data.remote.response.CategoryDto
+import id.co.secondhand.data.remote.response.UserDto
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
@@ -18,5 +19,6 @@ data class Product(
     val name: String?,
     val status: String?,
     val updatedAt: String?,
+    val user: @RawValue UserDto?,
     val userId: Int?
 ): Parcelable
