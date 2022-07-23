@@ -9,8 +9,10 @@ import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.paging.LoadState
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import id.co.secondhand.databinding.LoadStateLayoutBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream

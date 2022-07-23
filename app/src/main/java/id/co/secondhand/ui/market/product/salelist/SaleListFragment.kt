@@ -195,7 +195,7 @@ class SaleListFragment : Fragment() {
             binding.emptyListTv.visibility = View.GONE
             binding.noOrderIv.visibility = View.GONE
             binding.productRv.visibility = View.VISIBLE
-            gridAdapter.submitList(product)
+//            gridAdapter.submitList(product)
             binding.productRv.layoutManager =
                 GridLayoutManager(requireContext(), 2)
             binding.productRv.isNestedScrollingEnabled = false

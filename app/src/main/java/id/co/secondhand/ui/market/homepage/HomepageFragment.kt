@@ -2,17 +2,17 @@ package id.co.secondhand.ui.market.homepage
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentHomepageBinding
-import id.co.secondhand.domain.model.buyer.Product
+import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
@@ -23,8 +23,7 @@ class HomepageFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomepageViewModel by viewModels()
-
-    private val adapter: ProductGridAdapter by lazy { ProductGridAdapter(::onClicked) }
+    private lateinit var productAdapter: ProductGridAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +36,7 @@ class HomepageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeResult()
+        setupAdapter()
     }
 
     override fun onDestroyView() {
@@ -45,31 +45,56 @@ class HomepageFragment : Fragment() {
     }
 
     private fun observeResult() {
-        viewModel.getProducts().observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Resource.Loading -> {
-                    Log.d("Market", "Loading")
-                    showLoading(true)
-                }
-                is Resource.Success -> {
-                    showLoading(false)
-                    Log.d("Market", result.data.toString())
-                    showProduct(result.data ?: emptyList())
-                }
-                is Resource.Error -> {
-                    showLoading(false)
-                    Log.d("Market", "Error ${result.message.toString()}")
-                }
-            }
+//        viewModel.getProducts().observe(viewLifecycleOwner) { result ->
+//            when (result) {
+//                is Resource.Loading -> {
+//                    Log.d("Market", "Loading")
+//                    showLoading(true)
+//                }
+//                is Resource.Success -> {
+//                    showLoading(false)
+//                    Log.d("Market", result.data.toString())
+//                    showProduct(result.data ?: emptyList())
+//                }
+//                is Resource.Error -> {
+//                    showLoading(false)
+//                    Log.d("Market", "Error ${result.message.toString()}")
+//                }
+//            }
+//        }
+        viewModel.product.observe(viewLifecycleOwner) {
+            productAdapter.submitData(lifecycle, it)
         }
     }
 
-    private fun showProduct(product: List<Product>) {
-        adapter.submitList(product)
-        binding.productRv.layoutManager =
-            GridLayoutManager(requireContext(), 2)
-        binding.productRv.isNestedScrollingEnabled = false
-        binding.productRv.adapter = adapter
+    private fun setupAdapter() {
+        productAdapter = ProductGridAdapter(::onClicked)
+        binding.apply {
+            productRv.layoutManager = GridLayoutManager(requireContext(), 2)
+            productRv.isNestedScrollingEnabled = false
+            productRv.adapter = productAdapter.withLoadStateFooter(
+                footer = MarketLoadStateAdapter { productAdapter.retry() }
+            )
+        }
+        productAdapter.addLoadStateListener { loadState ->
+            binding.apply {
+                progressCircular.isVisible = loadState.source.refresh is LoadState.Loading
+                productRv.isVisible = loadState.source.refresh is LoadState.NotLoading
+                buttonRetry.isVisible = loadState.source.refresh is LoadState.Error
+                textViewError.isVisible = loadState.source.refresh is LoadState.Error
+
+                // empty view
+                if (loadState.source.refresh is LoadState.NotLoading &&
+                    loadState.append.endOfPaginationReached &&
+                    productAdapter.itemCount < 1
+                ) {
+                    productRv.isVisible = false
+                    textViewEmpty.isVisible = true
+                } else {
+                    textViewEmpty.isVisible = false
+                }
+            }
+        }
     }
 
     private fun showLoading(value: Boolean) {

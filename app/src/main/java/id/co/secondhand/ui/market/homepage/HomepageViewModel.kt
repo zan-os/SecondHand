@@ -1,7 +1,7 @@
 package id.co.secondhand.ui.market.homepage
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.co.secondhand.data.local.datastore.UserPreferences
 import id.co.secondhand.domain.usecase.market.buyer.getproducts.GetProductsUseCase
@@ -10,14 +10,24 @@ import javax.inject.Inject
 @HiltViewModel
 class HomepageViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
-    preferences: UserPreferences
+    preferences: UserPreferences,
+    state: SavedStateHandle
 ) : ViewModel() {
-
-    init {
-        getProducts()
-    }
 
     val token = preferences.getAccessToken().asLiveData()
 
-    fun getProducts() = getProductsUseCase()
+    private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
+
+    val product = currentQuery.switchMap { queryString ->
+        getProductsUseCase(queryString).cachedIn(viewModelScope)
+    }
+
+    fun getProducts(query: String) {
+        currentQuery.value = query
+    }
+
+    companion object {
+        private const val CURRENT_QUERY = "current_query"
+        private const val DEFAULT_QUERY = ""
+    }
 }
