@@ -2,15 +2,14 @@ package id.co.secondhand.ui.market.homepage
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentHomepageBinding
 import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
@@ -18,25 +17,19 @@ import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 
 @AndroidEntryPoint
-class HomepageFragment : Fragment() {
+class HomepageFragment : Fragment(R.layout.fragment_homepage) {
     private var _binding: FragmentHomepageBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: HomepageViewModel by viewModels()
     private lateinit var productAdapter: ProductGridAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHomepageBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeResult()
+        _binding = FragmentHomepageBinding.bind(view)
+
         setupAdapter()
+        observeResult()
     }
 
     override fun onDestroyView() {
@@ -45,23 +38,6 @@ class HomepageFragment : Fragment() {
     }
 
     private fun observeResult() {
-//        viewModel.getProducts().observe(viewLifecycleOwner) { result ->
-//            when (result) {
-//                is Resource.Loading -> {
-//                    Log.d("Market", "Loading")
-//                    showLoading(true)
-//                }
-//                is Resource.Success -> {
-//                    showLoading(false)
-//                    Log.d("Market", result.data.toString())
-//                    showProduct(result.data ?: emptyList())
-//                }
-//                is Resource.Error -> {
-//                    showLoading(false)
-//                    Log.d("Market", "Error ${result.message.toString()}")
-//                }
-//            }
-//        }
         viewModel.product.observe(viewLifecycleOwner) {
             productAdapter.submitData(lifecycle, it)
         }
@@ -83,7 +59,6 @@ class HomepageFragment : Fragment() {
                 buttonRetry.isVisible = loadState.source.refresh is LoadState.Error
                 textViewError.isVisible = loadState.source.refresh is LoadState.Error
 
-                // empty view
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
                     productAdapter.itemCount < 1
@@ -94,14 +69,6 @@ class HomepageFragment : Fragment() {
                     textViewEmpty.isVisible = false
                 }
             }
-        }
-    }
-
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility = View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
         }
     }
 

@@ -23,7 +23,7 @@ class ProductGridAdapter(private val onClick: (Int) -> Unit) :
                 product.categories.map { binding.productCategoryTv.text = it.name }
                 Glide.with(itemView)
                     .load(product.imageUrl)
-                    .placeholder(R.drawable.ic_error_image)
+                    .error(R.drawable.ic_error_image)
                     .dontAnimate()
                     .dontTransform()
                     .into(binding.productImageIv)

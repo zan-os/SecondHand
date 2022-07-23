@@ -7,6 +7,7 @@
     android:padding="8dp">
 
     <ProgressBar
+        android:indeterminateTint="@color/dark_blue_04"
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
