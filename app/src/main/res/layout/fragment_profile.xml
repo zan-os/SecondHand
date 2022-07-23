@@ -6,153 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".ui.market.profile.ProfileFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar"
+    <include
+        android:id="@+id/not_logged_in_layout"
+        layout="@layout/not_logged_in_layout"
+        android:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/container"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/TextAppearance.SecondHand.Heading.Bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/akun_saya" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/materialToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.appbar.MaterialToolbar>
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SecondHand.Heading.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/akun_saya" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profile_image_container"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/dark_blue_01"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_image_container"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/dark_blue_01"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/photo_profile_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_camera" />
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/photo_profile_iv"
+            android:id="@+id/edit_icon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_camera" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/full_name_tv" />
 
-    </androidx.cardview.widget.CardView>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/edit_profile_tv"
+            style="@style/TextAppearance.SecondHand.Body.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/ubah_akun"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_icon_iv"
+            app:layout_constraintTop_toTopOf="@+id/edit_icon_iv" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/edit_icon_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/full_name_tv" />
+        <View
+            android:id="@+id/divider"
+            style="@style/Divider"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_icon_iv" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/edit_profile_tv"
-        style="@style/TextAppearance.SecondHand.Body.Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/ubah_akun"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_icon_iv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edit_icon_iv"
-        app:layout_constraintTop_toTopOf="@+id/edit_icon_iv" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/settings_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <View
-        android:id="@+id/divider"
-        style="@style/Divider"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_icon_iv" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_tv"
+            style="@style/TextAppearance.SecondHand.Body.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/pengaturan"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/settings_icon_iv"
+            app:layout_constraintTop_toTopOf="@+id/settings_icon_iv" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/settings_icon_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ic_settings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        <View
+            android:id="@+id/divider2"
+            style="@style/Divider"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_icon_iv" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/settings_tv"
-        style="@style/TextAppearance.SecondHand.Body.Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/pengaturan"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_icon_iv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/settings_icon_iv"
-        app:layout_constraintTop_toTopOf="@+id/settings_icon_iv" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/log_out_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_log_out"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-    <View
-        android:id="@+id/divider2"
-        style="@style/Divider"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_icon_iv" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/log_out_tv"
+            style="@style/TextAppearance.SecondHand.Body.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/keluar"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/log_out_icon_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/log_out_icon_iv"
+            app:layout_constraintTop_toTopOf="@+id/log_out_icon_iv" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/log_out_icon_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ic_log_out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        <View
+            android:id="@+id/divider3"
+            style="@style/Divider"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/log_out_icon_iv" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/log_out_tv"
-        style="@style/TextAppearance.SecondHand.Body.Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/keluar"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/log_out_icon_iv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/log_out_icon_iv"
-        app:layout_constraintTop_toTopOf="@+id/log_out_icon_iv" />
-
-    <View
-        android:id="@+id/divider3"
-        style="@style/Divider"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/log_out_icon_iv" />
-
-    <TextView
-        android:id="@+id/full_name_tv"
-        style="@style/TextAppearance.SecondHand.Heading.Bold"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image_container"
-        tools:text="@string/nama" />
+        <TextView
+            android:id="@+id/full_name_tv"
+            style="@style/TextAppearance.SecondHand.Heading.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="64dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_container"
+            tools:text="@string/nama" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
