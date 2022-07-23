@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/sellerNotificationFragment"
-        android:name="id.co.secondhand.ui.market.notification.seller.SellerNotificationFragment"
+        android:name="id.co.secondhand.ui.market.notification.seller.NotificationFragment"
         android:label="fragment_seller_notification"
-        tools:layout="@layout/fragment_seller_notification">
+        tools:layout="@layout/fragment_notification">
         <action
             android:id="@+id/action_sellerNotificationFragment_to_productFragment"
             app:destination="@id/productFragment" />
