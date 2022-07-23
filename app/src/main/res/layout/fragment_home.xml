@@ -56,9 +56,11 @@
                     android:id="@+id/search_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/cari_di_second_hand"
-                    android:inputType="textEmailAddress"
-                    android:minHeight="48dp" />
+                    android:drawableEnd="@drawable/ic_search"
+                    android:hint="@string/cari_di_second_chance"
+                    android:inputType="text"
+                    android:letterSpacing="0"
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:textSize="20sp"
                 android:text="@string/_60"
                 android:textColor="@color/alert_danger"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,9 +141,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/product_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/semua"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -151,9 +155,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/hobby_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/hobi"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -163,9 +169,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/vehicle_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/kendaraan"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -175,9 +183,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/accessories_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/aksesoris"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -187,9 +197,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/electronic_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/elektronik"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -199,10 +211,12 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/health_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
+                        android:padding="12dp"
                         android:text="@string/kesehatan"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
@@ -223,13 +237,14 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:nestedScrollingEnabled="false"
-            android:orientation="horizontal"
-            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:spanCount="2"
             tools:listitem="@layout/product_item_grid" />
 
         <TextView
@@ -248,9 +263,11 @@
 
         <Button
             android:id="@+id/button_retry"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:padding="12dp"
             android:text="@string/retry"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"

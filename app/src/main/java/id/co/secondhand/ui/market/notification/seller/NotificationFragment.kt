@@ -51,7 +51,6 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
         }
     }
 
-
     private fun getNotification(accessToken: String) {
         viewModel.getNotification(accessToken).observe(viewLifecycleOwner) { result ->
             when (result) {
