@@ -3,9 +3,7 @@ package id.co.secondhand.ui.market.product.salelist
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,32 +26,19 @@ import id.co.secondhand.utils.Extension
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
-class SaleListFragment : Fragment() {
+class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
 
     private var _binding: FragmentSaleListBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: SaleListViewModel by viewModels()
-
     private val gridAdapter: ProductGridAdapter by lazy { ProductGridAdapter(::navigateToDetail) }
     private val listAdapter: OrderListAdapter by lazy { OrderListAdapter(::onClick) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSaleListBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentSaleListBinding.bind(view)
         getAccessToken()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun getAccessToken() {
@@ -280,5 +265,10 @@ class SaleListFragment : Fragment() {
             startActivity(direction)
             requireActivity()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

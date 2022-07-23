@@ -9,7 +9,7 @@ import id.co.secondhand.domain.usecase.notification.readnotification.ReadNotific
 import javax.inject.Inject
 
 @HiltViewModel
-class SellerNotificationViewModel @Inject constructor(
+class NotificationViewModel @Inject constructor(
     private val getNotificationUseCase: GetNotificationUseCase,
     private val readNotificationUseCase: ReadNotificationUseCase,
     preferences: UserPreferences
