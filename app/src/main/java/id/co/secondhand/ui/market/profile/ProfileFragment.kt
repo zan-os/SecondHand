@@ -3,13 +3,12 @@ package id.co.secondhand.ui.market.profile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.domain.model.auth.User
@@ -18,29 +17,33 @@ import id.co.secondhand.ui.market.profile.update.EditProfileActivity
 import id.co.secondhand.utils.Extension.EXTRA_USER
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProfileViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentProfileBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        _binding = FragmentProfileBinding.bind(view)
         getAccessToken()
         logout()
     }
 
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
+            credentialCheck(token)
+        }
+    }
+
+    private fun credentialCheck(token: String) {
+        if (token.isEmpty()) {
+            binding.notLoggedInLayout.root.visibility = View.VISIBLE
+            binding.container.visibility = View.GONE
+            navigateToLogin()
+        } else {
+            binding.notLoggedInLayout.root.visibility = View.GONE
+            binding.container.visibility = View.VISIBLE
             getUserData(token)
         }
     }
@@ -89,6 +92,14 @@ class ProfileFragment : Fragment() {
             val direction = Intent(requireContext(), EditProfileActivity::class.java)
             direction.putExtra(EXTRA_USER, user)
             startActivity(direction)
+        }
+    }
+
+    private fun navigateToLogin() {
+        binding.notLoggedInLayout.loginBtn.setOnClickListener {
+            val direction = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(direction)
+            requireActivity()
         }
     }
 

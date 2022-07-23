@@ -3,9 +3,7 @@ package id.co.secondhand.ui.market.product.add
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.net.toFile
@@ -28,7 +26,7 @@ import id.co.secondhand.utils.Extension.validateDescription
 import java.io.File
 
 @AndroidEntryPoint
-class AddProductFragment : Fragment() {
+class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
@@ -38,25 +36,13 @@ class AddProductFragment : Fragment() {
     private var getFile: File? = null
     private var categoryId: String = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentAddProductBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentAddProductBinding.bind(view)
+
         dropDownMenuInit()
         observeAccessToken()
         openGallery()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun credentialCheck(token: String) {
@@ -294,5 +280,10 @@ class AddProductFragment : Fragment() {
             startActivity(direction)
             requireActivity()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
