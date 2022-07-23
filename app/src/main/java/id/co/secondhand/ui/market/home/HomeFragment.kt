@@ -7,7 +7,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentHomeBinding
@@ -70,8 +69,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupAdapter() {
         productAdapter = ProductGridAdapter(::onClicked)
         binding.apply {
-            productRv.layoutManager = GridLayoutManager(requireContext(), 2)
-            productRv.isNestedScrollingEnabled = false
+            productRv.setHasFixedSize(true)
+            productRv.itemAnimator = null
             productRv.adapter = productAdapter.withLoadStateFooter(
                 footer = MarketLoadStateAdapter { productAdapter.retry() }
             )

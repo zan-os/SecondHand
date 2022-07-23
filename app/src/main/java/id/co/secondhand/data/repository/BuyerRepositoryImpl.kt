@@ -20,7 +20,9 @@ class BuyerRepositoryImpl @Inject constructor(
     override fun getProducts(query: String, categoryId: Int?): LiveData<PagingData<Product>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 2
+                pageSize = 2,
+                maxSize = 60,
+                enablePlaceholders = false
             ),
             pagingSourceFactory = {
                 MarketPagingSource(api, query, categoryId)
