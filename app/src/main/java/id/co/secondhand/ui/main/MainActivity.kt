@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun notificationStatus(notification: Notification) {
         if (!notification.read) {
-            binding.navView.getOrCreateBadge(R.id.sellerNotificationFragment).isVisible = true
+            binding.navView.getOrCreateBadge(R.id.notificationFragment).isVisible = true
         }
     }
 

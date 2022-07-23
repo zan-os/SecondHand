@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.homepage
+package id.co.secondhand.ui.market.home
 
 import androidx.lifecycle.*
 import androidx.paging.cachedIn
@@ -8,7 +8,7 @@ import id.co.secondhand.domain.usecase.market.buyer.getproducts.GetProductsUseCa
 import javax.inject.Inject
 
 @HiltViewModel
-class HomepageViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
     preferences: UserPreferences,
     state: SavedStateHandle
