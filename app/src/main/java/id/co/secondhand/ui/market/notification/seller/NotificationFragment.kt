@@ -1,9 +1,8 @@
 package id.co.secondhand.ui.market.notification.seller
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,41 +10,47 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
-import id.co.secondhand.databinding.FragmentSellerNotificationBinding
+import id.co.secondhand.databinding.FragmentNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
+import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
-class SellerNotificationFragment : Fragment() {
+class NotificationFragment : Fragment(R.layout.fragment_notification) {
 
-    private var _binding: FragmentSellerNotificationBinding? = null
+    private var _binding: FragmentNotificationBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SellerNotificationViewModel by viewModels()
 
-    private lateinit var accessToken: String
+    private lateinit var token: String
+    private val viewModel: NotificationViewModel by viewModels()
     private val listAdapter: NotificationListAdapter by lazy { NotificationListAdapter(::onClicked) }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSellerNotificationBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentNotificationBinding.bind(view)
         getAccessToken()
     }
 
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
-            accessToken = token
+            credentialCheck(token)
+        }
+    }
+
+    private fun credentialCheck(token: String) {
+        if (token.isEmpty()) {
+            binding.notLoggedInLayout.root.visibility = View.VISIBLE
+            binding.container.visibility = View.GONE
+            navigateToLogin()
+        } else {
+            binding.notLoggedInLayout.root.visibility = View.GONE
+            binding.container.visibility = View.VISIBLE
             getNotification(token)
         }
     }
+
 
     private fun getNotification(accessToken: String) {
         viewModel.getNotification(accessToken).observe(viewLifecycleOwner) { result ->
@@ -59,7 +64,6 @@ class SellerNotificationFragment : Fragment() {
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    result.message?.let { showErrorMessage(it) }
                 }
             }
         }
@@ -90,7 +94,7 @@ class SellerNotificationFragment : Fragment() {
     }
 
     private fun onClicked(notification: Notification) {
-        readNotification(accessToken, notification.id)
+        readNotification(token, notification.id)
         when (notification.status) {
             "create" -> {}
             "bid" -> {}
@@ -111,7 +115,15 @@ class SellerNotificationFragment : Fragment() {
         )
     }
 
-    override fun onDestroy() {
+    private fun navigateToLogin() {
+        binding.notLoggedInLayout.loginBtn.setOnClickListener {
+            val direction = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(direction)
+            requireActivity()
+        }
+    }
+
+    override fun onDestroyView() {
         super.onDestroy()
         _binding = null
     }
