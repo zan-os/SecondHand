@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.homepage
+package id.co.secondhand.ui.market.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,33 +10,28 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
-import id.co.secondhand.databinding.FragmentHomepageBinding
+import id.co.secondhand.databinding.FragmentHomeBinding
 import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 
 @AndroidEntryPoint
-class HomepageFragment : Fragment(R.layout.fragment_homepage) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private var _binding: FragmentHomepageBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomepageViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     private lateinit var productAdapter: ProductGridAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentHomepageBinding.bind(view)
+        _binding = FragmentHomeBinding.bind(view)
 
         setupAdapter()
         observeResult()
         categoryButton()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun observeResult() {

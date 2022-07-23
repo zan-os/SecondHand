@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         showLoading(false)
                         viewModel.saveAccessToken(result.data?.accessToken ?: "")
-                        navigateToHomepage()
+                        navigateToHome()
                     }
                     is Resource.Error -> {
                         showLoading(false)
@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToHomepage() {
+    private fun navigateToHome() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }

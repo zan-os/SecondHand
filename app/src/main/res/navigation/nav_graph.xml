@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homepageFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homepageFragment"
-        android:name="id.co.secondhand.ui.market.homepage.HomepageFragment"
-        android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage">
+        android:id="@+id/homeFragment"
+        android:name="id.co.secondhand.ui.market.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homepageFragment_to_sellerNotificationFragment"
-            app:destination="@id/sellerNotificationFragment" />
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/sellerNotificationFragment"
+        android:id="@+id/notificationFragment"
         android:name="id.co.secondhand.ui.market.notification.seller.NotificationFragment"
         android:label="fragment_seller_notification"
         tools:layout="@layout/fragment_notification">
         <action
-            android:id="@+id/action_sellerNotificationFragment_to_productFragment"
+            android:id="@+id/action_notificationFragment_to_productFragment"
             app:destination="@id/productFragment" />
     </fragment>
     <fragment
