@@ -18,6 +18,7 @@ import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion
 
 @AndroidEntryPoint
 class HomepageFragment : Fragment(R.layout.fragment_homepage) {
+
     private var _binding: FragmentHomepageBinding? = null
     private val binding get() = _binding!!
 
