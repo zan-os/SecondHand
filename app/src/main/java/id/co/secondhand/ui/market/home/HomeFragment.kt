@@ -69,7 +69,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupAdapter() {
         productAdapter = ProductGridAdapter(::onClicked)
         binding.apply {
-            productRv.setHasFixedSize(true)
             productRv.itemAnimator = null
             productRv.adapter = productAdapter.withLoadStateFooter(
                 footer = MarketLoadStateAdapter { productAdapter.retry() }
