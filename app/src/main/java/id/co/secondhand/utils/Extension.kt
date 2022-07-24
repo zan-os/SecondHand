@@ -13,7 +13,9 @@ import java.util.*
 
 object Extension {
 
+    const val TAG = "tag"
     const val EXTRA_USER = "extra_user"
+    const val EXTRA_NOTIFICATION = "extra_notification"
 
     fun String.showSnackbar(view: View, context: Context, textColor: Int, backgroundColor: Int) {
         Snackbar.make(view, this, Snackbar.LENGTH_LONG)
@@ -40,10 +42,18 @@ object Extension {
         return !TextUtils.isEmpty(this) && this.length >= 6
     }
 
+    fun String.dateTimeFormatter(): String {
+        val sdfIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+        val date = sdfIn.parse(this)
+        val sdfOut = SimpleDateFormat("dd MMM, HH:mm")
+        return sdfOut.format(date as Date)
+    }
+
     fun Int.currencyFormatter(): String {
         val localeId = Locale("in", "ID")
         val rupiahFormat = NumberFormat.getCurrencyInstance(localeId)
-        return rupiahFormat.format(this)
+        val result = rupiahFormat.format(this)
+        return result.replace("Rp", "Rp ").replace(",00", "")
     }
 
     fun View.dismissKeyboard() {

@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.product
+package id.co.secondhand.ui.market.product.salelist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -23,5 +23,5 @@ class SaleListViewModel @Inject constructor(
 
     fun getSaleProduct(accessToken: String) = getSaleListUseCase(accessToken)
 
-    fun getOrder(accessToken: String) = getOrderUseCase(accessToken)
+    fun getOrder(accessToken: String, status: String) = getOrderUseCase(accessToken, status)
 }

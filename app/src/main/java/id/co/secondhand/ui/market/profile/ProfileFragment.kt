@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
                     Log.d("Market", result.data.toString())
                     result.data?.let {
                         showUserData(it)
-                        updateProfile(it)
+                        navigateToEditProfile(it)
                     }
                 }
                 is Resource.Error -> {
@@ -67,11 +67,13 @@ class ProfileFragment : Fragment() {
 
     private fun showUserData(user: User) {
         binding.apply {
-            Glide.with(requireContext())
-                .load(user.imageUrl)
-                .override(300)
-                .centerCrop()
-                .into(photoProfileIv)
+            if (user.imageUrl != null) {
+                Glide.with(requireContext())
+                    .load(user.imageUrl)
+                    .override(300)
+                    .centerCrop()
+                    .into(photoProfileIv)
+            }
             fullNameTv.text = user.fullName
 
             editProfileTv.setOnClickListener {
@@ -82,7 +84,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun updateProfile(user: User) {
+    private fun navigateToEditProfile(user: User) {
         binding.editProfileTv.setOnClickListener {
             val direction = Intent(requireContext(), EditProfileActivity::class.java)
             direction.putExtra(EXTRA_USER, user)

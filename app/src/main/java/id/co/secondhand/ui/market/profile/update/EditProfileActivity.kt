@@ -25,7 +25,6 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditProfileBinding
     private val viewModel: EditProfileViewModel by viewModels()
     private var getFile: File? = null
-    private lateinit var data: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +38,12 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun getAccessToken() {
         viewModel.token.observe(this) { token ->
-            saveUserData(token, data)
+            saveUserData(token)
         }
     }
 
     fun getUserData() {
-        data = intent.getParcelableExtra<User>(EXTRA_USER) as User
+        val data = intent.getParcelableExtra<User>(EXTRA_USER) as User
         showUserData(data)
     }
 
@@ -62,7 +61,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserData(accessToken: String, user: User) {
+    private fun saveUserData(accessToken: String) {
         validateEdit()
         binding.apply {
             saveBtn.setOnClickListener {
@@ -164,8 +163,6 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun arrowBack() {
-        binding.materialToolbar.setNavigationOnClickListener {
-            finish()
-        }
+        binding.materialToolbar.setNavigationOnClickListener { finish() }
     }
 }

@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import id.co.secondhand.BuildConfig
 import id.co.secondhand.BuildConfig.BASE_API_URL
 import id.co.secondhand.data.remote.MarketApi
 import okhttp3.OkHttpClient
@@ -19,10 +20,12 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideMarketApi(): MarketApi {
-        val loggingInterceptor = HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            if (BuildConfig.DEBUG) setLevel(HttpLoggingInterceptor.Level.BODY)
+            else setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
 
-        val client: OkHttpClient = OkHttpClient.Builder()
+        val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
 

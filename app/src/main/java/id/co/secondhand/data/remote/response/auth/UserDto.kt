@@ -19,5 +19,5 @@ data class UserDto(
     val updatedAt: String
 )
 
-fun UserDto.toDomain(): User =
+fun UserDto.toDomain() =
     User(fullName, phoneNumber, address, imageUrl, city)

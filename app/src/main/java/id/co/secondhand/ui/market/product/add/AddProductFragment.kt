@@ -18,6 +18,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentAddProductBinding
 import id.co.secondhand.domain.model.seller.Preview
+import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.product.preview.PreviewProductActivity
 import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Companion.EXTRA_PREVIEW
 import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Companion.EXTRA_TOKEN
@@ -58,6 +59,19 @@ class AddProductFragment : Fragment() {
         _binding = null
     }
 
+    private fun credentialCheck(token: String) {
+        if (token.isEmpty()) {
+            binding.notLoggedInLayout.root.visibility = View.VISIBLE
+            binding.saleListLayout.visibility = View.GONE
+            navigateToLogin()
+        } else {
+            binding.notLoggedInLayout.root.visibility = View.GONE
+            binding.saleListLayout.visibility = View.VISIBLE
+            addProduct(token)
+            previewProduct(token)
+        }
+    }
+
     private fun dropDownMenuInit() {
         val categories = ArrayList<CategoryList>()
         categories.add(CategoryList("Aksesoris", "15"))
@@ -68,7 +82,7 @@ class AddProductFragment : Fragment() {
 
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, categories)
         binding.autoCompleteTv.setAdapter(arrayAdapter)
-        binding.autoCompleteTv.setOnItemClickListener { adapterView: AdapterView<*>?, view: View?, pos: Int, l: Long ->
+        binding.autoCompleteTv.setOnItemClickListener { adapterView: AdapterView<*>?, _: View?, pos: Int, _: Long ->
             run {
                 val string: CategoryList = adapterView?.getItemAtPosition(pos) as CategoryList
                 categoryId = string.tag as String
@@ -97,8 +111,7 @@ class AddProductFragment : Fragment() {
 
     private fun observeAccessToken() {
         viewModel.accessToken.observe(viewLifecycleOwner) { token ->
-            addProduct(token)
-            previewProduct(token)
+            credentialCheck(token)
         }
     }
 
@@ -253,6 +266,14 @@ class AddProductFragment : Fragment() {
                     R.color.alert_danger
                 )
             }
+        }
+    }
+
+    private fun navigateToLogin() {
+        binding.notLoggedInLayout.loginBtn.setOnClickListener {
+            val direction = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(direction)
+            requireActivity()
         }
     }
 }

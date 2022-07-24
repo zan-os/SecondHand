@@ -82,6 +82,36 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="ditawar">Ditawar</string>
     <string name="rp_25_999">Rp. 25.999</string>
+    <string name="login">Login</string>
+    <string name="silahkan_login">Silahkan login untuk mengakses fitur ini</string>
+    <string name="anda_belum_login">Anda belum login</string>
+    <string name="anda_tidak_memiliki_barang_dagangan">Anda tidak memiliki barang dagangan</string>
+    <string name="silahkan_upload_barang">Silahkan upload barang yang ingin dijual</string>
+    <string name="anda_belum_memiliki_pesanan">Anda belum memiliki pesanan</string>
+    <string name="belum_ada_barang_yang_ditawar">Belum ada barang yang ditawar</string>
+    <string name="selamat_anda_mendapatkan_harga_yang_sesuai">Selamat, anda mendapatkan harga yang sesuai</string>
+    <string name="segera_hubungi_pembeli_melalui_whatsapp_untuk_transaksi_selanjutnya">Segera hubungi pembeli melalui whatsapp untuk transaksi selanjutnya</string>
+    <string name="product_match">Product Match</string>
+    <string name="hubungi_via_whatsapp">Hubungi Via WhatsApp</string>
+    <string name="nama_pembeli">Nama pembeli</string>
+    <string name="kota_product_match">Kota</string>
+    <string name="ditawar_product_match">Ditawar</string>
+    <string name="rp_200_000">Rp.200.000</string>
+    <string name="info_penawar">Info Penawar</string>
+    <string name="daftar_produkmu_yang_ditawar">Daftar Produkmu yang Ditawar</string>
+    <string name="tolak">Tolak</string>
+    <string name="terima">Terima</string>
+    <string name="ditawar_rp_25_000">Ditawar Rp.25.000</string>
+    <string name="data_ditawar">Ditawar %s</string>
+    <string name="data_berhasil_ditawar">Berhasil Ditawar %s</string>
+    <string name="kamu_akan_segera_dihubungi_penjual_via_whatsapp">Kamu akan segera dihubungi penjual via whatsapp</string>
+    <string name="success_register">Berhasil mendaftar! Silahkan login</string>
+    <string name="bargain_success">Berhasil menawar! Silahkan tunggu respon penjual</string>
+    <string name="error_email_password">Email atau Password salah</string>
+    <string name="error_email_already_exist">Email sudah ada</string>
+    <string name="error_no_internet">Tidak ada koneksi internet</string>
+    <string name="error_internal_server">Internal Server Error</string>
+    <string name="no_order">Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>

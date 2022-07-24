@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.co.secondhand.R
-import id.co.secondhand.data.remote.response.seller.OrderDtoItem
+import id.co.secondhand.data.remote.response.OrderDtoItem
 import id.co.secondhand.databinding.ProductItemListBinding
 import id.co.secondhand.utils.Extension.currencyFormatter
+import id.co.secondhand.utils.Extension.dateTimeFormatter
 
 class OrderListAdapter(private val onClick: (Int) -> Unit) :
     ListAdapter<OrderDtoItem, OrderListAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -20,7 +21,11 @@ class OrderListAdapter(private val onClick: (Int) -> Unit) :
             binding.apply {
                 productNameTv.text = order.product?.name
                 productPriceTv.text = order.product?.basePrice?.currencyFormatter()
-                bargainPriceTv.text = order.price?.currencyFormatter()
+                bargainPriceTv.text = itemView.resources.getString(
+                    R.string.data_ditawar,
+                    order.price?.currencyFormatter()
+                )
+                dateTimeTv.text = order.createdAt?.dateTimeFormatter()
                 Glide.with(itemView)
                     .load(order.product?.imageUrl)
                     .placeholder(R.drawable.ic_error_image)

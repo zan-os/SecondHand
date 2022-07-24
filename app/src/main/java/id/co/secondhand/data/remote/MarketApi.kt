@@ -1,12 +1,17 @@
 package id.co.secondhand.data.remote
 
 import id.co.secondhand.data.remote.request.auth.LoginRequest
+import id.co.secondhand.data.remote.request.auth.RegisterRequest
+import id.co.secondhand.data.remote.request.product.BargainRequest
 import id.co.secondhand.data.remote.response.ProductDto
 import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.UserDto
+import id.co.secondhand.data.remote.response.notification.NotificationDto
+import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
 import id.co.secondhand.data.remote.response.seller.AddProductDto
-import id.co.secondhand.data.remote.response.seller.OrderDto
+import id.co.secondhand.data.remote.response.OrderDto
+import id.co.secondhand.data.remote.response.OrderDtoItem
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -15,19 +20,12 @@ interface MarketApi {
 
     @POST("auth/login")
     suspend fun authLogin(
-        @Body user: LoginRequest
+        @Body loginRequest: LoginRequest
     ): LoginDto
 
-    @Multipart
     @POST("auth/register")
     suspend fun authRegister(
-        @Part imageUrl: MultipartBody.Part,
-        @Part("full_name") fullName: RequestBody,
-        @Part("email") email: RequestBody,
-        @Part("password") password: RequestBody,
-        @Part("phone_number") phoneNumber: RequestBody,
-        @Part("address") address: RequestBody,
-        @Part("city") city: RequestBody
+        @Body registerRequest: RegisterRequest
     ): UserDto
 
     @GET("auth/user")
@@ -73,6 +71,30 @@ interface MarketApi {
 
     @GET("seller/order")
     suspend fun getOrder(
-        @Header("access_token") accessToken: String
+        @Header("access_token") accessToken: String,
+        @Query("status") status: String
     ): OrderDto
+
+    @GET("seller/order/{id}")
+    suspend fun getOrderId(
+        @Header("access_token") accessToken: String,
+        @Path("id") OrderId: Int
+    ): ProductItemDto
+
+    @GET("notification")
+    suspend fun getNotification(
+        @Header("access_token") accessToken: String
+    ): NotificationDto
+
+    @PATCH("notification/{id}")
+    suspend fun readNotification(
+        @Header("access_token") accessToken: String,
+        @Path("id") id: Int
+    ): NotificationDtoItem
+
+    @POST("buyer/order")
+    suspend fun bargainProduct(
+        @Header("access_token") accessToken: String,
+        @Body bargainRequest: BargainRequest
+    ) : OrderDtoItem
 }

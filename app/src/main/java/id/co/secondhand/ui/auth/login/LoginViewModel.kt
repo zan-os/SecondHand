@@ -15,7 +15,7 @@ class LoginViewModel @Inject constructor(
     private val preferences: UserPreferences
 ) : ViewModel() {
 
-    fun login(user: LoginRequest) = useCase(user)
+    fun login(loginRequest: LoginRequest) = useCase(loginRequest)
 
     fun saveAccessToken(token: String) {
         viewModelScope.launch {
