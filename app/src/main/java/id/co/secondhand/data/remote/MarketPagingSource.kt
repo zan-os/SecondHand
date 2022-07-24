@@ -10,7 +10,8 @@ import javax.inject.Inject
 
 class MarketPagingSource @Inject constructor(
     private val api: MarketApi,
-    private val query: String
+    private val query: String,
+    private val categoryId: Int?
 ) : PagingSource<Int, Product>() {
 
     override fun getRefreshKey(state: PagingState<Int, Product>): Int? {
@@ -24,7 +25,7 @@ class MarketPagingSource @Inject constructor(
         val position = params.key ?: INITIAL_PAGE_INDEX
 
         return try {
-            val response = api.getProducts(query, position, params.loadSize)
+            val response = api.getProducts(query, position, params.loadSize, categoryId)
             val photos = response.map { it.toDomain() }
 
             LoadResult.Page(
