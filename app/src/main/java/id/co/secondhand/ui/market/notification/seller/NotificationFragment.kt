@@ -14,7 +14,6 @@ import id.co.secondhand.databinding.FragmentNotificationBinding
 import id.co.secondhand.domain.model.notification.Notification
 import id.co.secondhand.ui.adapter.NotificationListAdapter
 import id.co.secondhand.ui.auth.login.LoginActivity
-import id.co.secondhand.ui.main.MainActivity
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
@@ -23,7 +22,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
     private var _binding: FragmentNotificationBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var token: String
+    private lateinit var accessToken: String
     private val viewModel: NotificationViewModel by viewModels()
     private val listAdapter: NotificationListAdapter by lazy { NotificationListAdapter(::onClicked) }
 
@@ -35,6 +34,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
 
     private fun getAccessToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
+            accessToken = token
             credentialCheck(token)
         }
     }
@@ -74,7 +74,6 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     getNotification(accessToken)
-                    MainActivity().getAccessToken()
                 }
                 is Resource.Error -> {
                     result.message?.let { showErrorMessage(it) }
@@ -93,7 +92,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
     }
 
     private fun onClicked(notification: Notification) {
-        readNotification(token, notification.id)
+        readNotification(accessToken, notification.id)
         when (notification.status) {
             "create" -> {}
             "bid" -> {}
