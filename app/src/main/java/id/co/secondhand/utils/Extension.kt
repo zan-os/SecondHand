@@ -49,9 +49,9 @@ object Extension {
     }
 
     fun String.dateTimeFormatter(): String {
-        val sdfIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+        val sdfIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.US)
         val date = sdfIn.parse(this)
-        val sdfOut = SimpleDateFormat("dd MMM, HH:mm")
+        val sdfOut = SimpleDateFormat("dd MMM, HH:mm", Locale.US)
         return sdfOut.format(date as Date)
     }
 
