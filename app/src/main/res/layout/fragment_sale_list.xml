@@ -107,13 +107,14 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/edit_profile_btn"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Button.Outline"
+                        android:layout_width="56dp"
+                        android:layout_height="46dp"
                         android:layout_marginEnd="16dp"
                         android:text="@string/edit"
                         android:textAllCaps="false"
                         android:textColor="@color/neutral_04"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/city_tv"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/seller_name_tv"
@@ -140,9 +141,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/product_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/produk"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_box"
@@ -152,9 +155,11 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/interested_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:padding="12dp"
                         android:text="@string/diminati"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_heart"
@@ -164,10 +169,12 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/sold_btn"
+                        style="@style/Button"
                         android:layout_width="wrap_content"
-                        android:layout_height="52dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
+                        android:padding="12dp"
                         android:text="@string/terjual"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_dollar_sign"
