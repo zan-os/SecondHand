@@ -27,6 +27,8 @@ data class ProductItemDto(
     val status: String?,
     @SerializedName("updatedAt")
     val updatedAt: String?,
+    @SerializedName("User")
+    val user: UserDto?,
     @SerializedName("user_id")
     val userId: Int?
 )
@@ -45,5 +47,6 @@ fun ProductItemDto.toDomain(): Product =
         name,
         status,
         updatedAt,
+        user,
         userId
     )

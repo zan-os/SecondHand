@@ -1,14 +1,17 @@
 package id.co.secondhand.domain.repository
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import id.co.secondhand.data.remote.request.product.BargainRequest
 import id.co.secondhand.data.remote.response.OrderDtoItem
-import id.co.secondhand.data.remote.response.ProductItemDto
+import id.co.secondhand.data.remote.response.buyer.ProductDto
+import id.co.secondhand.domain.model.buyer.Product
 
 interface BuyerRepository {
 
-    suspend fun getProducts(): List<ProductItemDto>
+    fun getProducts(query: String): LiveData<PagingData<Product>>
 
-    suspend fun getProductDetail(productId: Int): ProductItemDto
+    suspend fun getProductDetail(productId: Int): ProductDto
 
     suspend fun bargainProduct(accessToken: String, bargainRequest: BargainRequest): OrderDtoItem
 }

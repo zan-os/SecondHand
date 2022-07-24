@@ -7,20 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
 import id.co.secondhand.R
 import id.co.secondhand.data.remote.request.product.BargainRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentNegotiateBinding
-import id.co.secondhand.domain.model.Product
+import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.showSnackbar
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NegotiateFragment : BottomSheetDialogFragment() {
@@ -68,14 +64,19 @@ class NegotiateFragment : BottomSheetDialogFragment() {
 
     private fun getAccessToken(productId: Int) {
         viewModel.accessToken.observe(viewLifecycleOwner) { token ->
-            bidProduct(token, productId)
+            if (token.isEmpty()) {
+                binding.sendNegotiateBtn.text = getString(R.string.silahkan_login)
+            } else {
+                binding.sendNegotiateBtn.isEnabled = true
+                bidProduct(token, productId)
+            }
         }
     }
 
     private fun showProduct(product: Product?) {
         if (product != null) {
             binding.tvProductName.text = product.name
-            binding.tvProductPrice.text = product.basePrice?.currencyFormatter()
+            binding.tvProductPrice.text = product.basePrice.currencyFormatter()
             Glide.with(this)
                 .load(product.imageUrl)
                 .placeholder(R.drawable.ic_error_image)
@@ -134,6 +135,22 @@ class NegotiateFragment : BottomSheetDialogFragment() {
 
     private fun showErrorMessage(message: String) {
         when (message) {
+            "400" -> {
+                getString(R.string.error_has_order_product).showSnackbar(
+                    view = binding.root,
+                    context = requireContext(),
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
+            "403" -> {
+                getString(R.string.error_not_login).showSnackbar(
+                    view = binding.root,
+                    context = requireContext(),
+                    textColor = R.color.white,
+                    backgroundColor = R.color.alert_danger
+                )
+            }
             "500" -> {
                 getString(R.string.error_internal_server).showSnackbar(
                     view = binding.root,
