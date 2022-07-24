@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -43,7 +44,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             navigateToLogin()
         } else {
             binding.notLoggedInLayout.root.visibility = View.GONE
-            binding.container.visibility = View.VISIBLE
             getUserData(token)
         }
     }
@@ -52,17 +52,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.getUserData(accessToken).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("Market", "Loading")
+                    showLoading(true)
                 }
                 is Resource.Success -> {
-                    Log.d("Market", result.data.toString())
+                    showLoading(false)
                     result.data?.let {
                         showUserData(it)
                         navigateToEditProfile(it)
                     }
                 }
                 is Resource.Error -> {
-                    Log.d("Market", "Error ${result.message.toString()}")
+                    showLoading(false)
                 }
             }
         }
@@ -70,6 +70,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun showUserData(user: User) {
         binding.apply {
+            container.visibility = View.VISIBLE
             if (user.imageUrl != null) {
                 Glide.with(requireContext())
                     .load(user.imageUrl)
@@ -85,6 +86,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 startActivity(editProfileIntent)
             }
         }
+    }
+
+    private fun showLoading(visible: Boolean) {
+        binding.progressCircular.isVisible = visible
     }
 
     private fun navigateToEditProfile(user: User) {

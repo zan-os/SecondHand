@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,7 +23,7 @@ import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
-import id.co.secondhand.utils.Extension
+import id.co.secondhand.utils.Extension.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint
@@ -54,7 +55,6 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
             navigateToLogin()
         } else {
             binding.notLoggedInLayout.root.visibility = View.GONE
-            binding.saleListLayout.visibility = View.VISIBLE
             getSaleProduct(token)
             getOrder(token)
             getOrderHistory(token)
@@ -161,6 +161,7 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
 
     private fun showUserData(user: User) {
         binding.apply {
+            saleListLayout.visibility = View.VISIBLE
             sellerNameTv.text = user.fullName
             cityTv.text = user.city
             Glide.with(requireContext())
@@ -204,12 +205,8 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
         }
     }
 
-    private fun showLoading(value: Boolean) {
-        if (value) {
-            binding.progressCircular.visibility = View.VISIBLE
-        } else {
-            binding.progressCircular.visibility = View.GONE
-        }
+    private fun showLoading(visible: Boolean) {
+            binding.progressCircular.isVisible = visible
     }
 
     private fun onClick(productId: Int) {
@@ -225,7 +222,7 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
     private fun navigateToEditProfile(user: User) {
         binding.editProfileBtn.setOnClickListener {
             val direction = Intent(requireContext(), EditProfileActivity::class.java)
-            direction.putExtra(Extension.EXTRA_USER, user)
+            direction.putExtra(EXTRA_USER, user)
             startActivity(direction)
         }
     }
