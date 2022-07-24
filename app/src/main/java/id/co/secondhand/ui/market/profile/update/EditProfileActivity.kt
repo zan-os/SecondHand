@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toFile
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import gun0912.tedimagepicker.builder.TedImagePicker
@@ -16,7 +17,6 @@ import id.co.secondhand.databinding.ActivityEditProfileBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.utils.Extension.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
-import id.co.secondhand.utils.Extension.uriToFile
 import java.io.File
 
 @AndroidEntryPoint
@@ -115,7 +115,7 @@ class EditProfileActivity : AppCompatActivity() {
         binding.profileImageContainer.setOnClickListener {
             TedImagePicker.with(this)
                 .start { uri ->
-                    val file = uriToFile(uri, this@EditProfileActivity)
+                    val file = uri.toFile()
                     getFile = file
                     Glide.with(this)
                         .load(uri)
