@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -23,7 +24,6 @@ import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Compani
 import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Companion.EXTRA_TOKEN
 import id.co.secondhand.utils.CategoryList
 import id.co.secondhand.utils.Extension.showSnackbar
-import id.co.secondhand.utils.Extension.uriToFile
 import id.co.secondhand.utils.Extension.validateDescription
 import java.io.File
 
@@ -74,11 +74,30 @@ class AddProductFragment : Fragment() {
 
     private fun dropDownMenuInit() {
         val categories = ArrayList<CategoryList>()
-        categories.add(CategoryList("Aksesoris", "15"))
-        categories.add(CategoryList("Hobi", "30"))
-        categories.add(CategoryList("Kendaraan", "31"))
-        categories.add(CategoryList("Elektronik", "75"))
-        categories.add(CategoryList("Kesehatan", "33"))
+        categories.add(CategoryList("Elektronik", "1"))
+        categories.add(CategoryList("Komputer dan Aksesoris", "2"))
+        categories.add(CategoryList("Komputer dan Aksesoris", "3"))
+        categories.add(CategoryList("Pakaian Pria", "4"))
+        categories.add(CategoryList("sepatu Pria", "5"))
+        categories.add(CategoryList("Tas Pria", "6"))
+        categories.add(CategoryList("Aksesoris Fashion", "7"))
+        categories.add(CategoryList("kesehatan", "8"))
+        categories.add(CategoryList("Hobi dan Koleksi", "9"))
+        categories.add(CategoryList("Makanan dan Minuman", "10"))
+        categories.add(CategoryList("Perawatan dan Kecantikan", "11"))
+        categories.add(CategoryList("Perlengkapan Rumah", "12"))
+        categories.add(CategoryList("Pakaian Wanita", "13"))
+        categories.add(CategoryList("Fashion Muslim", "14"))
+        categories.add(CategoryList("Fashion Bayi dan Anak", "15"))
+        categories.add(CategoryList("Ibu dan Bayi", "16"))
+        categories.add(CategoryList("Sepatu Wanita", "17"))
+        categories.add(CategoryList("Tas Wanita", "18"))
+        categories.add(CategoryList("Otomotif", "19"))
+        categories.add(CategoryList("Olahraga dan Outdoor", "20"))
+        categories.add(CategoryList("Buku dan Alat Tulis", "21"))
+        categories.add(CategoryList("Voucher", "22"))
+        categories.add(CategoryList("Souvenir dan Pesta", "23"))
+        categories.add(CategoryList("Fotografi", "24"))
 
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, categories)
         binding.autoCompleteTv.setAdapter(arrayAdapter)
@@ -95,7 +114,7 @@ class AddProductFragment : Fragment() {
         binding.productImageContainer.setOnClickListener {
             TedImagePicker.with(requireContext())
                 .start { uri ->
-                    val file = uriToFile(uri, requireContext())
+                    val file = uri.toFile()
 
                     getFile = file
 
