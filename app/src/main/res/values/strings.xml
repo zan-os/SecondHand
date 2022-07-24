@@ -14,6 +14,7 @@
     <string name="akun">Akun</string>
     <string name="jual">Jual</string>
     <string name="notifikasi">Notifikasi</string>
+    <string name="homepage">Homepage</string>
     <string name="ubah_akun">Ubah Akun</string>
     <string name="akun_saya">Akun Saya</string>
     <string name="pengaturan">Pengaturan</string>
@@ -119,6 +120,7 @@
     <string name="home">Home</string>
     <string name="handphone">Handphone</string>
     <string name="cari_di_second_chance">Cari di Second Chance</string>
+    <string name="handphone">Handphone</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>
