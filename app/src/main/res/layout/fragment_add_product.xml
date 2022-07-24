@@ -82,7 +82,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/nama_produk"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +117,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/harga_produk"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +153,8 @@
                     android:layout_height="wrap_content"
                     android:focusable="false"
                     android:hint="@string/pilih_kategori"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -185,7 +188,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/lokasi"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -262,7 +266,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/preview_product_btn"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Button.Outline"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -287,6 +291,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
+                android:letterSpacing="0"
                 android:text="@string/terbitkan"
                 android:textAllCaps="false"
                 app:cornerRadius="16sp"
