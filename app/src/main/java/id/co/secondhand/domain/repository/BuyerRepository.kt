@@ -9,7 +9,7 @@ import id.co.secondhand.domain.model.buyer.Product
 
 interface BuyerRepository {
 
-    fun getProducts(query: String): LiveData<PagingData<Product>>
+    fun getProducts(query: String, categoryId: Int?): LiveData<PagingData<Product>>
 
     suspend fun getProductDetail(productId: Int): ProductDto
 

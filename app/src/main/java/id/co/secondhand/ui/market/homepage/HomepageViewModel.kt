@@ -19,7 +19,11 @@ class HomepageViewModel @Inject constructor(
     private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
 
     val product = currentQuery.switchMap { queryString ->
-        getProductsUseCase(queryString).cachedIn(viewModelScope)
+        getProductsUseCase(queryString, null).cachedIn(viewModelScope)
+    }
+
+    fun searchByCategory(categoryId: Int?) = currentQuery.switchMap { queryString ->
+        getProductsUseCase(queryString, categoryId)
     }
 
     fun getProducts(query: String) {

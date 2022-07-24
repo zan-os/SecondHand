@@ -47,7 +47,8 @@ interface MarketApi {
     suspend fun getProducts(
         @Query("search") search: String,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int
+        @Query("per_page") perPage: Int,
+        @Query("category_id") categoryId: Int?
     ): List<id.co.secondhand.data.remote.response.buyer.ProductDto>
 
     @GET("buyer/product/{id}")

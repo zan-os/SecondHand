@@ -30,6 +30,7 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
 
         setupAdapter()
         observeResult()
+        categoryButton()
     }
 
     override fun onDestroyView() {
@@ -40,6 +41,33 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage) {
     private fun observeResult() {
         viewModel.product.observe(viewLifecycleOwner) {
             productAdapter.submitData(lifecycle, it)
+        }
+    }
+
+    private fun searchByCategory(categoryId: Int?) {
+        viewModel.searchByCategory(categoryId).observe(viewLifecycleOwner) {
+            productAdapter.submitData(lifecycle, it)
+        }
+    }
+
+    private fun categoryButton() {
+        binding.allProductBtn.setOnClickListener {
+            searchByCategory(null)
+        }
+        binding.accessoriesBtn.setOnClickListener {
+            searchByCategory(7)
+        }
+        binding.electronicBtn.setOnClickListener {
+            searchByCategory(1)
+        }
+        binding.hobbyBtn.setOnClickListener {
+            searchByCategory(9)
+        }
+        binding.handphoneBtn.setOnClickListener {
+            searchByCategory(3)
+        }
+        binding.healthBtn.setOnClickListener {
+            searchByCategory(8)
         }
     }
 

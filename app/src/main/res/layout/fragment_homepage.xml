@@ -138,7 +138,7 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/product_btn"
+                        android:id="@+id/all_product_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="52dp"
                         android:layout_marginStart="16dp"
@@ -158,15 +158,15 @@
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/product_btn"
+                        app:layout_constraintStart_toEndOf="@+id/all_product_btn"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/vehicle_btn"
+                        android:id="@+id/handphone_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="52dp"
                         android:layout_marginStart="16dp"
-                        android:text="@string/kendaraan"
+                        android:text="@string/handphone"
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +182,7 @@
                         android:textAllCaps="false"
                         app:icon="@drawable/ic_search"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/vehicle_btn"
+                        app:layout_constraintStart_toEndOf="@id/handphone_btn"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton

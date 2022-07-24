@@ -17,13 +17,13 @@ import javax.inject.Inject
 class BuyerRepositoryImpl @Inject constructor(
     private val api: MarketApi
 ) : BuyerRepository {
-    override fun getProducts(query: String): LiveData<PagingData<Product>> {
+    override fun getProducts(query: String, categoryId: Int?): LiveData<PagingData<Product>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 2
             ),
             pagingSourceFactory = {
-                MarketPagingSource(api, query)
+                MarketPagingSource(api, query, categoryId)
             }
         ).liveData
     }
