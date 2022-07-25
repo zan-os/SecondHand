@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import id.co.secondhand.databinding.ActivityBidderInfoBinding
 import id.co.secondhand.domain.model.notification.Notification
-import id.co.secondhand.utils.Extension.EXTRA_NOTIFICATION
+import id.co.secondhand.utils.Constants.EXTRA_NOTIFICATION
 
 class BidderInfoActivity : AppCompatActivity() {
 

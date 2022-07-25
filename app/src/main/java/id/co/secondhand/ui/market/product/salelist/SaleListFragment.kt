@@ -2,7 +2,6 @@ package id.co.secondhand.ui.market.product.salelist
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -18,13 +17,12 @@ import id.co.secondhand.databinding.FragmentSaleListBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.domain.model.buyer.Product
 import id.co.secondhand.ui.adapter.OrderListAdapter
-import id.co.secondhand.ui.adapter.HomeGridAdapter
 import id.co.secondhand.ui.adapter.ProductGridAdapter
 import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
-import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
-import id.co.secondhand.utils.Extension.EXTRA_USER
+import id.co.secondhand.utils.Constants.EXTRA_ID
+import id.co.secondhand.utils.Constants.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
 
 @AndroidEntryPoint

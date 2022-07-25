@@ -2,7 +2,6 @@ package id.co.secondhand.ui.market.product.add
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -18,9 +17,9 @@ import id.co.secondhand.databinding.FragmentAddProductBinding
 import id.co.secondhand.domain.model.seller.Preview
 import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.product.preview.PreviewProductActivity
-import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Companion.EXTRA_PREVIEW
-import id.co.secondhand.ui.market.product.preview.PreviewProductActivity.Companion.EXTRA_TOKEN
 import id.co.secondhand.utils.CategoryList
+import id.co.secondhand.utils.Constants.EXTRA_PREVIEW
+import id.co.secondhand.utils.Constants.EXTRA_TOKEN
 import id.co.secondhand.utils.Extension.showSnackbar
 import id.co.secondhand.utils.Extension.validateDescription
 import java.io.File

@@ -15,7 +15,7 @@ import id.co.secondhand.databinding.FragmentProfileBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.ui.auth.login.LoginActivity
 import id.co.secondhand.ui.market.profile.update.EditProfileActivity
-import id.co.secondhand.utils.Extension.EXTRA_USER
+import id.co.secondhand.utils.Constants.EXTRA_USER
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {

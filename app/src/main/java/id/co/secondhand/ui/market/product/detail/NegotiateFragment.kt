@@ -15,6 +15,7 @@ import id.co.secondhand.data.remote.request.product.BargainRequest
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.FragmentNegotiateBinding
 import id.co.secondhand.domain.model.buyer.Product
+import id.co.secondhand.utils.Constants.EXTRA_PRODUCT
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.showSnackbar
 
@@ -167,9 +168,5 @@ class NegotiateFragment : BottomSheetDialogFragment() {
                 )
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_PRODUCT = "extraProduct"
     }
 }

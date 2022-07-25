@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import id.co.secondhand.data.remote.response.buyer.toDomain
 import id.co.secondhand.domain.model.buyer.Product
+import id.co.secondhand.utils.Constants.INITIAL_PAGE_INDEX
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -38,9 +39,5 @@ class MarketPagingSource @Inject constructor(
         } catch (exception: HttpException) {
             LoadResult.Error(exception)
         }
-    }
-
-    companion object {
-        private const val INITIAL_PAGE_INDEX = 1
     }
 }

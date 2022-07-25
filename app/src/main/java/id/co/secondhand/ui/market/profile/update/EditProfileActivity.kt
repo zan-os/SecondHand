@@ -2,7 +2,6 @@ package id.co.secondhand.ui.market.profile.update
 
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
@@ -15,7 +14,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityEditProfileBinding
 import id.co.secondhand.domain.model.auth.User
-import id.co.secondhand.utils.Extension.EXTRA_USER
+import id.co.secondhand.utils.Constants.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
 import java.io.File
 

@@ -10,6 +10,7 @@ import id.co.secondhand.R
 import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityDetailProductBinding
 import id.co.secondhand.domain.model.buyer.Product
+import id.co.secondhand.utils.Constants.EXTRA_ID
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.showSnackbar
 
@@ -102,9 +103,5 @@ class DetailProductActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             finish()
         }
-    }
-
-    companion object {
-        var EXTRA_ID = "extra_id"
     }
 }

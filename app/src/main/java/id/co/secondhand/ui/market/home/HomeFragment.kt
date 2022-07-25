@@ -10,10 +10,10 @@ import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentHomeBinding
-import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
 import id.co.secondhand.ui.adapter.HomeGridAdapter
+import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
-import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
+import id.co.secondhand.utils.Constants.EXTRA_ID
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {

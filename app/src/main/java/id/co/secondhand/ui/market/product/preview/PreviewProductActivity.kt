@@ -12,6 +12,8 @@ import id.co.secondhand.data.resource.Resource
 import id.co.secondhand.databinding.ActivityPreviewProductBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.domain.model.seller.Preview
+import id.co.secondhand.utils.Constants.EXTRA_PREVIEW
+import id.co.secondhand.utils.Constants.EXTRA_TOKEN
 import id.co.secondhand.utils.Extension.currencyFormatter
 import id.co.secondhand.utils.Extension.showSnackbar
 
@@ -165,10 +167,5 @@ class PreviewProductActivity : AppCompatActivity() {
                 )
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_PREVIEW = "extra_preview"
-        const val EXTRA_TOKEN = "extra_token"
     }
 }
