@@ -1,10 +1,10 @@
 package id.co.secondhand.domain.repository
 
-import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
+import id.co.secondhand.data.remote.response.notification.NotificationDto
 
 interface NotificationRepository {
 
-    suspend fun getNotification(accessToken: String): List<NotificationDtoItem>
+    suspend fun getNotification(accessToken: String): List<NotificationDto>
 
-    suspend fun readNotification(accessToken: String, id: Int): NotificationDtoItem
+    suspend fun readNotification(accessToken: String, id: Int): NotificationDto
 }

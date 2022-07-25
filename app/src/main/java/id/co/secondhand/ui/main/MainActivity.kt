@@ -1,6 +1,7 @@
 package id.co.secondhand.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         getAccessToken()
         setupNavView()
+        notificationClick()
     }
 
     fun getAccessToken() {
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity() {
     private fun notificationStatus(notification: Notification) {
         if (!notification.read) {
             binding.navView.getOrCreateBadge(R.id.notificationFragment).isVisible = true
+        }
+    }
+
+    private fun notificationClick() {
+        binding.navView.menu.findItem(R.id.notificationFragment).setOnMenuItemClickListener {
+            binding.navView.getOrCreateBadge(R.id.notificationFragment).isVisible = false
+            return@setOnMenuItemClickListener false
         }
     }
 

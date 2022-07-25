@@ -9,7 +9,6 @@ import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.auth.LoginDto
 import id.co.secondhand.data.remote.response.auth.UserDto
 import id.co.secondhand.data.remote.response.notification.NotificationDto
-import id.co.secondhand.data.remote.response.notification.NotificationDtoItem
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -88,13 +87,13 @@ interface MarketApi {
     @GET("notification")
     suspend fun getNotification(
         @Header("access_token") accessToken: String
-    ): NotificationDto
+    ): List<NotificationDto>
 
     @PATCH("notification/{id}")
     suspend fun readNotification(
         @Header("access_token") accessToken: String,
         @Path("id") id: Int
-    ): NotificationDtoItem
+    ): NotificationDto
 
     @POST("buyer/order")
     suspend fun bargainProduct(
