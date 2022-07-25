@@ -43,16 +43,13 @@ class PreviewProductActivity : AppCompatActivity() {
             when (result) {
                 is Resource.Loading -> {
                     showLoading(true)
-                    Log.d("Market", "Loading")
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Log.d("Market", result.data.toString())
                     showSellerData(result.data)
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    Log.d("Market", "Error ${result.message}")
                 }
             }
         }
@@ -100,11 +97,9 @@ class PreviewProductActivity : AppCompatActivity() {
                 when (result) {
                     is Resource.Loading -> {
                         showLoading(true)
-                        Log.d("Market", "Loading")
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        Log.d("Market", result.data.toString())
                         "Berhasil menambahkan barang".showSnackbar(
                             binding.root,
                             this,
@@ -115,7 +110,6 @@ class PreviewProductActivity : AppCompatActivity() {
                     is Resource.Error -> {
                         showLoading(false)
                         showErrorMessage(result.message, binding.root)
-                        Log.d("Market", "Error ${result.message}")
                     }
                 }
             }

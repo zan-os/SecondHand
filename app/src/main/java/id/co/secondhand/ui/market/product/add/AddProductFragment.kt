@@ -91,7 +91,6 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
             run {
                 val string: CategoryList = adapterView?.getItemAtPosition(pos) as CategoryList
                 categoryId = string.tag as String
-                Log.d("category", categoryId)
             }
         }
     }
@@ -141,11 +140,9 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                     when (result) {
                         is Resource.Loading -> {
                             showLoading(true)
-                            Log.d("Market", "Loading")
                         }
                         is Resource.Success -> {
                             showLoading(false)
-                            Log.d("Market", result.data.toString())
                             "Berhasil menambahkan barang".showSnackbar(
                                 binding.root,
                                 requireContext(),
@@ -156,7 +153,6 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                         is Resource.Error -> {
                             showLoading(false)
                             showErrorMessage(result.message, binding.root)
-                            Log.d("Market", "Error ${result.message}")
                         }
                     }
                 }

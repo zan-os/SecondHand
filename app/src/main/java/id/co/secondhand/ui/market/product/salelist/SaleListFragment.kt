@@ -68,12 +68,10 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
         viewModel.getUserData(token).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("Market", "Loading")
                     showLoading(true)
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Log.d("Market", result.data.toString())
                     result.data?.let {
                         showUserData(it)
                         navigateToEditProfile(it)
@@ -81,7 +79,7 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    Log.d("Market", "Error ${result.message.toString()}")
+                    showErrorMessage(result.message, binding.root)
                 }
             }
         }
@@ -91,17 +89,14 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
         viewModel.getSaleProduct(token).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("Market", "Loading")
                     showLoading(true)
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Log.d("Market", result.data.toString())
                     showProduct(result.data)
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    Log.d("Market", "Error ${result.message.toString()}")
                     showErrorMessage(result.message, binding.root)
                 }
             }
@@ -119,17 +114,14 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
             viewModel.getOrder(token, "pending").observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        Log.d("Market", "Loading")
                         showLoading(true)
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        Log.d("Market", result.data.toString())
                         showOrder(result.data)
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        Log.d("Market", "Error ${result.message.toString()}")
                         showErrorMessage(result.message, binding.root)
                     }
                 }
@@ -142,17 +134,14 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
             viewModel.getOrder(token, "accepted").observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        Log.d("Market", "Loading")
                         showLoading(true)
                     }
                     is Resource.Success -> {
                         showLoading(false)
-                        Log.d("Market", result.data.toString())
                         showOrder(result.data)
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        Log.d("Market", "Error ${result.message.toString()}")
                         showErrorMessage(result.message, binding.root)
                     }
                 }

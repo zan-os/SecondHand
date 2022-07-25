@@ -80,12 +80,10 @@ class EditProfileActivity : AppCompatActivity() {
                 ).observe(this@EditProfileActivity) { result ->
                     when (result) {
                         is Resource.Loading -> {
-                            Log.d("Market", "Loading")
                             showLoading(true)
                         }
                         is Resource.Success -> {
                             showLoading(false)
-                            Log.d("Market", result.data.toString())
                             "Data berhasil disimpan".showSnackbar(
                                 binding.root,
                                 this@EditProfileActivity,
@@ -96,7 +94,6 @@ class EditProfileActivity : AppCompatActivity() {
                         is Resource.Error -> {
                             showLoading(false)
                             showErrorMessage(result.message, it)
-                            Log.d("Market", "Error ${result.message.toString()}")
                         }
                     }
                 }

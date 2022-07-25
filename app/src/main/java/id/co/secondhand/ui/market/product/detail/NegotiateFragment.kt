@@ -37,7 +37,6 @@ class NegotiateFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Sheet", arguments?.getParcelable<Product>(EXTRA_PRODUCT).toString())
         getData()
     }
 
