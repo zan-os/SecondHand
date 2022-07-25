@@ -44,8 +44,8 @@
                 app:navigationIconTint="?colorOnSecondary">
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.SecondHand.Heading.Bold"
                     android:layout_width="wrap_content"
+                    style="@style/TextAppearance.SecondHand.Title.Medium"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/lengkapi_detail_produk"
