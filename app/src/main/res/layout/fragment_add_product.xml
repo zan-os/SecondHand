@@ -13,6 +13,7 @@
 
     <ScrollView
         android:id="@+id/sale_list_layout"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -238,10 +239,11 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/product_image_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                app:cardCornerRadius="12dp"
                 app:cardBackgroundColor="@color/dark_blue_01"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_image_tv">
@@ -250,11 +252,9 @@
                     android:id="@+id/product_image_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="37dp"
-                    android:layout_marginTop="39dp"
-                    android:layout_marginEnd="37dp"
-                    android:layout_marginBottom="39dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_camera"
+                    android:layout_gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
