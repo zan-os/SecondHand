@@ -182,6 +182,7 @@ class SaleListFragment : Fragment(R.layout.fragment_sale_list) {
             binding.productRv.visibility = View.GONE
             binding.noOrderIv.visibility = View.VISIBLE
             binding.emptyListTv.visibility = View.VISIBLE
+            binding.emptyListTv.text = getString(R.string.no_order)
         } else {
             binding.emptyListTv.visibility = View.GONE
             binding.noOrderIv.visibility = View.GONE

@@ -113,7 +113,8 @@
     <string name="error_internal_server">Internal Server Error</string>
     <string name="error_has_order_product">you has order for this product</string>
     <string name="error_not_login">Silahkan login terlebih dahulu</string>
-    <string name="no_order">Belum ada produkmu yang diminati nih, sabar ya rejeki nggak kemana kok</string>
+    <string name="no_order">Belum ada produkmu yang diminati</string>
+    <string name="tidak_ada">Tidak ada</string>
     <string name="retry">Retry</string>
     <string name="no_results_found_for_this_query">No results found for this query</string>
     <string name="results_could_not_be_loaded">Results could not be loaded</string>
