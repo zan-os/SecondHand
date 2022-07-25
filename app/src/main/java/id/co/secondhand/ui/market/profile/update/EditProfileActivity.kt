@@ -16,6 +16,7 @@ import id.co.secondhand.databinding.ActivityEditProfileBinding
 import id.co.secondhand.domain.model.auth.User
 import id.co.secondhand.utils.Constants.EXTRA_USER
 import id.co.secondhand.utils.Extension.showSnackbar
+import id.co.secondhand.utils.Extension.uriToFile
 import java.io.File
 
 @AndroidEntryPoint
@@ -111,7 +112,7 @@ class EditProfileActivity : AppCompatActivity() {
         binding.profileImageContainer.setOnClickListener {
             TedImagePicker.with(this)
                 .start { uri ->
-                    val file = uri.toFile()
+                    val file = uriToFile(uri, this)
                     getFile = file
                     Glide.with(this)
                         .load(uri)

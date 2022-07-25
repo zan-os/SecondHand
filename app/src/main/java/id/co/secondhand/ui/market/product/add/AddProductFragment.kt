@@ -21,6 +21,7 @@ import id.co.secondhand.utils.CategoryList
 import id.co.secondhand.utils.Constants.EXTRA_PREVIEW
 import id.co.secondhand.utils.Constants.EXTRA_TOKEN
 import id.co.secondhand.utils.Extension.showSnackbar
+import id.co.secondhand.utils.Extension.uriToFile
 import id.co.secondhand.utils.Extension.validateDescription
 import java.io.File
 
@@ -98,7 +99,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
         binding.productImageContainer.setOnClickListener {
             TedImagePicker.with(requireContext())
                 .start { uri ->
-                    val file = uri.toFile()
+                    val file = uriToFile(uri, requireContext())
 
                     getFile = file
 

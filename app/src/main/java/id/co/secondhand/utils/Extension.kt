@@ -1,15 +1,15 @@
 package id.co.secondhand.utils
 
+import android.content.ContentResolver
 import android.content.Context
+import android.net.Uri
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.paging.LoadState
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-import id.co.secondhand.databinding.LoadStateLayoutBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -61,5 +61,20 @@ object Extension {
     fun View.dismissKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    fun uriToFile(selectedImage: Uri, context: Context): File {
+        val contentResolver: ContentResolver = context.contentResolver
+        val file = createTempFile(context.toString())
+
+        val inputStream = contentResolver.openInputStream(selectedImage) as InputStream
+        val outputStream = FileOutputStream(file)
+        val buf = ByteArray(1024)
+        var len: Int
+        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+        outputStream.close()
+        inputStream.close()
+
+        return file
     }
 }
