@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content">
 
     <ProgressBar
@@ -26,7 +27,6 @@
         android:text="@string/masukan_harga_tawarmu"
         android:textColor="@color/neutral_05"
         android:textSize="14sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,11 +34,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        style="@style/TextAppearance.SecondHand.Body.Medium"
+        style="@style/TextAppearance.SecondHand.Body.Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:textColor="@color/neutral_03"
         android:layout_marginEnd="16dp"
         android:text="@string/nego_desc"
         android:textSize="14sp"
@@ -49,6 +50,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
+        style="@style/Widget.MaterialComponents.CardView.RoundedCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -62,43 +64,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+                app:srcCompat="@drawable/product_img" />
 
             <TextView
                 android:id="@+id/tvProductName"
                 style="@style/TextAppearance.SecondHand.Body.Medium"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:textColor="@color/neutral_05"
                 android:textSize="14sp"
-                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/guideline"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.037"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:text="@string/jam_tangan_casio" />
 
             <TextView
                 android:id="@+id/tvProductPrice"
-                style="@style/TextAppearance.SecondHand.Body.Medium"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.SecondHand.Body.Regular"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:textColor="@color/neutral_05"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="@+id/tvProductName"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="@+id/tvProductName"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+                app:layout_constraintTop_toBottomOf="@id/guideline"
+                tools:text="Rp 250.000" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -139,9 +152,9 @@
             style="@style/TextAppearance.SecondHand.Body.Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/rp_250_000"
             android:inputType="number"
-            android:textSize="16sp" />
+            android:hint="@string/rp_250_000"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -149,16 +162,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        style="@style/Button"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:enabled="false"
+        android:backgroundTint="@color/dark_blue_04"
+        android:textColor="@color/white"
         android:padding="14dp"
         android:text="@string/kirim"
-        app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/negotiate_price_et_layout" />
 

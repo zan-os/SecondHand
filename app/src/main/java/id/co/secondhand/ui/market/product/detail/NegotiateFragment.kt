@@ -1,7 +1,6 @@
 package id.co.secondhand.ui.market.product.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,7 +66,6 @@ class NegotiateFragment : BottomSheetDialogFragment() {
             if (token.isEmpty()) {
                 binding.sendNegotiateBtn.text = getString(R.string.silahkan_login)
             } else {
-                binding.sendNegotiateBtn.isEnabled = true
                 bidProduct(token, productId)
             }
         }
