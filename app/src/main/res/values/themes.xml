@@ -167,6 +167,12 @@
         <item name="cornerRadius">8dp</item>
     </style>
 
+    <style name="Button.Outline.16dp">
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="strokeColor">?android:textColorSecondary</item>
+    </style>
+
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxCornerRadiusTopStart">16dp</item>
         <item name="boxCornerRadiusTopEnd">16dp</item>
