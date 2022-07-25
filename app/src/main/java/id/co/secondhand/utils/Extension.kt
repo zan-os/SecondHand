@@ -3,6 +3,7 @@ package id.co.secondhand.utils
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
+import android.os.Environment
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
@@ -63,9 +64,16 @@ object Extension {
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
 
+    private fun createTempFile(context: Context): File {
+        val timeStamp: String =
+            SimpleDateFormat("dd-MMM-yyyy", Locale.US).format(System.currentTimeMillis())
+        val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(timeStamp, ".jpg", storageDir)
+    }
+
     fun uriToFile(selectedImage: Uri, context: Context): File {
         val contentResolver: ContentResolver = context.contentResolver
-        val file = createTempFile(context.toString())
+        val file = createTempFile(context)
 
         val inputStream = contentResolver.openInputStream(selectedImage) as InputStream
         val outputStream = FileOutputStream(file)
