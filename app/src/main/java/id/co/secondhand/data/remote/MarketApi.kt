@@ -82,7 +82,15 @@ interface MarketApi {
     suspend fun getOrderId(
         @Header("access_token") accessToken: String,
         @Path("id") OrderId: Int
-    ): ProductItemDto
+    ): OrderDtoItem
+
+    @FormUrlEncoded
+    @PATCH("seller/order/{id}")
+    suspend fun updateOrder(
+        @Header("access_token") accessToken: String,
+        @Path("id") OrderId: Int,
+        @Field("status") status: String
+    ): OrderDtoItem
 
     @GET("notification")
     suspend fun getNotification(

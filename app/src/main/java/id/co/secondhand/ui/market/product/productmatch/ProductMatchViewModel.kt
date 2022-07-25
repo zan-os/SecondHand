@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.product.negotiate
+package id.co.secondhand.ui.market.product.productmatch
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

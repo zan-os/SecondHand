@@ -1,4 +1,4 @@
-package id.co.secondhand.domain.usecase.market.seller.productMatch
+package id.co.secondhand.domain.usecase.market.seller.updateorder
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -9,13 +9,13 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class ProductMatchUseCase @Inject constructor(
+class UpdateOrderUseCase @Inject constructor(
     private val repository: SellerRepository
 ) {
-    operator fun invoke(accessToken: String, id: Int): LiveData<Resource<OrderDtoItem>> = liveData {
+    operator fun invoke(accessToken: String, id: Int, status: String): LiveData<Resource<OrderDtoItem>> = liveData {
         try {
             emit(Resource.Loading())
-            val data = repository.getOrderSellerId(accessToken, id = id)
+            val data = repository.updateOrder(accessToken, id, status)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error(e.code().toString()))

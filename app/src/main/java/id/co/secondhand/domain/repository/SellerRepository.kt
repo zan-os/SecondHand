@@ -1,7 +1,6 @@
 package id.co.secondhand.domain.repository
 
 import id.co.secondhand.data.remote.response.OrderDtoItem
-import id.co.secondhand.data.remote.response.ProductItemDto
 import id.co.secondhand.data.remote.response.buyer.ProductDto
 import id.co.secondhand.data.remote.response.seller.AddProductDto
 import okhttp3.MultipartBody
@@ -23,5 +22,7 @@ interface SellerRepository {
 
     suspend fun getOrder(accessToken: String, status: String): List<OrderDtoItem>
 
-    suspend fun getOrderSellerId(accessToken: String, id: Int): ProductItemDto
+    suspend fun getOrderSellerId(accessToken: String, id: Int): OrderDtoItem
+
+    suspend fun updateOrder(accessToken: String, id: Int, status: String): OrderDtoItem
 }

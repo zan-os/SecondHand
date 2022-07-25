@@ -19,6 +19,7 @@ class OrderListAdapter(private val onClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(order: OrderDtoItem) {
             binding.apply {
+                statusTv.text = order.status
                 productNameTv.text = order.product?.name
                 productPriceTv.text = order.product?.basePrice?.currencyFormatter()
                 bargainPriceTv.text = itemView.resources.getString(

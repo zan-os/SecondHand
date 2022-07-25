@@ -81,7 +81,6 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/nama_produk"
                         android:textColor="@color/neutral_05"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +97,6 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textSize="11sp"
-                        android:text="@string/aksesoris"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/product_name_tv" />
@@ -112,13 +110,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
-                        android:text="@string/rp_250_000"
                         android:textColor="@color/neutral_05"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_tv" />
+                        app:layout_constraintTop_toBottomOf="@+id/category_tv"
+                        app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,7 +147,6 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/seller_image"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -161,7 +159,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/nama_penjual"
                         android:textColor="@color/neutral_05"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -174,7 +171,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/asal_kota"
                         android:textColor="@color/neutral_03"
                         android:textSize="11sp"
                         app:layout_constraintStart_toEndOf="@+id/seller_image_iv"
@@ -231,7 +227,6 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
-                        android:text="@string/lorem_ipsum"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

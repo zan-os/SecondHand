@@ -1,8 +1,12 @@
 package id.co.secondhand.data.remote.response
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class OrderDtoItem(
     @SerializedName("buyer_id")
     val buyerId: Int?,
@@ -21,5 +25,5 @@ data class OrderDtoItem(
     @SerializedName("updatedAt")
     val updatedAt: String?,
     @SerializedName("User")
-    val userDto: UserDto?
-)
+    val userDto: @RawValue UserDto?
+): Parcelable

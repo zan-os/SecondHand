@@ -1,4 +1,4 @@
-package id.co.secondhand.ui.market.product.detail
+package id.co.secondhand.ui.market.product.negotiate
 
 import android.os.Bundle
 import android.view.LayoutInflater
