@@ -13,6 +13,7 @@
         android:visibility="gone" />
 
     <ScrollView
+        android:scrollbars="none"
         android:id="@+id/sale_list_layout"
         android:layout_width="match_parent"
         android:visibility="gone"

@@ -91,6 +91,7 @@
         android:id="@+id/bid_approved_tv"
         style="@style/TextAppearance.SecondHand.Body.Regular"
         android:layout_width="0dp"
+        android:textColor="@color/neutral_03"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="@string/kamu_akan_segera_dihubungi_penjual_via_whatsapp"

@@ -121,6 +121,7 @@
     <string name="home">Home</string>
     <string name="cari_di_second_chance">Cari di Second Chance</string>
     <string name="handphone">Handphone</string>
+    <string name="penawaran_anda_ditolak">Penawaran anda ditolak</string>
     <string-array name="city">
         <item>Aceh</item>
         <item>Bandar Lampung</item>

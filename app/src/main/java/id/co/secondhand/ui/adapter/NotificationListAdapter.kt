@@ -53,6 +53,14 @@ class NotificationListAdapter(private val onClick: (Notification) -> Unit) :
                         )
                     bidApprovedTv.visibility = View.VISIBLE
                 }
+                if (notification.status == "declined") {
+                    bargainPriceTv.paintFlags =
+                        productPriceTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    bidApprovedTv.text = itemView.resources.getString(
+                        R.string.penawaran_anda_ditolak
+                    )
+                    bidApprovedTv.visibility = View.VISIBLE
+                }
             }
         }
     }
