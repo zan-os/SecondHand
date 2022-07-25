@@ -20,6 +20,7 @@
             android:layout_height="140dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize4Percent"
             android:layout_marginEnd="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img"

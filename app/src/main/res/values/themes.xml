@@ -132,8 +132,12 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
-        <item name="cornerSize">10%</item>
+    <style name="ShapeAppearanceOverlay.App.CornerSize4Percent" parent="">
+        <item name="cornerSize">4%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize20Percent" parent="">
+        <item name="cornerSize">20%</item>
     </style>
 
     <style name="Widget.MaterialComponents.Button.CircleButton">
