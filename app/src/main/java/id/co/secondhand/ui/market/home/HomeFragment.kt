@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.co.secondhand.R
 import id.co.secondhand.databinding.FragmentHomeBinding
 import id.co.secondhand.ui.adapter.MarketLoadStateAdapter
-import id.co.secondhand.ui.adapter.ProductGridAdapter
+import id.co.secondhand.ui.adapter.HomeGridAdapter
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity
 import id.co.secondhand.ui.market.product.detail.DetailProductActivity.Companion.EXTRA_ID
 
@@ -22,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var productAdapter: ProductGridAdapter
+    private lateinit var productAdapter: HomeGridAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,7 +67,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setupAdapter() {
-        productAdapter = ProductGridAdapter(::onClicked)
+        productAdapter = HomeGridAdapter(::onClicked)
         binding.apply {
             productRv.itemAnimator = null
             productRv.adapter = productAdapter.withLoadStateFooter(
