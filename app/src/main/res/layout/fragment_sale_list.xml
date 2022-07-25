@@ -91,7 +91,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/kota"
                         android:textColor="@color/neutral_03"
-                        android:textSize="10sp"
+                        android:textSize="11sp"
                         app:layout_constraintStart_toStartOf="@+id/seller_name_tv"
                         app:layout_constraintTop_toBottomOf="@id/guideline" />
 
