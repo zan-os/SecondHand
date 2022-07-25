@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="android:textColorSecondary">@color/dark_blue_03</item>
         <item name="snackbarTextViewStyle">@style/Snackbar</item>
+        <item name="fontFamily">@font/poppins_regular</item>
     </style>
 </resources>
