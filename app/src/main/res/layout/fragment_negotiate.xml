@@ -125,7 +125,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/harga_tawar"
         android:textColor="@color/neutral_05"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
